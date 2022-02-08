@@ -1,1 +1,1 @@
-# ci536-group-project
+# CI536 Integrated Group Project
