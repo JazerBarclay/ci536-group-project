@@ -1,0 +1,28 @@
+{
+  "name": "timer-api",
+  "version": "1.0.0",
+  "description": "API server for java timer app",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "",
+  "contributors": [
+    "Jazer Barclay",
+    "Karan Vani",
+    "Kim Lam",
+    "Fin Watling",
+    "Ben Edmondson",
+    "Danil Bronnikov"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
