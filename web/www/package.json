@@ -1,0 +1,33 @@
+{
+  "name": "timer-website",
+  "version": "1.0.0",
+  "description": "Website to interact with timer api",
+  "main": "app.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JazerBarclay/ci536-group-project.dev.git"
+  },
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "keywords": [],
+  "author": "",
+  "contributors": [
+    "Jazer Barclay",
+    "Karan Vani",
+    "Kim Lam",
+    "Fin Watling",
+    "Ben Edmondson",
+    "Danil Bronnikov"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
