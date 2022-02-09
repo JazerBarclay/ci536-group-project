@@ -4,6 +4,9 @@ require('dotenv').config()
 // Add express library 
 const express = require('express');
 
+// Add filesystem path functionality
+const path = require('path');
+
 // Create new app variable for handling network requests
 const app = express();
 
