@@ -18,12 +18,11 @@ public class Launcher extends Application {
     Button button = new Button();
     button.setText("Fetch API tingz");
 
-    // sets action for button when clicked
-    button.setOnAction( event -> {
-      System.out.println("Hello");
-    });
+    // sets action for button when clicked using lambda expressions
+    button.setOnAction(e -> System.out.println("Hola"));
 
     Scene scene = new Scene(new StackPane(button), 1280 , 720);
+    scene.getStylesheets().add("res/stylesheet.css");
     stage.setScene(scene);
     stage.show();
 
