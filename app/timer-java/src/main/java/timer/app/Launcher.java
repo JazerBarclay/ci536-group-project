@@ -16,7 +16,7 @@ public class Launcher extends Application {
   public void start(Stage stage) throws Exception {
     
     String javaVersion = System.getProperty("java.version");
-    String javafxVersion = System.getProperty("javafx.version");
+    String javafxVersion = System.getProperty("javafx.version1");
     Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
     Scene scene = new Scene(new StackPane(l), 640, 480);
     stage.setScene(scene);
