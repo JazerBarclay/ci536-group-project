@@ -27,3 +27,4 @@ etc/*.hc
 .project
 
 .settings/*
+/target/
