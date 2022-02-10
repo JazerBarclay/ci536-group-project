@@ -15,14 +15,17 @@ public class Launcher extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     stage.setTitle("Timer");
-    String javaVersion = System.getProperty("java.version");
-    String javafxVersion = System.getProperty("javafx.version1");
     Button button = new Button();
     button.setText("Fetch API tingz");
-    Scene scene = new Scene(new StackPane(button), 640, 480);
+
+    // sets action for button when clicked
+    button.setOnAction( event -> {
+      System.out.println("Hello");
+    });
+
+    Scene scene = new Scene(new StackPane(button), 1280 , 720);
     stage.setScene(scene);
     stage.show();
-
 
   }
 
