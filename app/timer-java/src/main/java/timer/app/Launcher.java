@@ -63,16 +63,12 @@ public class Launcher extends Application {
       window.setScene(scene1);
     });
 
+    //Layout 2
     grid2.add(previousButton,7,6);
     scene2 = new Scene(grid2, 1280,720);
 
-
     //Layout 1
-    Scene scene1 = new Scene(grid, 1280,720);
-    scene1.getStylesheets().add("res/stylesheet.css");
-
-    //Layout 2
-
+    scene1 = new Scene(grid, 1280,720);
 
 
     window.setScene(scene1);
