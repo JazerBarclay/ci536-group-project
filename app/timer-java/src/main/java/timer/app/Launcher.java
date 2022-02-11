@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -40,6 +41,7 @@ public class Launcher extends Application {
 
     // Username Input
     TextField userInput = new TextField(("Username"));
+    userInput.setPromptText("Username");
     grid.add(userInput,42,40);
 
     // Password Label
@@ -47,9 +49,9 @@ public class Launcher extends Application {
     grid.add(passwordLabel,40,44);
 
     // Password Input
-    TextField passinput = new TextField(("Test2"));
-    passinput.setPromptText("Password");
-    grid.add(passinput,42,44);
+    PasswordField passInput = new PasswordField();
+    passInput.setPromptText("Password");
+    grid.add(passInput,42,44);
 
     // Buttons
     Button loginButton = new Button("Login");
@@ -67,7 +69,7 @@ public class Launcher extends Application {
     });
     grid.add(signup,43,46);
 
-    Button previousButton= new Button("Previous button");
+    Button previousButton = new Button("Previous button");
     previousButton.setOnAction(e -> {
       window.setScene(scene1);
     });
