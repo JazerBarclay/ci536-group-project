@@ -57,9 +57,6 @@ public class View {
         });
         grid.add(loginButton,42,46);
 
-
-
-
         javafx.scene.control.Button signup = new javafx.scene.control.Button("Sign up");
         signup.setOnAction(e -> {
             System.out.println("Signed up");
@@ -71,7 +68,6 @@ public class View {
             window.setScene(scene1);
         });
         Rectangle rect = new Rectangle();
-
 
         //Layout 2
         grid2.add(previousButton,42,46);
