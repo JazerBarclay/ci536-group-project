@@ -1,0 +1,34 @@
+h1 {
+    text-align: center;
+}
+
+body{
+
+    background-color: rgb(212, 76, 76);
+
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(55, 148, 52);
+  }
+  
+.nav li {
+    float: left;
+  }
+  
+.nav li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .nav li a:hover {
+    background-color: rgb(32, 116, 21);
+    text-decoration: underline;
+  }
