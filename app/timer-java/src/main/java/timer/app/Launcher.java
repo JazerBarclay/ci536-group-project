@@ -1,20 +1,15 @@
 package timer.app;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
 
   Stage window;
-  Scene scene1, scene2;
-
-  public static void main(String[] args) {
-    launch(args);
-  }
 
   @Override
   public void start(Stage stage) throws Exception {
+    stage.show();
 
     window = stage;
     Model model = new Model();
@@ -22,5 +17,10 @@ public class Launcher extends Application {
     Controller controller = new Controller(model);
 
   }
+  public static void main(String[] args) {
+    launch(args);
+  }
+
+
 
 }
