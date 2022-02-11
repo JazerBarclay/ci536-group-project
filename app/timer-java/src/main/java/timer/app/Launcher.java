@@ -36,27 +36,36 @@ public class Launcher extends Application {
     // Intro Login Layout
     // Username Label
     Label userLabel = new Label("Username");
-    grid.add(userLabel,2,0);
+    grid.add(userLabel,40,40);
 
     // Username Input
     TextField userInput = new TextField(("Username"));
-    grid.add(userInput,4,0);
+    grid.add(userInput,42,40);
 
     // Password Label
     Label passwordLabel = new Label("Password");
-    grid.add(passwordLabel,2,4);
+    grid.add(passwordLabel,40,44);
 
     // Password Input
     TextField passinput = new TextField(("Test2"));
     passinput.setPromptText("Password");
-    grid.add(passinput,4,4);
+    grid.add(passinput,42,44);
 
     // Buttons
     Button loginButton = new Button("Login");
     loginButton.setOnAction(e -> {
       window.setScene(scene2);
     });
-    grid.add(loginButton,4,6);
+    grid.add(loginButton,42,46);
+
+
+
+
+    Button signup = new Button("Sign up");
+    signup.setOnAction(e -> {
+      System.out.println("Signed up");
+    });
+    grid.add(signup,43,46);
 
     Button previousButton= new Button("Previous button");
     previousButton.setOnAction(e -> {
@@ -64,7 +73,7 @@ public class Launcher extends Application {
     });
 
     //Layout 2
-    grid2.add(previousButton,7,6);
+    grid2.add(previousButton,42,46);
     scene2 = new Scene(grid2, 1280,720);
 
     //Layout 1
