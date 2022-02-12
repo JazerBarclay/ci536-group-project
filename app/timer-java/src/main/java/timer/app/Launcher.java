@@ -17,6 +17,7 @@ public class Launcher extends Application {
     Model model = new Model();
     View view = new View(window, model);
     Controller controller = new Controller(model);
+    // Change test
 
   }
   public static void main(String[] args) {
