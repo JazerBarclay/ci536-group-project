@@ -11,14 +11,13 @@ public class Launcher extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    stage.show();
 
     window = stage;
     Model model = new Model();
-    View view = new View(window, model);
     Controller controller = new Controller(model);
-    // Change test
+    View view = new View(window, model, controller);
 
+    stage.show();
   }
   public static void main(String[] args) {
     launch(args);
