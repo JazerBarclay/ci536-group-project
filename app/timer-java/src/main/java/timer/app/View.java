@@ -39,13 +39,13 @@ public class View {
         });
         grid.add(loginButton,42,46);
 
-        javafx.scene.control.Button signup = new javafx.scene.control.Button("Sign up");
-        signup.setOnAction(e -> {
+        javafx.scene.control.Button signupButton = new javafx.scene.control.Button("Sign up");
+        signupButton.setOnAction(e -> {
             controller.example();
         });
-        grid.add(signup,43,46);
+        grid.add(signupButton,43,46);
 
-        javafx.scene.control.Button previousButton= new Button("Previous button");
+        javafx.scene.control.Button previousButton = new Button("Previous button");
         previousButton.setOnAction(e -> {
             window.setScene(scene1);
         });
@@ -64,9 +64,9 @@ public class View {
         grid.add(passwordLabel,40,44);
 
         // Password Input
-        javafx.scene.control.TextField passinput = new javafx.scene.control.TextField(("Test2"));
-        passinput.setPromptText("Password");
-        grid.add(passinput,42,44);
+        javafx.scene.control.TextField passwordInput = new javafx.scene.control.TextField(("Test2"));
+        passwordInput.setPromptText("Password");
+        grid.add(passwordInput,42,44);
 
 
         //Layout 2
