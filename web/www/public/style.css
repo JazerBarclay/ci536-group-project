@@ -4,7 +4,9 @@ h1 {
 
 body{
 
-    background-color: rgb(212, 76, 76);
+    background-color: rgb(225, 237, 238);
+    padding:0;
+    margin:0;
 
 }
 
@@ -13,11 +15,12 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(55, 148, 52);
+    background-color: rgb(204, 163, 236);
   }
   
 .nav li {
     float: left;
+    padding:0;
   }
   
 .nav li a {
@@ -27,8 +30,25 @@ body{
     padding: 14px 16px;
     text-decoration: none;
   }
+
+  .nav li a.active{
+
+      background-color: rgb(255, 255, 255);
+
+  }
   
   .nav li a:hover {
-    background-color: rgb(32, 116, 21);
+    background-color: rgb(255, 255, 255);
     text-decoration: underline;
   }
+
+/*
+Login page
+*/
+  
+.logInForm {
+  padding-top: 2%;
+  text-align: center;
+}
+
+
