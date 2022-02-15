@@ -68,6 +68,13 @@ public class View {
         passwordInput.setPromptText("Password");
         grid.add(passwordInput,42,44);
 
+        //Timer
+        javafx.scene.control.Label minutes = new javafx.scene.control.Label(("" + model.displaytime()));
+        grid2.add(minutes, 43 , 44);
+
+        javafx.scene.control.Label seconds  = new javafx.scene.control.Label(("" + model.displaytime()));
+        grid2.add(seconds, 44 , 44);
+
 
         //Layout 2
         grid2.add(previousButton,42,46);
@@ -77,6 +84,7 @@ public class View {
         scene1 = new Scene(grid, 1280,720);
 
         window.setScene(scene1);
+
 
 
     }
