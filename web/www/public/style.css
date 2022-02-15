@@ -1,12 +1,41 @@
+html {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+
 h1 {
+
     text-align: center;
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-style: monospace;
+}
+
+.title {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  border-radius: 10px;
+  font-size: 2rem;
+  text-align: center;
+  background-color: yellow;
+  
 }
 
 body{
 
-    background-color: rgb(225, 237, 238);
-    padding:0;
-    margin:0;
+  display: grid;
+  place-items: center;
+  background-color: rgb(225, 237, 238);
+  padding:0;
+  margin:0;
+  min-height: 100vh;
+  min-width: 100vw;
 
 }
 
@@ -47,8 +76,62 @@ Login page
 */
   
 .logInForm {
-  padding-top: 2%;
+  padding-top: 40%;
   text-align: center;
+  left: 0;
+  line-height: 25px;
+  margin-top: -100px;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+}
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: fixed;
+  left: 90%;
+  bottom: 0%;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+#logInForm {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1rem;
+  
+}
+
+#body {
+  background-color:  #00ff97;
 }
 
 
