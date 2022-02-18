@@ -69,10 +69,10 @@ public class View {
         grid.add(passwordInput,42,44);
 
         //Timer
-        javafx.scene.control.Label minutes = new javafx.scene.control.Label(("" + model.displaytime()));
+        javafx.scene.control.Label minutes = new javafx.scene.control.Label(("" + model.time()));
         grid2.add(minutes, 43 , 44);
 
-        javafx.scene.control.Label seconds  = new javafx.scene.control.Label(("" + model.displaytime()));
+        javafx.scene.control.Label seconds  = new javafx.scene.control.Label(("" + model.time()));
         grid2.add(seconds, 44 , 44);
 
 
