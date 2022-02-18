@@ -9,6 +9,7 @@ const app = express();
 
 // Set the port to either the value from the .env file
 // or default it to 3000
+// User (profile), scores (leaderboard), login(id and password), add session(record the session) 
 const PORT = process.env.PORT || 3000;
 
 // Set the app handler to use JSON
@@ -24,6 +25,31 @@ app.get('/', (req, res) => {
         status: 1, message: "api server for timer app"
     })
 })
+
+app.get('/user', (req, res) => {
+    //On failure
+    res.status(406).json({
+        status: 1, message: "Error! User not found!"
+    })
+    // On success
+    // res.status(200).json ({
+    //     status: 1, message: "Successful login"
+    // })
+})
+
+
+app.get('/scores', (req, res) => {
+    // On success
+    res.status(200).json({
+        status: 1, message: "Scores retrieved successfully"
+    })
+    // On Fail
+    // res.status(406).json ({
+    //     status: 1, message: "Error! Server error!"
+    // })
+})
+
+
 
 // Start the app listening and output to the console where it is running
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
