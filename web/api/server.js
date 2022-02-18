@@ -49,6 +49,18 @@ app.get('/scores', (req, res) => {
     // })
 })
 
+app.get('/profile', (req, res) => {
+    res.status(200).json ({
+        status: 1, message: "User profile accessed successfully"
+    })
+    // On Fail
+    // res.status(406).json ({
+    //    status: 1, message: "Error, could not access the user profile"
+    // })
+
+
+})
+
 
 
 // Start the app listening and output to the console where it is running
