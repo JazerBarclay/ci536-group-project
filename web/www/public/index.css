@@ -31,59 +31,25 @@ body{
 
   display: grid;
   place-items: center;
-  background-color: rgb(225, 237, 238);
   padding:0;
   margin:0;
   min-height: 100vh;
   min-width: 100vw;
-
+  background-color:  #00ff97;
 }
 
-.nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(204, 163, 236);
-  }
-  
-.nav li {
-    float: left;
-    padding:0;
-  }
-  
-.nav li a {
-    display: block;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
 
-  .nav li a.active{
 
-      background-color: rgb(255, 255, 255);
-
-  }
-  
-  .nav li a:hover {
-    background-color: rgb(255, 255, 255);
-    text-decoration: underline;
-  }
 
 /*
 Login page
 */
-  
-.logInForm {
-  padding-top: 40%;
-  text-align: center;
-  left: 0;
-  line-height: 25px;
-  margin-top: -100px;
-  position: absolute;
-  top: 25%;
-  width: 100%;
+
+#logInForm {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1rem;
+
 }
 
 .dropbtn {
@@ -123,15 +89,7 @@ Login page
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-#logInForm {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 1rem;
-  
-}
 
-#body {
-  background-color:  #00ff97;
-}
+
 
 

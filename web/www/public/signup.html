@@ -4,20 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="signup.css">
+    <script src='signup.js'></script>
     <title>Hello World</title>
 </head>
-
-<div class="nav">
-<ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="login.html">Login</a></li>
-    <li><a>Contact</a></li>
-    <li><a>About</a></li>
-</ul>
-</div>
-
 <body>
-    <h1>Timer Web Application</h1>
+
+<div class="grid">
+    <div class="title">Sign Up to Quark</div>
+
+    <form id="signUpForm">
+      <label for="fname">Username: </label>
+      <input type="text" class="fname">
+      
+      <label for="password">Email: </label>
+      <input type="email" class="email">
+     
+      <label for="password">Password: </label>
+      <input type="password" class="password">
+
+      <button id="logInButton">To Log In</button> 
+      <button id="signUpButton" type="submit">Sign Up</button>
+      
+    </form>
+  </div>
+
+
+
+
+
+
 </body>
 </html>
