@@ -7,16 +7,23 @@ public class Controller {
     private Model model;
 
     public Controller(Model model) {
-        this.model = model;
+	this.model = model;
 
     }
 
     public void example(){
-        System.out.println("Something");
+	System.out.println("Something");
     }
 
     public void changescene(Stage window, Scene scene){
-        window.setScene(scene);
+	window.setScene(scene);
+    }
+
+    public void authenticateUser() {
+
+	// On fail, return false, else return true
+	 model.authenticated(false);
+
     }
 
 }
