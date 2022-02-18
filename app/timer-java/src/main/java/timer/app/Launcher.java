@@ -13,10 +13,13 @@ public class Launcher extends Application {
   public void start(Stage stage) throws Exception {
 
     window = stage;
+    
     Model model = new Model();
     Controller controller = new Controller(model);
     View view = new View(window, model, controller);
 
+    model.setChangeListener(() -> view.update());
+    
     stage.show();
   }
   public static void main(String[] args) {
