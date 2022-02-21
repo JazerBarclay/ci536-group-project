@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="signup.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src='signup.js'></script>
     <title>Sign Up</title>
 </head>
@@ -25,6 +26,7 @@
 
       <button id="logInButton">To Log In</button> 
       <button id="signUpButton" type="submit">Sign Up</button>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
       
     </form>
   </div>
