@@ -14,7 +14,7 @@ jobs:
       with:
         switches: -avzr --delete
         path: ./web
-        remote_path: /var/www/quark/dev/www
+        remote_path: /var/www/quark/dev
         remote_host: quark.rocks
         remote_user: github
         remote_key: ${{ secrets.SSH_KEY }}
@@ -28,7 +28,7 @@ jobs:
       with:
         switches: -avzr --delete
         path: ./database
-        remote_path: /var/www/quark/dev/db
+        remote_path: /var/www/quark/dev
         remote_host: quark.rocks
         remote_user: github
         remote_key: ${{ secrets.SSH_KEY }}
