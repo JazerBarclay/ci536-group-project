@@ -1,0 +1,33 @@
+name: DEPLOY
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  upload-site:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avzr --delete
+        path: ./web
+        remote_path: /var/www/quark/live/www
+        remote_host: quark.rocks
+        remote_user: github
+        remote_key: ${{ secrets.SSH_KEY }}
+  
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: github
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: whoami

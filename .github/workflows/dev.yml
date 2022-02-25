@@ -1,0 +1,47 @@
+name: DEPLOY
+on:
+  push:
+    branches:
+    - dev
+
+jobs:
+  upload-site:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avzr --delete
+        path: ./web
+        remote_path: /var/www/quark/dev/www
+        remote_host: quark.rocks
+        remote_user: github
+        remote_key: ${{ secrets.SSH_KEY }}
+
+  upload-db:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avzr --delete
+        path: ./database
+        remote_path: /var/www/quark/dev/db
+        remote_host: quark.rocks
+        remote_user: github
+        remote_key: ${{ secrets.SSH_KEY }}
+  
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: quark.rocks
+        username: github
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: echo "Hello" >> hello.world
