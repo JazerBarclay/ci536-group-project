@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: false }))
 // with a JSON response object
 app.get('/', (req, res) => {
     res.status(200).json({
-        status: 1, message: "api server for timer app"
+        message: "api server for timer app"
     })
 })
 
