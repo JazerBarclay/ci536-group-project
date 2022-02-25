@@ -42,6 +42,7 @@ public class View {
 	javafx.scene.control.Button loginButton = new javafx.scene.control.Button("Login");
 	loginButton.setOnAction(e -> {
 	    controller.changescene(window, scene2);
+		model.startTimer();
 	});
 	grid.add(loginButton,42,46);
 
@@ -75,10 +76,10 @@ public class View {
 	grid.add(passwordInput,42,44);
 
 	//Timer
-	minutes = new javafx.scene.control.Label(("" + model.minutestime()));
+	minutes = new javafx.scene.control.Label(("" + model.getMinutes()));
 	grid2.add(minutes, 43 , 44);
 
-	seconds  = new javafx.scene.control.Label(("" + model.secondstime()));
+	seconds  = new javafx.scene.control.Label(("" + model.getSeconds()));
 	grid2.add(seconds, 44 , 44);
 
 
@@ -97,8 +98,8 @@ public class View {
 	System.out.println("Testing output here");
 
 	Platform.runLater(() -> {
-	    minutes.setText(model.minutestime() + "");
-	    seconds.setText(model.secondstime() + "");
+	    seconds.setText(model.getMinutes()+ "");
+	    minutes.setText(model.getSeconds() + "");
 	});
 	
     }

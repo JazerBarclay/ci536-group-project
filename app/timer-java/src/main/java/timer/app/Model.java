@@ -20,38 +20,37 @@ public class Model {
 
     PropertyChangeListener listener = null;
 
-    long startTime = System.currentTimeMillis();
-    long endTime = System.currentTimeMillis();
+    public long startTime = System.currentTimeMillis();
 	long elapsedTime = System.currentTimeMillis() - startTime;
-	long elapsedSeconds = elapsedTime / 1000;
-	long secondsDisplay = elapsedSeconds % 60;
 
-    public Long secondstime(){
-		long elapsedMinutes = elapsedSeconds / 60;
-
-		//put here code to format andddd display the values
-	return elapsedSeconds;
-    }
-
-	public Long minutestime() {
-		long elapsedMinutes = elapsedSeconds / 60;
-		//put here code to format and display the values
-		return elapsedMinutes;
+	public void startTimer() {
+		startTime = System.currentTimeMillis();
 	}
 
-		public String updateTime() {
-	this.endTime = System.currentTimeMillis();
-	if (listener != null) listener.onChange();
-	return endTime + "";
+
+	public void updateTime() {
+		elapsedTime = System.currentTimeMillis() - startTime;
+		elapsedTime /= 1000;
+		System.out.println(elapsedTime);
     }
 
+	public long getSeconds() {
+		return (elapsedTime % 60);
+	}
+
+	public long getMinutes(){
+		return (elapsedTime / 60);
+	}
+
+
+
     public void setChangeListener(PropertyChangeListener listener) {
-	this.listener = listener;
+		this.listener = listener;
     }
     
     public void authenticated(boolean auth) {
-	this.loggedIn = auth;
-	if (listener != null) listener.onChange();
+		this.loggedIn = auth;
+		if (listener != null) listener.onChange();
     }
 
 
