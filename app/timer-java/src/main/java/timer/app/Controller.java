@@ -19,6 +19,10 @@ public class Controller {
 	window.setScene(scene);
     }
 
+    public void startsTimer(){
+        model.startTimer();
+    }
+
     public void authenticateUser() {
 
 	// On fail, return false, else return true

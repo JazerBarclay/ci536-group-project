@@ -42,7 +42,6 @@ public class View {
 	javafx.scene.control.Button loginButton = new javafx.scene.control.Button("Login");
 	loginButton.setOnAction(e -> {
 	    controller.changescene(window, scene2);
-		model.startTimer();
 	});
 	grid.add(loginButton,42,46);
 
@@ -54,7 +53,13 @@ public class View {
 
 	javafx.scene.control.Button previousButton = new Button("Previous button");
 	previousButton.setOnAction(e -> {
-	    window.setScene(scene1);
+	    controller.changescene(window, scene1);
+	});
+
+	javafx.scene.control.Button startButton = new Button("Start Timer");
+	startButton.setOnAction(e -> {
+		controller.startsTimer();
+
 	});
 
 	// Intro Login Layout
@@ -85,6 +90,7 @@ public class View {
 
 	//Layout 2
 	grid2.add(previousButton,42,46);
+	grid2.add(startButton, 44, 46);
 	scene2 = new Scene(grid2, 1280,720);
 
 	//Layout 1
@@ -98,8 +104,8 @@ public class View {
 	System.out.println("Testing output here");
 
 	Platform.runLater(() -> {
-	    seconds.setText(model.getMinutes()+ "");
-	    minutes.setText(model.getSeconds() + "");
+	    minutes.setText(model.getMinutes() + "");
+	    seconds.setText(model.getSeconds()+ "");
 	});
 	
     }
