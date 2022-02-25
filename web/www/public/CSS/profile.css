@@ -18,13 +18,16 @@ body{
     
   }
 
-  .userImage img{
+.userImage img{
 
-    max-height: auto;
-    max-width: 15%;
-    border: red 2px solid;
-    padding:0;
-    margin-left: 2%;
-    margin-top: 2%;
+  max-height: auto;
+  max-width: 15%;
+  border: red 2px solid;
+  padding:0;
+  margin-left: 2%;
+  margin-top: 2%;
 
-  }
+}
+
+
+
