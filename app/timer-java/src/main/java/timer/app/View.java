@@ -75,10 +75,10 @@ public class View {
 	grid.add(passwordInput,42,44);
 
 	//Timer
-	minutes = new javafx.scene.control.Label(("" + model.time()));
+	minutes = new javafx.scene.control.Label(("" + model.minutestime()));
 	grid2.add(minutes, 43 , 44);
 
-	seconds  = new javafx.scene.control.Label(("" + model.time()));
+	seconds  = new javafx.scene.control.Label(("" + model.secondstime()));
 	grid2.add(seconds, 44 , 44);
 
 
@@ -97,8 +97,8 @@ public class View {
 	System.out.println("Testing output here");
 
 	Platform.runLater(() -> {
-	    minutes.setText(model.startTime + "");
-	    seconds.setText(model.endTime + "");
+	    minutes.setText(model.minutestime() + "");
+	    seconds.setText(model.secondstime() + "");
 	});
 	
     }

@@ -22,17 +22,24 @@ public class Model {
 
     long startTime = System.currentTimeMillis();
     long endTime = System.currentTimeMillis();
-
-    public Long time(){
 	long elapsedTime = System.currentTimeMillis() - startTime;
 	long elapsedSeconds = elapsedTime / 1000;
 	long secondsDisplay = elapsedSeconds % 60;
-	long elapsedMinutes = elapsedSeconds / 60;
-	//put here code to format and display the values
+
+    public Long secondstime(){
+		long elapsedMinutes = elapsedSeconds / 60;
+
+		//put here code to format andddd display the values
 	return elapsedSeconds;
     }
 
-    public String updateTime() {
+	public Long minutestime() {
+		long elapsedMinutes = elapsedSeconds / 60;
+		//put here code to format and display the values
+		return elapsedMinutes;
+	}
+
+		public String updateTime() {
 	this.endTime = System.currentTimeMillis();
 	if (listener != null) listener.onChange();
 	return endTime + "";
