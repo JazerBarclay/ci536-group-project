@@ -35,6 +35,8 @@ jobs:
   
   build:
     name: Build
+    needs: upload-site
+    needs: upload-db
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using password
