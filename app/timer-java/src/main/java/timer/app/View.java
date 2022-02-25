@@ -27,18 +27,11 @@ public class View {
 	this.window = window;
 	this.model = model;
 
-<<<<<<< HEAD
 	GridPane grid = new GridPane();
 	grid.setPadding(new javafx.geometry.Insets(10,10,10,10));
 	grid.setVgap(8);
 	grid.setHgap(10);
-=======
 
-        GridPane grid = new GridPane();
-        grid.setPadding(new javafx.geometry.Insets(10,10,10,10));
-        grid.setVgap(8);
-        grid.setHgap(10);
->>>>>>> 042d40a ("merge issues")
 
 	GridPane grid2 = new GridPane();
 	grid2.setPadding(new Insets(10,10,10,10));
@@ -110,6 +103,5 @@ public class View {
 	
     }
 
-    public 
 
 }
