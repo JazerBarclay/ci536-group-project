@@ -53,12 +53,12 @@ public class View {
 
 	javafx.scene.control.Button previousButton = new Button("Previous button");
 	previousButton.setOnAction(e -> {
-	    window.setScene(scene1);
+	    controller.changescene(window, scene1);
 	});
 
 	javafx.scene.control.Button startButton = new Button("Start Timer");
 	startButton.setOnAction(e -> {
-		model.startTimer();
+		controller.startsTimer();
 
 	});
 
