@@ -44,4 +44,4 @@ jobs:
         username: github
         key: ${{ secrets.SSH_KEY }}
         port: 22
-        script: echo "Hello" >> hello.world
+        script: pushd /var/www/quark/dev/web/api && npm i
