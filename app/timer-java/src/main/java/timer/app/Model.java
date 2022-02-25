@@ -13,7 +13,8 @@ public class Model {
 	exec.scheduleAtFixedRate(new Runnable() {
 	    @Override
 	    public void run() {
-		updateTime();
+			updateTime();
+			if (listener != null) listener.onChange();
 	    }
 	}, 0, 1, TimeUnit.SECONDS);
     }
@@ -42,8 +43,6 @@ public class Model {
 		return (elapsedTime / 60);
 	}
 
-
-
     public void setChangeListener(PropertyChangeListener listener) {
 		this.listener = listener;
     }
@@ -52,7 +51,4 @@ public class Model {
 		this.loggedIn = auth;
 		if (listener != null) listener.onChange();
     }
-
-
-
 }
