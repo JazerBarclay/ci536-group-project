@@ -45,4 +45,4 @@ jobs:
         username: github
         key: ${{ secrets.SSH_KEY }}
         port: 22
-        script: pushd /var/www/quark/dev/web/api && npm i
+        script: pushd /var/www/quark/dev/web/api && npm i && sudo systemctl restart quark-api-dev.service && popd
