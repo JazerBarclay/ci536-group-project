@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS pomodoros;
+DROP TABLE IF EXISTS groups;
 
 CREATE TABLE IF NOT EXISTS users (
     user_id SERIAL PRIMARY KEY,
@@ -15,4 +16,9 @@ CREATE TABLE IF NOT EXISTS pomodoros (
     pomodoro_text VARCHAR(60) NOT NULL DEFAULT '',
     pomodoro_start TIMESTAMP NOT NULL,
     pomodoro_end TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS groups (
+  group_id INTEGER NOT NULL,
+  group_name VARCHAR(60) NOT NULL UNIQUE,  
 );
