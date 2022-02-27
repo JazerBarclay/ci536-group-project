@@ -14,14 +14,14 @@ new Chart("graph", {
   data: {
     labels: xValues,
     datasets: [{
-        label: 'This Week',
+        label: 'Completed Blocks This Week',
         data: thisWeekData,
         borderColor: "black",
         fill: true
     },
     {
     
-        label: 'Last Week',
+        label: 'Completed Blocks Last Week',
         data: lastWeekData,
         borderColor: "light grey",
         fill: true
