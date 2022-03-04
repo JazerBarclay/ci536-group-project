@@ -10,7 +10,7 @@ const app = express();
 // Set the port to either the value from the .env file
 // or default it to 3000
 // User (profile), scores (leaderboard), login(id and password), add session(record the session) 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Set the app handler to use JSON
 app.use(express.json())
@@ -22,19 +22,20 @@ app.use(express.urlencoded({ extended: false }))
 // with a JSON response object
 app.get('/', (req, res) => {
     res.status(200).json({
-        message: "api server for timer app"
+        message: "API Server for Quark App"
     })
 })
 
-app.get('/user', (req, res) => {
-    //On failure
-    res.status(406).json({
-        status: 1, message: "Error! User not found!"
+// app.get('/user', (req, res) => {
+//     res.status(204).json({
+//         message: "Search a user to get results"
+//     })
+// })
+
+app.get('/user/:id', (req, res) => {
+    res.status(200).json({
+        id: req.params.id, message: "Search a user to get results"
     })
-    // On success
-    // res.status(200).json ({
-    //     status: 1, message: "Successful login"
-    // })
 })
 
 

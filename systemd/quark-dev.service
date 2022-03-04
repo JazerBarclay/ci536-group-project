@@ -8,7 +8,7 @@ After=network.target
 
 [Service]
 # Set environment variables
-Environment=NODE_PORT=3000
+Environment=NODE_PORT=3001
 # Tell systemd to prevent dropping user privs
 Type=simple
 # User this service will act under
