@@ -43,7 +43,7 @@ echo "Starting docker container"
 
 # Run new container under pga4
 docker run --name pga4 \
-    -p 80:80 \
+    -p 5000:80 \
     -v pga4volume:/var/lib/pgadmin \
     -e 'PGADMIN_DEFAULT_EMAIL=user@quark.rocks' \
     -e 'PGADMIN_DEFAULT_PASSWORD=quarky' \
