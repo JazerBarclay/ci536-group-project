@@ -33,21 +33,21 @@ var logInButton = document.querySelector('#logInButton');
 
     function signIn(email, password){
 
-        const url = 'https://api.quark.rocks/profile'
+        const url = 'http://dev.api.quark.rocks/user'
 
         options = {
 
-            method: 'POST',
-            mode: 'cors',
+            method: 'GET',
             headers: {"Content-Type": "application/json"},
-            body: {
-                email: email,
-                password: password
-            }
+            // body: {
+            //     email: email,
+            //     password: password
+            // }
 
         }
 
-        fetch(url, options)
+
+        fetch(url + '/' + '1', options)
         .then(response => {
 
             if(response === 200){
