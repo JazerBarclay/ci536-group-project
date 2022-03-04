@@ -7,12 +7,15 @@ window.addEventListener("load", () => {
     
     logInButton.addEventListener("click", function(evt){
     
-            evt.preventDefault();
-    
-            window.location.href = "index.html";
+        
+
+            
             
         })
-    
+        
+
+
+
     
     
     

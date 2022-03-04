@@ -15,16 +15,53 @@ var signUpButton = document.querySelector('#signUpButton');
 
 var logInButton = document.querySelector('#logInButton');
 
+
     logInButton.addEventListener("click", function(evt){
 
+        evt.preventDefault();
 
-        evt.preventDefault()
+        var emailInput = document.querySelector('.email').value;
+        var passwordInput = document.querySelector('.password').value;
 
-        window.location.href = "profile.html";
+        signIn(emailInput, passwordInput);
+        
 
 
     })
 
+
+
+    function signIn(email, password){
+
+        const url = 'https://api.quark.rocks/profile'
+
+        options = {
+
+            method: 'POST',
+            mode: 'cors',
+            headers: {"Content-Type": "application/json"},
+            body: {
+                email: email,
+                password: password
+            }
+
+        }
+
+        fetch(url, options)
+        .then(response => {
+
+            if(response === 200){
+
+                console.log('yippeeee');
+
+            }else{
+                alert(response.status)
+            }
+
+
+        })
+
+    }
 
     //google sign in 
 

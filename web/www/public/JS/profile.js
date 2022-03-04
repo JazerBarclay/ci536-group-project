@@ -8,6 +8,11 @@ window.addEventListener('load', () => {
     var lastWeekData = [4,6,3,2,1,4,3];
 
 
+  function getUserProfile(){
+
+    
+  }
+
 
 new Chart("graph", {
   type: "line",
