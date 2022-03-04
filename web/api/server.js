@@ -8,7 +8,7 @@ const express = require('express');
 const app = express();
 
 // Set the port to either the value from the .env file
-// or default it to 3000
+// or default it to 4000
 // User (profile), scores (leaderboard), login(id and password), add session(record the session) 
 const PORT = process.env.PORT || 4000;
 
@@ -33,9 +33,17 @@ app.get('/', (req, res) => {
 // })
 
 app.get('/user/:id', (req, res) => {
-    res.status(200).json({
-        id: req.params.id, message: "Search a user to get results"
-    })
+
+    if (req.params.id == 1) {
+        res.status(200).json({
+            id: req.params.id, message: "User found"
+        })
+    } else {
+        res.status(400).json({
+            id: req.params.id, message: "No user by id found"
+        })
+    }
+
 })
 
 
