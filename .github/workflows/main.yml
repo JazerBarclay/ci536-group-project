@@ -14,20 +14,35 @@ jobs:
       with:
         switches: -avzr --delete
         path: ./web
-        remote_path: /var/www/quark/live/www
+        remote_path: /var/www/quark/live
+        remote_host: quark.rocks
+        remote_user: github
+        remote_key: ${{ secrets.SSH_KEY }}
+  
+  upload-db:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avzr --delete
+        path: ./database
+        remote_path: /var/www/quark/live
         remote_host: quark.rocks
         remote_user: github
         remote_key: ${{ secrets.SSH_KEY }}
   
   build:
     name: Build
+    needs: [upload-site,upload-db]
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
+        host: quark.rocks
         username: github
         key: ${{ secrets.SSH_KEY }}
         port: 22
-        script: whoami
+        script: pushd /var/www/quark/live/web/api && npm i && sudo systemctl restart quark-api.service && popd
