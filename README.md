@@ -72,38 +72,32 @@ HTTPS used on all communications
 * All API requests will be made to this https remote point
 
 ## Local development setup
+
+Developers must have the following installed:
+* Unix environment
+* Node and NPM
+* Docker
+* Git
+
 ### Segment locations / ports
-App - Java application (desktop)
-
-Website - localhost:3000
-
-API - localhost:4000
-
-DB_admin - localhost:5000
-
-Database - localhost:5432
+* App - Java application (desktop)
+* Website - localhost:3000
+* API - localhost:4000
+* DB_admin - localhost:5000
+* Database - localhost:5432
 
 ### Dev server endpoints
-
-Website: dev.quark.rocks
-
-API: dev.api.quark.rocks
+* Website: dev.quark.rocks
+* API: dev.api.quark.rocks
 
 ### Live server endpoints
-
-Website: www.quark.rocks / quark.rocks
-
-API: api.quark.rocks
+* Website: www.quark.rocks / quark.rocks
+* API: api.quark.rocks
 
 ## Server setup
-Live website - localhost:3000
-
-Dev website - localhost:3001
-
-Live API - localhost:4000
-
-Dev API - localhost:4001
-
-Live database - localhost:5432
-
-Dev website - localhost:5433
+* Live website - localhost:3000
+* Dev website - localhost:3001
+* Live API - localhost:4000
+* Dev API - localhost:4001
+* Live database - localhost:5432
+* Dev website - localhost:5433
