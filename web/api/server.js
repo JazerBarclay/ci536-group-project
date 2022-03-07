@@ -1,6 +1,9 @@
 // Import the .env configuration
 require('dotenv').config()
 
+// Import database connection
+const db = require('./dbConnection')
+
 // Add express library 
 const express = require('express');
 
@@ -26,23 +29,16 @@ app.get('/', (req, res) => {
     })
 })
 
-// app.get('/user', (req, res) => {
-//     res.status(204).json({
-//         message: "Search a user to get results"
-//     })
-// })
-
 app.get('/user/:id', (req, res) => {
 
-    if (req.params.id == 1) {
-        res.status(200).json({
-            id: req.params.id, message: "User found"
-        })
-    } else {
-        res.status(400).json({
-            id: req.params.id, message: "No user by id found"
-        })
-    }
+    db.query(
+        `SELECT * FROM users WHERE user_id = $1 LIMIT 1;`,
+        [req.params.id],
+        (error, results, fields) => {
+            if (error) res.status(500).json({error: "Internal Database Error"})
+            return res.status(200).json({results: results.rows[0]})
+        }
+    )
 
 })
 
