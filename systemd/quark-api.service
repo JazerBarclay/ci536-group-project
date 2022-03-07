@@ -14,7 +14,7 @@ Type=simple
 # User this service will act under
 User=github
 # Command to run and monitor
-ExecStart=/usr/bin/node /var/www/quark/dev/web/api/server.js
+ExecStart=/usr/bin/node /var/www/quark/live/web/api/server.js
 # When to restart the service
 Restart=on-failure
 
