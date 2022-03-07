@@ -59,7 +59,7 @@ Users must login with their email
 * May move to login via email link in the future
 
 User passwords must have at least 6 chars, 1 number and 1 symbol
-* To increase security of user passwords, the pass must pass this check
+* To increase security of user passwords, the password must pass this check
 
 API access must be done using login details
 * So that requests can be tracked (frequency, times, etc...) users must use their login credentials to access the API
