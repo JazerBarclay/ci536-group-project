@@ -39,7 +39,7 @@ docker run --name pgdb \
     -p 5432:5432 \
     -e POSTGRES_USER=web \
     -e POSTGRES_PASSWORD=pass \
-    -e POSTGRES_DB=timerapp \
+    -e POSTGRES_DB=quarkdb \
     --hostname postgres \
     --network pgnetwork \
     -d postgres
