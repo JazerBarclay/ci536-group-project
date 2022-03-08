@@ -78,6 +78,44 @@ Developers must have the following installed:
 * Node and NPM
 * Docker
 * Git
+* Java
+* Eclipse / Intellij
+
+### Running locally
+To run the database:
+* Ensure docker is running
+* Go to the database folder in the terminal
+* Run the db_dev.sh file to launch postgres database
+
+To view the database via pgadmin:
+* Ensure `docker` is running
+* Ensure the database is running in docker
+* Go to the `database` folder in the terminal
+* Run the `db_admin.sh` file to launch the admin panel
+* In your browser, go to `localhost:5000` to view the panel
+* View the connection details in the `pg_admin.sh` file for login
+* Use details in the `db_dev.sh` file to link admin to database
+
+To run the api:
+* Ensure you have node and npm installed
+* Go to the `web/api` folder
+* Run `npm i` to install required packages
+* Run `npm run dev` to launch a dev environment
+* Go to `localhost:4000` to access the API
+
+To run the website:
+* Ensure you have node and npm installed
+* Ensure the API is running in another node instance
+* Go to the `web/www` folder
+* Run `npm i` to install required packages
+* Run `npm run dev` to launch a dev environment
+* Go to `localhost:3000` to access the running site
+
+To run the local app:
+* Ensure you have the latest version of Java JDK
+* Open the code in your editor of choice
+* Ensure it is setup as a maven project
+* Use `maven clean,run` to launch the application
 
 ### Segment locations / ports
 * App - Java application (desktop)
