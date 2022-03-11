@@ -1,6 +1,39 @@
+:root{
+
+  --hue-color: 3rem;
+
+  --hue-color: 197;
+
+  --first-color: hsl(var(--hue-color), 69%, 61%);
+  --first-color-second: hsl(var(--hue-color), 69%, 61%);
+  --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+  --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+  --title-color: hsl(var(--hue-color), 8%, 15%);
+  --text-color: hsl(var(--hue-color), 8%, 45%);
+  --text-color-light: hsl(var(--hue-color), 8%, 65%);
+  --input-color: hsl(var(--hue-color), 70%, 96%);
+  --body-color: hsl(var(--hue-color), 0%, 17%);
+  --container-color: #FFF;
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+  
+
+}
+
 html {
+  scroll-behavior: smooth;
   min-height: 100vh;
   min-width: 100vw;
+  color: white;
+}
+
+body{
+  margin: 0 0 var(--header-height) 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+
 }
 
 
@@ -17,14 +50,14 @@ h1 {
 }
 
 .title {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+  margin-bottom: 3rem;
+  padding: .5rem;
   padding-bottom: 1rem;
-  border-radius: 10px;
-  font-size: 2rem;
+  border-radius: .5rem;
+  font-size: 6rem;
   text-align: center;
-  background-color: yellow;
-  
+  background-color: var(--first-color);
+  color: var(--title-color);
 }
 
 body{
@@ -35,11 +68,8 @@ body{
   margin:0;
   min-height: 100vh;
   min-width: 100vw;
-  background-color:  #35eea0;
+  background-color: var(--body-color);
 }
-
-
-
 
 /*
 Login page
@@ -51,6 +81,33 @@ Login page
   grid-gap: 1rem;
 
 }
+
+.Button {
+  display:inline-block;
+  background-color: var(--first-color);
+  color: black;
+  padding: 1rem;
+  border: 0;
+  border-radius: .5rem;
+  font-weight: var(--font-medium);
+  font-size: 15px;
+}
+
+.Button:hover{
+  background-color: var(--first-color-lighter);
+  color: var(--body-color);
+}
+
+.login_input{
+  background-color:var(--input-color);
+  color: black;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  border: none;
+  outline: none;
+  padding: .25rem .5rem .5rem 0;
+}
+
 
 .dropbtn {
   background-color: #04AA6D;
@@ -88,8 +145,4 @@ Login page
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-
-
-
 
