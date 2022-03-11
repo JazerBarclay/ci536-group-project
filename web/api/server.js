@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 })
 
 // Register a new user on the system
-app.post('/register', (req,res) => {
+app.post('/register', (req, res) => {
 
     // Received Parameters
     // req.params.email, req.params.username, req.params.password
@@ -50,7 +50,7 @@ app.post('/register', (req,res) => {
 })
 
 // Authenticate existing user to access the api and website
-app.post('/login', (req,res) => {
+app.post('/login', (req, res) => {
 
     // Received Parameters
     // req.params.email, req.params.password
@@ -69,11 +69,10 @@ app.get('/profile', (req, res) => {
     // db.query('select', (error, result, fields) => { ... })
 
     // Example response
-    res.status(200).json ({
-        username: "username", 
+    res.status(200).json({
+        username: "username",
         email: "email@address.xyz",
-        units: [
-            {
+        units: [{
                 start: "10:00:00",
                 end: "10:25:00"
             },
@@ -104,10 +103,10 @@ app.get('/user/:username', (req, res) => {
         // Callback function that returns either error, results with fields
         (error, results, fields) => {
             // If error exists, return 500 error code
-            if (error) return res.status(500).json({error: "Internal Database Error"})
-            // If no results found, return 404 error code
-            if (results.rows.length < 1)  return res.status(404).json({message: "User not found"})
-            // Since all checks pass, return requested object with 200 code
+            if (error) return res.status(500).json({ error: "Internal Database Error" })
+                // If no results found, return 404 error code
+            if (results.rows.length < 1) return res.status(404).json({ message: "User not found" })
+                // Since all checks pass, return requested object with 200 code
             return res.status(200).json({
                 // Send username
                 username: results.rows[0].user_username,
@@ -123,12 +122,13 @@ app.get('/user/:username', (req, res) => {
 app.get('/scores', (req, res) => {
     // On success
     res.status(200).json({
-        status: 1, message: "Scores retrieved successfully"
-    })
-    // On Fail
-    // res.status(406).json ({
-    //     status: 1, message: "Error! Server error!"
-    // })
+            status: 1,
+            message: "Scores retrieved successfully"
+        })
+        // On Fail
+        // res.status(406).json ({
+        //     status: 1, message: "Error! Server error!"
+        // })
 })
 
 

@@ -1,22 +1,22 @@
 window.addEventListener("load", () => {
 
 
-//to sign up button
+    //to sign up button
 
-var signUpButton = document.querySelector('#signUpButton');
+    var signUpButton = document.querySelector('#signUpButton');
 
-    signUpButton.addEventListener("click", function(evt){
+    signUpButton.addEventListener("click", function(evt) {
 
         evt.preventDefault();
 
         window.location.href = "signup.html";
-        
+
     })
 
-var logInButton = document.querySelector('#logInButton');
+    var logInButton = document.querySelector('#logInButton');
 
 
-    logInButton.addEventListener("click", function(evt){
+    logInButton.addEventListener("click", function(evt) {
 
         evt.preventDefault();
 
@@ -24,42 +24,43 @@ var logInButton = document.querySelector('#logInButton');
         var passwordInput = document.querySelector('.password').value;
 
         signIn(emailInput, passwordInput);
-        
+
 
 
     })
 
 
 
-    function signIn(email, password){
+    function signIn(email, password) {
 
         const url = 'http://dev.api.quark.rocks/user'
 
-        options = {
+        var options = {
 
-            method: 'GET',
-            headers: {"Content-Type": "application/json"},
-            // body: {
-            //     email: email,
-            //     password: password
-            // }
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+
+            body: {
+                email: email,
+                password: password
+            }
 
         }
 
 
-        fetch(url + '/' + '1', options)
-        .then(response => {
+        fetch(url, options)
+            .then(response => {
 
-            if(response === 200){
+                if (response === 200) {
 
-                console.log('yippeeee');
+                    console.log('yippeeee');
 
-            }else{
-                alert(response.status)
-            }
+                } else {
+                    alert(response.status)
+                }
 
 
-        })
+            })
 
     }
 
@@ -71,7 +72,7 @@ var logInButton = document.querySelector('#logInButton');
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-      }
+    }
 
 
 
