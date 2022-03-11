@@ -2,46 +2,37 @@
 <html lang="en">
 
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com"> 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="CSS/index.css">
-  <script src='JS/index.js'></script>
-  <title>Login</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/index.css">
+    <script src='JS/index.js'></script>
+    <title>Login</title>
 </head>
 
 <body>
 
-  <div class="grid">
-    <div class="title">Quark</div>
+    <div class="grid">
+        <div class="title">Quark</div>
 
-    <form id="logInForm">
+        <form id="logInForm">
 
-      <label for="username">Username: </label>
-      <input type="text" class="login_input">
-      
-      <label for="password">Password: </label>
-      <input type="password" class="login_input">
-     
-      <button class="Button">Sign Up</button>
-      <button class="Button">Log In</button> 
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-      
-    </form>
-  </div>
+            <label for="username">Username: </label>
+            <input type="text" class="login_input">
 
-  <!-- <div class="dropdown">
-    <button class="dropbtn">Dropdown</button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+            <label for="password">Password: </label>
+            <input type="password" class="login_input">
+
+            <button id="signUpButton" class="Button">Sign Up</button>
+            <input id="logInButton" type="submit">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+        </form>
     </div>
-</div> -->
 
 </body>
 

@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 
     })
 
-    var logInButton = document.querySelector('#logInButton');
+    var logInForm = document.querySelector('#logInForm');
 
 
     logInButton.addEventListener("click", function(evt) {
