@@ -16,12 +16,13 @@ window.addEventListener("load", () => {
     var logInForm = document.querySelector('#logInForm');
 
 
-    logInButton.addEventListener("click", function(evt) {
+    logInForm.addEventListener("submit", function(evt) {
 
         evt.preventDefault();
+        console.log("sumitted")
 
-        var emailInput = document.querySelector('.email').value;
-        var passwordInput = document.querySelector('.password').value;
+        var emailInput = document.querySelector('#emailInput').textContent;
+        var passwordInput = document.querySelector('#passwordInput').textContent;
 
         signIn(emailInput, passwordInput);
 
