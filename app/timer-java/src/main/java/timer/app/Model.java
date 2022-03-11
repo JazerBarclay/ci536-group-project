@@ -21,27 +21,58 @@ public class Model {
 
     PropertyChangeListener listener = null;
 
-    public long startTime = System.currentTimeMillis();
-	long elapsedTime = System.currentTimeMillis() - startTime;
+//    public long startTime;
+//	public long reverseTimer;
+//	long elapsedTime;
+//
+//	public void startTimer() {
+//		startTime = System.currentTimeMillis();
+//		reverseTimer = 1500;
+//		elapsedTime = System.currentTimeMillis() - startTime;
+//	}
+//
+//
+//	public void updateTime() {
+//		elapsedTime = System.currentTimeMillis() - startTime;
+//		elapsedTime /= 1000;
+//		reverseTimer -= elapsedTime;
+//		System.out.println(elapsedTime);
+//		System.out.println("New timer = " + reverseTimer);
+//    }
+//
+//	public long getSeconds() {
+//		return (reverseTimer % 60);
+//	}
+//
+//	public long getMinutes(){
+//		return (elapsedTime / 60);
+//	}
 
+	public long starter, elapsedTimeSeconds, elapsedTimeMinutes;
 	public void startTimer() {
-		startTime = System.currentTimeMillis();
+		elapsedTimeMinutes = 24;
+		starter = 59;
+		elapsedTimeSeconds = 59;
 	}
 
 
 	public void updateTime() {
-		elapsedTime = System.currentTimeMillis() - startTime;
-		elapsedTime /= 1000;
-		System.out.println(elapsedTime);
-    }
+		elapsedTimeSeconds--;
+		if(elapsedTimeSeconds == 0){
+			elapsedTimeSeconds = starter;
+			elapsedTimeMinutes--;
+		}
+	}
 
 	public long getSeconds() {
-		return (elapsedTime % 60);
+		return (elapsedTimeSeconds);
 	}
 
 	public long getMinutes(){
-		return (elapsedTime / 60);
+		return (elapsedTimeMinutes);
 	}
+
+//	---------------------------------------
 
     public void setChangeListener(PropertyChangeListener listener) {
 		this.listener = listener;

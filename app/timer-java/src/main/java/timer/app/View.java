@@ -84,6 +84,7 @@ public class View {
 	minutes = new javafx.scene.control.Label(("" + model.getMinutes()));
 	grid2.add(minutes, 43 , 44);
 
+//	seconds  = new javafx.scene.control.Label(("" + model.getSeconds()));
 	seconds  = new javafx.scene.control.Label(("" + model.getSeconds()));
 	grid2.add(seconds, 44 , 44);
 
