@@ -29,10 +29,10 @@ html {
 
 body{
   margin: 0 0 var(--header-height) 0;
-  font-family: var(--body-font);
+  font-family: 'Roboto', sans-serif;
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
-  color: var(--text-color);
+  color: white;
 
 }
 
@@ -75,11 +75,12 @@ body{
 Login page
 */
 
+
+
 #logInForm {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 1rem;
-
 }
 
 .Button {
