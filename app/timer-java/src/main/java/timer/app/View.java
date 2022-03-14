@@ -62,6 +62,12 @@ public class View {
 
 	});
 
+	javafx.scene.control.Button stopButton = new Button("Stop Timer");
+	startButton.setOnAction(e -> {
+		controller.stopsTimer();
+
+	});
+
 	// Intro Login Layout
 	// Username Label
 	javafx.scene.control.Label userLabel = new javafx.scene.control.Label("Username");

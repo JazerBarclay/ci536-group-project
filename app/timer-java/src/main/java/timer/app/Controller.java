@@ -23,6 +23,10 @@ public class Controller {
         model.startTimer();
     }
 
+    public void stopsTimer(){
+        model.stopTimer();
+    }
+
     public void authenticateUser() {
 
 	// On fail, return false, else return true

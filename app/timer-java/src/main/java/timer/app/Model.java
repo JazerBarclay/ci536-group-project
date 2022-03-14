@@ -16,22 +16,31 @@ public class Model {
 
     public TimerState state = TimerState.STOPPED;
 
-
     PropertyChangeListener listener = null;
-
+    ScheduledExecutorService exec;
     public long starter, elapsedTimeSeconds, elapsedTimeMinutes;
 
     public void startTimer() {
         if(state == TimerState.RUNNING) return;
-        ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
-        exec.scheduleAtFixedRate(() -> {
-            updateTime();
-            if (listener != null) listener.onChange();
-        }, 0, 1, TimeUnit.SECONDS);
+        exec = Executors.newSingleThreadScheduledExecutor();
+
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                updateTime();
+                if (listener != null) listener.onChange();
+            }
+        };
+
+        exec.scheduleAtFixedRate(r, 0, 1, TimeUnit.SECONDS);
         state = TimerState.RUNNING;
         elapsedTimeMinutes = 24;
         starter = 60;
         elapsedTimeSeconds = 60;
+    }
+
+    public void stopTimer(){
+        if(state == TimerState.RUNNING) r.stop();
     }
 
 
