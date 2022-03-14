@@ -19,20 +19,23 @@ public class Model {
     PropertyChangeListener listener = null;
     ScheduledExecutorService exec;
     public long starter, elapsedTimeSeconds, elapsedTimeMinutes;
+    Runnable r = new Runnable() {
+        @Override
+        public void run() {
+            updateTime();
+            if (listener != null) listener.onChange();
+        }
+    };
 
     public void startTimer() {
         if(state == TimerState.RUNNING) return;
         exec = Executors.newSingleThreadScheduledExecutor();
 
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-                updateTime();
-                if (listener != null) listener.onChange();
-            }
-        };
+        exec.scheduleAtFixedRate(()-> {
+            updateTime();
+            if (listener != null) listener.onChange();
+            }, 0, 1, TimeUnit.SECONDS);
 
-        exec.scheduleAtFixedRate(r, 0, 1, TimeUnit.SECONDS);
         state = TimerState.RUNNING;
         elapsedTimeMinutes = 24;
         starter = 60;
@@ -40,7 +43,10 @@ public class Model {
     }
 
     public void stopTimer(){
-        if(state == TimerState.RUNNING) r.stop();
+        if(state != TimerState.STOPPED) {
+            exec.shutdown();
+            state = TimerState.STOPPED;
+        }
     }
 
 
@@ -50,7 +56,6 @@ public class Model {
             elapsedTimeSeconds = starter;
             elapsedTimeMinutes--;
         }
-		System.out.println("This is Listener = " + listener);
     }
 
     public long getSeconds() {
