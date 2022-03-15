@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,23 +10,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>My Profile</title>
 </head>
+
 <body>
     <div class="title">User Profile</div>
 
 
 
-<aside>
-    <div class="userImage">
-        <img src="img/userPlaceholderImage.png">    
-    </div>
-</aside>
+    <aside>
+        <div class="userDetails">
+            <div class="userImageDiv">
+                <img class="userImage" src="img/userPlaceholderImage.png">
+            </div>
+
+            <div class="usernameDisplay">
+                <h2>JoeBloggs123</h2>
+            </div>
+
+
+        </div>
+    </aside>
 
     <div id="graphArea">
-        <canvas id="graph" style="width:100%;max-width:700px;background-color: white"></canvas>
+        <canvas id="graph"></canvas>
     </div>
-    
-    
 
-<footer></footer>
+
+
+    <footer></footer>
 </body>
+
 </html>

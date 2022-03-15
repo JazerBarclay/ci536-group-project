@@ -26,6 +26,8 @@ window.addEventListener("load", () => {
 
         signIn(emailInput, passwordInput);
 
+        window.location.href = "profile.html"
+
 
 
     })
