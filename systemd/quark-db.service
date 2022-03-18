@@ -1,0 +1,44 @@
+[Unit]
+# Give description of the service
+Description=Quark database service
+
+# Documentation link
+Documentation=http://quark.rocks/about
+
+# What this service depends on running before starting
+After=network.target
+After=docker.service
+
+[Service]
+
+# Tell systemd to prevent dropping user privs
+Type=simple
+
+# User this service will act under
+User=github
+
+# Preparation functions to run
+ExecStartPre=-/usr/bin/docker stop pgdb
+ExecStartPre=-/usr/bin/docker rm pgdb
+ExecStartPre=/usr/bin/docker pull postgres
+ExecStartPre=-/usr/bin/docker network create --driver bridge pgnetwork
+
+# Command to run and monitor
+ExecStart=/usr/bin/docker run --name pgdb \
+    -v /var/www/quark/dev/database/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql \
+    -v /var/www/quark/dev/database/seed.sql:/docker-entrypoint-initdb.d/2.seed.sql \
+    -p 5432:5432 \
+    -e POSTGRES_USER=changeme \
+    -e POSTGRES_PASSWORD=changeme \
+    -e POSTGRES_DB=changeme \
+    --hostname postgres \
+    --network pgnetwork \
+    -d postgres
+
+
+# When to restart the service
+Restart=on-failure
+
+[Install]
+# Tell systemd how to handle on boot
+WantedBy=multi-user.target
