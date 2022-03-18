@@ -2,7 +2,7 @@
 require('dotenv').config()
 
 // Import database connection
-const db = require('./dbConnection')
+const db = require('./database/dbConnection')
 
 // Add express library 
 const express = require('express');
@@ -10,10 +10,19 @@ const express = require('express');
 // Create new app variable for handling network requests
 const app = express();
 
+const registerRouter = require('./routes/register/registerRouter')
+
 // Set the port to either the value from the .env file
 // or default it to 4000
 // User (profile), scores (leaderboard), login(id and password), add session(record the session) 
 const PORT = process.env.PORT || 4000;
+
+
+// function validateEmail(elementValue){      
+//     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+//     return emailPattern.test(elementValue); 
+// } 
+
 
 // Set the app handler to use JSON
 app.use(express.json())
@@ -30,24 +39,7 @@ app.get('/', (req, res) => {
 })
 
 // Register a new user on the system
-app.post('/register', (req, res) => {
-
-    // Received Parameters
-    // req.params.email, req.params.username, req.params.password
-
-    // Validate email, username and password meet minimum requirements
-
-    // Check username or email exists in db
-    // db.query('select', (error, result, fields) => { ... })
-
-    // If db returns > 0 then response.json failed due to existing user / email
-
-    // Add new user (salt + hash password)
-    // db.query('insert', (error, result, fields) => { ... })
-
-    // JSON response with insert successful
-
-})
+app.use('/register', registerRouter)
 
 // Authenticate existing user to access the api and website
 app.post('/login', (req, res) => {
@@ -130,8 +122,6 @@ app.get('/scores', (req, res) => {
         //     status: 1, message: "Error! Server error!"
         // })
 })
-
-
 
 // Start the app listening and output to the console where it is running
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
