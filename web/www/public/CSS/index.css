@@ -1,0 +1,154 @@
+:root {
+    --hue-color: 3rem;
+    --hue-color: 197;
+    --first-color: hsl(var(--hue-color), 69%, 61%);
+    --first-color-second: hsl(var(--hue-color), 69%, 61%);
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+    --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+    --title-color: hsl(var(--hue-color), 8%, 15%);
+    --text-color: hsl(var(--hue-color), 8%, 45%);
+    --text-color-light: hsl(var(--hue-color), 8%, 65%);
+    --input-color: hsl(var(--hue-color), 70%, 96%);
+    --body-color: hsl(var(--hue-color), 0%, 17%);
+    --container-color: #fff;
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+}
+
+html {
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    min-width: 100vw;
+    color: white;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: var(--body-color);
+    margin: 0 0 var(--header-height) 0;
+    font-family: "Roboto", sans-serif;
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-style: monospace;
+}
+
+.title {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 4rem;
+    text-align: center;
+    background-color: var(--first-color);
+    color: var(--title-color);
+}
+
+
+/*
+Login page
+*/
+
+#logInForm {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+}
+
+.Button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: black;
+    padding: 1rem;
+    border: 0;
+    border-radius: 0.5rem;
+    font-weight: var(--font-medium);
+    font-size: 15px;
+}
+
+.Button:hover {
+    background-color: var(--first-color-lighter);
+    color: var(--body-color);
+}
+
+.login_input {
+    background-color: var(--input-color);
+    color: black;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    border: none;
+    outline: none;
+    padding: 0.25rem 0.5rem 0.5rem 0;
+}
+
+
+/*              signup page          */
+
+.signupGrid {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-style: monospace;
+}
+
+#signUpForm {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+}
+
+
+/*              profile page          */
+
+.userImageDiv {
+    display: grid;
+    border: 3px solid var(--first-color-alt);
+    border-radius: 25px;
+    place-items: center;
+}
+
+.userImage {
+    width: 50vw;
+    margin: 2px;
+}
+
+.userDetails h2 {}
+
+.userDetails {
+    border: 3px solid var(--first-color-alt);
+    width: fit-content;
+    margin-top: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+canvas {
+    background-color: white;
+    width: 100%;
+}

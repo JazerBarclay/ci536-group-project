@@ -7,6 +7,9 @@ import org.junit.Test;
 public class TestAPI {
 
   @Test
+  /**
+   * Test getRequest
+   */
   public void testRequest() {
     // Send request for images matching the term orion
     HttpResponse res = API.request("https://images-api.nasa.gov/search?q=orion&media_type=image");
