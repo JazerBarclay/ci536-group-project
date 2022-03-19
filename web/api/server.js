@@ -10,19 +10,13 @@ const express = require('express');
 // Create new app variable for handling network requests
 const app = express();
 
+// Import register route
 const registerRouter = require('./routes/register/registerRouter')
 
 // Set the port to either the value from the .env file
 // or default it to 4000
 // User (profile), scores (leaderboard), login(id and password), add session(record the session) 
 const PORT = process.env.PORT || 4000;
-
-
-// function validateEmail(elementValue){      
-//     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-//     return emailPattern.test(elementValue); 
-// } 
-
 
 // Set the app handler to use JSON
 app.use(express.json())
