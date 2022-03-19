@@ -1,7 +1,14 @@
+/** 
+ * Register Service
+ * Manages database services for registering a new user
+ */
+
+// Import database connection
 const db = require('../../database/dbConnection')
 
 module.exports = {
 
+    // Search db for email address
     checkEmail: (email, callBack) => {
         db.query(
             `SELECT * FROM users WHERE user_email = $1;`,
@@ -12,6 +19,8 @@ module.exports = {
             }
         )
     },
+
+    // Search db for username
     checkUsername: (username, callBack) => {
         db.query(
             `SELECT * FROM users WHERE user_username = $1;`,
@@ -22,6 +31,8 @@ module.exports = {
             }
         )
     },
+
+    // Insert new user into database
     insertUser: (email, username, password, callBack) => {
         db.query(
             `INSERT INTO users (
