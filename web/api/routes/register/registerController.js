@@ -8,8 +8,8 @@ const { checkEmail, checkUsername, insertUser } = require('./registerService')
 
 // Checks if email matches regex pattern ( * @ * [repeat (.*) 2-4 times] )
 function validateEmail(elementValue){      
-    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(elementValue); 
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$/;
+    return emailPattern.test(elementValue);
 }
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
         return next()
     },
 
-    // Validate email address meets requirements and doesnt already exist in database
+    // Validate email address meets requirements and doesn't already exist in database
     validateEmail: (req,res,next) => {
         
         if (!validateEmail(req.body.email)) return res.status(400).json({ error: "Email invalid" })
@@ -33,7 +33,7 @@ module.exports = {
         })
     },
 
-    // Validate username doesnt already exist in database
+    // Validate username doesn't already exist in database
     validateUsername: (req,res,next) => {
         checkUsername(req.body.username, (err, response) => {
             if (err) return res.status(500).json({ err })

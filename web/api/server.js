@@ -7,8 +7,15 @@ const db = require('./database/dbConnection')
 // Add express library
 const express = require('express');
 
+const cors = require('cors');
+
 // Create new app variable for handling network requests
 const app = express();
+
+// Allow all via cors
+app.use(cors({
+    origin: '*'
+}));
 
 // Import register route
 const registerRouter = require('./routes/register/registerRouter')
