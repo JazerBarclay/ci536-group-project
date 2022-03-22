@@ -1,44 +1,44 @@
 window.addEventListener("load", () => {
     //to login
 
-    var logInButton = document.querySelector('#logInButton');
+    signUpForm = document.querySelector('#signUpForm')
 
-    logInButton.addEventListener("click", function(evt) {
+    signUpForm.addEventListener("submit", function(evt) {
+
+        evt.preventDefault();
+
+        username = document.querySelector(".username").value;
+        email = document.querySelector(".email").value;
+        password = document.querySelector(".password").value;
+
+        createAccount(username, email, password);
+
 
 
     })
 
     function createAccount(username, email, password) {
 
-        const url = 'http://dev.api.quark.rocks/user'
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-        var options = {
+        var raw = JSON.stringify({
+            "username": username,
+            "email": email,
+            "password": password
+        });
 
+        var requestOptions = {
             method: 'POST',
-            headers: { "Content-Type": "application/json" },
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
 
-            body: {
-                username: username,
-                email: email,
-                password: password
-            }
-
-        }
-
-
-        fetch(url, options)
-            .then(response => {
-
-                if (response === 200) {
-
-                    console.log('yippeeee');
-
-                } else {
-                    alert(response.status)
-                }
-
-
-            })
+        fetch("https://dev.api.quark.rocks/register", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
 
     }
 
