@@ -1,10 +1,10 @@
 // Import the .env configuration
 require('dotenv').config()
 
-// Import database connection
+// Import database connection (Will be removed in the future when all routes complete)
 const db = require('./database/dbConnection')
 
-// Add express library 
+// Add express library
 const express = require('express');
 
 // Create new app variable for handling network requests
@@ -15,7 +15,7 @@ const registerRouter = require('./routes/register/registerRouter')
 
 // Set the port to either the value from the .env file
 // or default it to 4000
-// User (profile), scores (leaderboard), login(id and password), add session(record the session) 
+// User (profile), scores (leaderboard), login(id and password), add session(record the session)
 const PORT = process.env.PORT || 4000;
 
 // Set the app handler to use JSON
@@ -77,7 +77,7 @@ app.get('/profile', (req, res) => {
 
 })
 
-// Return the profile of a requested user by username
+// Return the profile of a requested user by username (TODO: Move to own user route)
 app.get('/user/:username', (req, res) => {
 
     // Query db
