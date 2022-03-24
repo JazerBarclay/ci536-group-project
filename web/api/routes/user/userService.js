@@ -6,9 +6,8 @@
 // Import database connection
 const db = require('../../database/dbConnection')
 
+// Database CREATE, READ, UPDATE, DELETE (CRUD) operations
 module.exports = {
-
-    // Database CREATE, READ, UPDATE, DELETE (CRUD) operations
 
     // Insert New User
     insertUser: (email, username, password, callBack) => {
@@ -29,6 +28,18 @@ module.exports = {
         db.query(
             `SELECT * FROM users;`,
             [],
+            (error, results, fields) => {
+                if (error) return callBack(error)
+                return callBack(null, results)
+            }
+        )
+    },
+
+    // Select user by user id
+    selectUserByID: (id, callBack) => {
+        db.query(
+            `SELECT * FROM users WHERE user_id = $1;`,
+            [id],
             (error, results, fields) => {
                 if (error) return callBack(error)
                 return callBack(null, results)
