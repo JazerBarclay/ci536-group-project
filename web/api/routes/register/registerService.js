@@ -8,13 +8,19 @@ const db = require('../../database/dbConnection')
 
 module.exports = {
 
-    // Search db for email address
+    // Search db for email address (checkEmail takes an email string and callback function)
     checkEmail: (email, callBack) => {
+        // Search using db query function
         db.query(
+            // Select users where email matches param 1 ($1)
             `SELECT * FROM users WHERE user_email = $1;`,
+            // Parameters ($1 = email)
             [email],
+            // lambda function for error, results and fields
             (error, results, fields) => {
+                // If error exists, return the error in callback
                 if (error) return callBack(error)
+                // Else return results in callback
                 return callBack(null, results)
             }
         )

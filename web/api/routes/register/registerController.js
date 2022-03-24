@@ -16,19 +16,25 @@ module.exports = {
     
     // Validate user input via post request
     validateParams: (req, res, next) => {
+        // If any field is missing or blank return 400 error
         if (!req.body.email || !req.body.username || !req.body.password)
             return res.status(400).json({ error: "Missing params" })
+        // else call next
         return next()
     },
 
     // Validate email address meets requirements and doesn't already exist in database
     validateEmail: (req,res,next) => {
-        
+        // If email doesn't pass validation, return 400 error
         if (!validateEmail(req.body.email)) return res.status(400).json({ error: "Email invalid" })
 
+        // Else check if it exists in the database
         checkEmail(req.body.email, (err, response) => {
+            // If database error, return 500 internal error
             if (err) return res.status(500).json({ err })
+            // If no results found return 400 error
             if (response.rows.length > 0) return res.status(400).json({ error: "Email already in use" })
+            // Else call next
             return next()
         })
     },
