@@ -23,6 +23,7 @@ app.use(cors({
 const registerRouter = require('./routes/register/registerRouter')
 const loginRouter = require('./routes/login/loginRouter')
 const userRouter = require('./routes/user/userRouter')
+const unitRouter = require('./routes/unit/unitRouter')
 
 // Set the port to either the value from the .env file
 // or default it to 4000
@@ -39,6 +40,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/register', registerRouter)
 app.use('/login', loginRouter)
 app.use('/user', userRouter)
+app.use('/unit', unitRouter)
 
 
 // On requests to the root location, respond with 200 OK
