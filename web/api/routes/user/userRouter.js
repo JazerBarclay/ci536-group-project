@@ -4,7 +4,7 @@
  */
 
 // Import modules from controller here
-// const { validate, blah, foo } = require('./userController')
+const { getUser } = require('./userController')
 
 
 // Add router from express to manage routing
@@ -16,7 +16,7 @@ const router = require('express').Router()
 // router.get('/', validateInput, divert)
 
 // Get user from /user
-// router.get('/:username', validateInput, getUser)
+router.get('/:username', getUser)
 
 // Insert user (should redirect to register route or visa versa)
 // router.post('/', validateInput, getUser)

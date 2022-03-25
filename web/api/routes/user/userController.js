@@ -4,7 +4,7 @@
  */
 
 // Import modules from service here
-const { selectUserByEmail, insertUser } = require('./userService')
+const { selectUserByEmail, selectUserByUsername, insertUser } = require('./userService')
 
 // Checks if email matches regex pattern ( * @ * [repeat (.*) 2-4 times] )
 function validateEmail(elementValue){      
@@ -39,11 +39,17 @@ module.exports = {
         })
     },
 
-    addUser: (req, res) => {
-        insertUser(req.body.email, req.body.username, req.body.password, (err, response) => {
-            if (err) return res.status(500).json({ err })
-            return res.status(201).json({ status: "Success" })
+    getUser: (req, res) => {
+        selectUserByUsername(req.params.username, (err, response) => {
+            if (err) return res.status(400).json({ error: "Bad request" })
+            if (response.rows.length < 1) return res.status(404).json({ error: "User not found" })
+            return res.status(200).json({
+                // Send username
+                username: response.rows[0].user_username,
+                // Send email
+                email: response.rows[0].user_email
+            })
         })
-    },
+    }
 
 }

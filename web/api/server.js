@@ -22,6 +22,7 @@ app.use(cors({
 // Import routes
 const registerRouter = require('./routes/register/registerRouter')
 const loginRouter = require('./routes/login/loginRouter')
+const userRouter = require('./routes/user/userRouter')
 
 // Set the port to either the value from the .env file
 // or default it to 4000
@@ -47,6 +48,9 @@ app.use('/register', registerRouter)
 
 // Authenticate existing user to access the api and website
 app.use('/login', loginRouter)
+
+// AUser route
+app.use('/user', userRouter)
 
 // Return the profile matching the user token
 app.get('/profile', (req, res) => {
@@ -74,36 +78,7 @@ app.get('/profile', (req, res) => {
     //    status: 1, message: "Error, could not access the user profile"
     // })
 
-
 })
-
-// Return the profile of a requested user by username (TODO: Move to own user route)
-app.get('/user/:username', (req, res) => {
-
-    // Query db
-    db.query(
-        // Query term
-        `SELECT * FROM users WHERE user_username = $1;`,
-        // Parameters (referred to in query by $1,$2...)
-        [req.params.username],
-        // Callback function that returns either error, results with fields
-        (error, results, fields) => {
-            // If error exists, return 500 error code
-            if (error) return res.status(500).json({ error: "Internal Database Error" })
-                // If no results found, return 404 error code
-            if (results.rows.length < 1) return res.status(404).json({ message: "User not found" })
-                // Since all checks pass, return requested object with 200 code
-            return res.status(200).json({
-                // Send username
-                username: results.rows[0].user_username,
-                // Send email
-                email: results.rows[0].user_email,
-            })
-        }
-    )
-
-})
-
 
 app.get('/scores', (req, res) => {
     // On success
