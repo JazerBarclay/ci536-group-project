@@ -7,6 +7,7 @@ const db = require('./database/dbConnection')
 // Add express library
 const express = require('express');
 
+// Add cross origin resource security
 const cors = require('cors');
 
 // Create new app variable for handling network requests
@@ -44,21 +45,8 @@ app.get('/', (req, res) => {
 // Register a new user on the system
 app.use('/register', registerRouter)
 
-// Register a new user on the system
-app.use('/login', loginRouter)
-
 // Authenticate existing user to access the api and website
-app.post('/login', (req, res) => {
-
-    // Received Parameters
-    // req.params.email, req.params.password
-
-    // Check email is valid and passwords match (salt + hash to compare)
-    // db.query('select', (error, result, fields) => { ... })
-
-    // If details match, create token and send in response
-
-})
+app.use('/login', loginRouter)
 
 // Return the profile matching the user token
 app.get('/profile', (req, res) => {
