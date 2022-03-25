@@ -1,10 +1,8 @@
 package timer.app;
 
-import java.sql.Time;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class Model {
 
@@ -20,60 +18,62 @@ public class Model {
     ScheduledExecutorService exec;
     public long starter, elapsedTimeSeconds, elapsedTimeMinutes;
     Runnable r = new Runnable() {
-        @Override
-        public void run() {
-            updateTime();
-            if (listener != null) listener.onChange();
-        }
+	@Override
+	public void run() {
+	    updateTime();
+	    if (listener != null) listener.onChange();
+	}
     };
 
     public void startTimer() {
-        if(state == TimerState.RUNNING) return;
-        exec = Executors.newSingleThreadScheduledExecutor();
+	if (state == TimerState.RUNNING)
+	    return;
+	exec = Executors.newSingleThreadScheduledExecutor();
 
-        exec.scheduleAtFixedRate(()-> {
-            updateTime();
-            if (listener != null) listener.onChange();
-            }, 0, 1, TimeUnit.SECONDS);
+	exec.scheduleAtFixedRate(() -> {
+	    updateTime();
+	    if (listener != null)
+		listener.onChange();
+	}, 0, 1, TimeUnit.SECONDS);
 
-        state = TimerState.RUNNING;
-        elapsedTimeMinutes = 24;
-        starter = 60;
-        elapsedTimeSeconds = 60;
+	state = TimerState.RUNNING;
+	elapsedTimeMinutes = 24;
+	starter = 60;
+	elapsedTimeSeconds = 60;
     }
 
-    public void stopTimer(){
-        if(state != TimerState.STOPPED) {
-            exec.shutdown();
-            state = TimerState.STOPPED;
-        }
+    public void stopTimer() {
+	if (state != TimerState.STOPPED) {
+	    exec.shutdown();
+	    state = TimerState.STOPPED;
+	}
     }
-
 
     public void updateTime() {
-        elapsedTimeSeconds--;
-        if (elapsedTimeSeconds == 0) {
-            elapsedTimeSeconds = starter;
-            elapsedTimeMinutes--;
-        }
+	elapsedTimeSeconds--;
+	if (elapsedTimeSeconds == 0) {
+	    elapsedTimeSeconds = starter;
+	    elapsedTimeMinutes--;
+	}
     }
 
     public long getSeconds() {
-        return (elapsedTimeSeconds);
+	return (elapsedTimeSeconds);
     }
 
     public long getMinutes() {
-        return (elapsedTimeMinutes);
+	return (elapsedTimeMinutes);
     }
 
 //	---------------------------------------
 
     public void setChangeListener(PropertyChangeListener listener) {
-        this.listener = listener;
+	this.listener = listener;
     }
 
     public void authenticated(boolean auth) {
-        this.loggedIn = auth;
-        if (listener != null) listener.onChange();
+	this.loggedIn = auth;
+	if (listener != null)
+	    listener.onChange();
     }
 }

@@ -8,29 +8,28 @@ public class Controller {
 
     public Controller(Model model) {
 	this.model = model;
-
     }
 
-    public void example(){
+    public void example() {
 	System.out.println("Something");
     }
 
-    public void changescene(Stage window, Scene scene){
+    public void changescene(Stage window, Scene scene) {
 	window.setScene(scene);
     }
 
-    public void startsTimer(){
-        model.startTimer();
+    public void startsTimer() {
+	model.startTimer();
     }
 
-    public void stopsTimer(){
-        model.stopTimer();
+    public void stopsTimer() {
+	model.stopTimer();
     }
 
     public void authenticateUser() {
 
 	// On fail, return false, else return true
-	 model.authenticated(false);
+	model.authenticated(false);
 
     }
 
