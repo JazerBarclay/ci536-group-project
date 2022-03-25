@@ -35,6 +35,12 @@ app.use(express.json())
 // Prevent nested objects and use arrays instead
 app.use(express.urlencoded({ extended: false }))
 
+// Add api routes
+app.use('/register', registerRouter)
+app.use('/login', loginRouter)
+app.use('/user', userRouter)
+
+
 // On requests to the root location, respond with 200 OK
 // with a JSON response object
 app.get('/', (req, res) => {
@@ -42,15 +48,6 @@ app.get('/', (req, res) => {
         message: "API Server for Quark App"
     })
 })
-
-// Register a new user on the system
-app.use('/register', registerRouter)
-
-// Authenticate existing user to access the api and website
-app.use('/login', loginRouter)
-
-// AUser route
-app.use('/user', userRouter)
 
 // Return the profile matching the user token
 app.get('/profile', (req, res) => {
