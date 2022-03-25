@@ -5,21 +5,28 @@ window.addEventListener("load", () => {
 
 
     var logInForm = document.querySelector('#logInForm');
+    var signUpButton = document.querySelector('#signUpButton');
 
 
     logInForm.addEventListener("submit", function(evt) {
 
         evt.preventDefault();
-        console.log("submitted")
 
         var emailInput = document.querySelector('#emailInput').value;
         var passwordInput = document.querySelector('#passwordInput').value;
 
+        localStorage.clear();
+
         signIn(emailInput, passwordInput);
 
-        //window.location.href = "profile.html"
 
 
+    })
+
+
+    signUpButton.addEventListener("click", function(evt){
+
+        window.location.href = "signup.html";
 
     })
 
@@ -46,11 +53,24 @@ window.addEventListener("load", () => {
 
         fetch(url, requestOptions)
         .then(response => response.json())
-        .then(result => 
+        .then(result => {
+
+            if (result.token != undefined){
 
                 console.log("User Authenticated, Token: " + result.token)
 
-            )
+                window.localStorage.setItem("token", result.token)
+
+                window.location.href = "profile.html"
+
+            }else{
+                
+                console.log("Invalid Login, Please check username and password or sign up!")
+            
+            }
+
+
+        })
 
         .catch(error => console.log('error', error));
 

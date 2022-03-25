@@ -1,6 +1,20 @@
 window.addEventListener('load', () => {
 
-    graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
+    if (localStorage.token == undefined ){
+        
+        console.log("invalid token!")
+
+        window.location.href = "index.html"
+
+
+    }else{
+        
+        console.log("This is a valid session using token: " + localStorage.token);
+
+        
+    }
+
+    var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
 
 
     const xValues = ["mon", 'tues', 'weds', 'thurs', 'fri', 'sat', 'sun'];
@@ -9,7 +23,7 @@ window.addEventListener('load', () => {
 
 
     function getUserProfile() {
-
+        
 
     }
 
