@@ -39,6 +39,7 @@ module.exports = {
         })
     },
 
+    // Returns the user requested by the username in get request
     getUser: (req, res) => {
         selectUserByUsername(req.params.username, (err, response) => {
             if (err) return res.status(400).json({ error: "Bad request" })
