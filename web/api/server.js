@@ -13,12 +13,14 @@ const cors = require('cors');
 const app = express();
 
 // Allow all via cors
+// TODO: remove on production
 app.use(cors({
     origin: '*'
 }));
 
-// Import register route
+// Import routes
 const registerRouter = require('./routes/register/registerRouter')
+const loginRouter = require('./routes/login/loginRouter')
 
 // Set the port to either the value from the .env file
 // or default it to 4000
@@ -41,6 +43,9 @@ app.get('/', (req, res) => {
 
 // Register a new user on the system
 app.use('/register', registerRouter)
+
+// Register a new user on the system
+app.use('/login', loginRouter)
 
 // Authenticate existing user to access the api and website
 app.post('/login', (req, res) => {
