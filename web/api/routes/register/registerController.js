@@ -3,8 +3,8 @@
  * Manages middleware between register request and response
  */
 
-// Import modules from register service
-const { checkEmail, checkUsername, insertUser } = require('./registerService')
+// Import modules from user service
+const { selectUserByEmail, selectUserByUsername, insertUser } = require('../user/userService')
 
 // Checks if email matches regex pattern ( * @ * [repeat (.*) 2-4 times] )
 function validateEmail(elementValue){      
@@ -29,7 +29,7 @@ module.exports = {
         if (!validateEmail(req.body.email)) return res.status(400).json({ error: "Email invalid" })
 
         // Else check if it exists in the database
-        checkEmail(req.body.email, (err, response) => {
+        selectUserByEmail(req.body.email, (err, response) => {
             // If database error, return 500 internal error
             if (err) return res.status(500).json({ err })
             // If no results found return 400 error
@@ -41,7 +41,7 @@ module.exports = {
 
     // Validate username doesn't already exist in database
     validateUsername: (req,res,next) => {
-        checkUsername(req.body.username, (err, response) => {
+        selectUserByUsername(req.body.username, (err, response) => {
             if (err) return res.status(500).json({ err })
             if (response.rows.length > 0) return res.status(400).json({ error: "User already exists" })
             return next()
