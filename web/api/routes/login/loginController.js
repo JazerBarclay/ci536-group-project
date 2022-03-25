@@ -3,6 +3,8 @@
  * Manages middleware between login request and response
  */
 
+var jwt = require('jsonwebtoken');
+
 // Import modules from register service
 const { verifyLogin } = require('./loginService')
 const { selectUserByEmail } = require('../user/userService')
@@ -33,13 +35,25 @@ module.exports = {
         verifyLogin(req.body.email, req.body.password, (err, response) => {
             if (err) return res.status(400).json({err})
             if (response.rows.length < 1) return res.status(400).json({ error: "Incorrect email or password" })
+            req.id = response.rows[0].user_id
             return next()
         })
     },
     
     // Issue token to user
     issueLoginToken: (req, res) => {
-        return res.status(200).json({ message: "yay"})
+        var token = jwt.sign(
+            { id: req.id }, 
+            'secret', 
+            { expiresIn: '1h' });
+        return res.status(200).json({ token })
+    },
+
+    verifyToken: (req, res) => {
+        jwt.verify(req.body.token, 'secret', function(err, decoded) {
+            if (err) return res.status(400).json({ message: "invalid" })
+            return res.status(200).json(decoded)
+        });
     }
 
 }

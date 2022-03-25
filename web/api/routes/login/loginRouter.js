@@ -4,7 +4,7 @@
  */
 
 // Import modules from login controller
-const { validateParams, validateEmail, login, issueLoginToken } = require('./loginController')
+const { validateParams, validateEmail, login, issueLoginToken, verifyToken } = require('./loginController')
 
 // Add router from express to manage routing
 const router = require('express').Router()
@@ -13,6 +13,8 @@ const router = require('express').Router()
 // Login takes email and password
 // Returns JWT authentication token (contains id and validity duration)
 router.post('/', validateParams, validateEmail, login, issueLoginToken)
+
+router.post('/verify', verifyToken)
 
 // Export this router module
 module.exports = router;
