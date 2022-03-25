@@ -3,6 +3,7 @@
  * Manages middleware between login request and response
  */
 
+// Import jwt
 var jwt = require('jsonwebtoken');
 
 // Import modules from register service
@@ -20,6 +21,7 @@ module.exports = {
         return next()
     },
 
+    // Validate email exists in database
     validateEmail: (req, res, next) => {
         selectUserByEmail(req.body.email, (err, response) => {
             // If database error, return 500 internal error
@@ -31,6 +33,7 @@ module.exports = {
         })
     },
 
+    // Check if email and pass match in database
     login: (req, res, next) => {
         verifyLogin(req.body.email, req.body.password, (err, response) => {
             if (err) return res.status(400).json({err})
@@ -49,6 +52,7 @@ module.exports = {
         return res.status(200).json({ token })
     },
 
+    // Takes in an encoded token and returns the decoded object
     verifyToken: (req, res) => {
         jwt.verify(req.body.token, 'secret', function(err, decoded) {
             if (err) return res.status(400).json({ message: "invalid" })

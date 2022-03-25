@@ -14,6 +14,7 @@ const router = require('express').Router()
 // Returns JWT authentication token (contains id and validity duration)
 router.post('/', validateParams, validateEmail, login, issueLoginToken)
 
+// On /login/verify take in an encoded json web token and verify its contents
 router.post('/verify', verifyToken)
 
 // Export this router module
