@@ -1,9 +1,6 @@
 window.addEventListener("load", () => {
 
 
-    //to sign up button
-
-
     var logInForm = document.querySelector('#logInForm');
     var signUpButton = document.querySelector('#signUpButton');
 
@@ -15,7 +12,7 @@ window.addEventListener("load", () => {
         var emailInput = document.querySelector('#emailInput').value;
         var passwordInput = document.querySelector('#passwordInput').value;
 
-        localStorage.clear();
+        localStorage.clear(); //clearing the login token from storage before signing in again
 
         signIn(emailInput, passwordInput);
 
@@ -24,7 +21,7 @@ window.addEventListener("load", () => {
     })
 
 
-    signUpButton.addEventListener("click", function(evt){
+    signUpButton.addEventListener("click", function(evt) { //just a simple redirect to signup page
 
         window.location.href = "signup.html";
 
@@ -40,37 +37,37 @@ window.addEventListener("load", () => {
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-        "email": email,
-        "password": password
+            "email": email,
+            "password": password
         });
 
         var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
         };
 
         fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(result => {
+            .then(response => response.json())
+            .then(result => {
 
-            if (result.token != undefined){
+                if (result.token != undefined) {
 
-                console.log("User Authenticated, Token: " + result.token)
+                    console.log("User Authenticated, Token: " + result.token)
 
-                window.localStorage.setItem("token", result.token)
+                    window.localStorage.setItem("token", result.token)
 
-                window.location.href = "profile.html"
+                    window.location.href = "profile.html"
 
-            }else{
-                
-                console.log("Invalid Login, Please check username and password or sign up!")
-            
-            }
+                } else {
+
+                    console.log("Invalid Login, Please check username and password or sign up!")
+
+                }
 
 
-        })
+            })
 
         .catch(error => console.log('error', error));
 

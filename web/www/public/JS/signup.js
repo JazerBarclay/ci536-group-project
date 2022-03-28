@@ -17,13 +17,15 @@ window.addEventListener("load", () => {
 
     })
 
-    toLogInButton.addEventListener("click", function(evt){
+    toLogInButton.addEventListener("click", function(evt) {
 
-        window.location.href = "index.html";
+        window.location.href = "index.html"; //simple redirect to the login page
 
     })
 
     function createAccount(username, email, password) {
+
+        var url = "https://dev.api.quark.rocks/register";
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -41,10 +43,10 @@ window.addEventListener("load", () => {
             redirect: 'follow'
         };
 
-        fetch("https://dev.api.quark.rocks/register", requestOptions)
+        fetch(url, requestOptions)
             .then(response => response.text())
             .then(result => {
-                
+
                 console.log(result);
                 window.location.href = "index.html";
 
