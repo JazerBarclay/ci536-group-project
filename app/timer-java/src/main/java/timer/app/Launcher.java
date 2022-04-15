@@ -3,27 +3,20 @@ package timer.app;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import timer.app.scenes.login.LoginScreen;
 
 public class Launcher extends Application {
 
-  Stage window;
-  Scene scene1, scene2;
-
-  @Override
-  public void start(Stage stage) throws Exception {
-
-    window = stage;
+    @Override
+    public void start(Stage stage) throws Exception {
+	
+	// Launch the login screen with the given starting stage
+	new LoginScreen(stage);
     
-    Model model = new Model();
-    Controller controller = new Controller(model);
-    View view = new View(window, model, controller);
-
-    model.setChangeListener(() -> view.update());
+    }
     
-    stage.show();
-  }
-  public static void main(String[] args) {
-    launch(args);
-  }
+    public static void main(String[] args) {
+	launch(args);
+    }
 
 }

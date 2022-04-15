@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -64,7 +65,11 @@ public class View {
 
 	Button logout = new Button("Logout");
 	logout.setOnAction(e -> {
-	    controller.changescene(window, scene1);
+	    Stage s = new Stage();
+	    s.setScene(new Scene(new HBox(4, new Label("Hi"))));
+	    s.show();
+	    window.close();
+//	    controller.changescene(window, scene1);
 	});
 
 	Button startButton = new Button("Start Timer");
