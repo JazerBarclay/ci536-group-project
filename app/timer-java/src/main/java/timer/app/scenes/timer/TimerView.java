@@ -23,66 +23,97 @@ import timer.fx.widgets.CloseButton;
 import timer.fx.widgets.PlayButton;
 import timer.fx.widgets.StopButton;
 
+/**
+ * User interface design of timer screen
+ * 
+ * @author Jazer
+ *
+ */
 public class TimerView extends ScreenView {
 
+    /** The element the window can be dragged by **/
+    private Node draggableElement;
+    
+    // The delta of the window from the screen on drag
     private static double xOffset = 0;
     private static double yOffset = 0;
 
-    private Node draggableElement;
-
+    // Set window width and height in easy variables to use
+    private static int windowWidth = 220, windowHeight = 130;
+    
+    /** Window background canvas **/
     private Canvas background;
 
+    // Interactive elements
     private PlayButton btnPlay;
     private StopButton btnStop;
 
+    /**
+     * Creates a new timer interface with the given window, model and controller
+     * 
+     * @param window - Window the timer screen will render into
+     * @param model - The timer model
+     * @param controller - The timer controller
+     */
     public TimerView(Stage window, ScreenModel model, ScreenController controller) {
 	super(window, model, controller);
 	window.setAlwaysOnTop(true);
 	window.initStyle(StageStyle.UNDECORATED);
     }
-
+    
+    /**
+     * Builds the user interface with the desired elements
+     */
     @Override
     protected Scene constructView() {
 
+	// Create layout and scene
 	Pane layout = new Pane();
-	Scene s = new Scene(layout, 220, 130);
 
-	background = new Canvas(220, 130);
+	// Setup background canvas with base colour
+	background = new Canvas(windowWidth, windowHeight);
 	GraphicsContext gc = background.getGraphicsContext2D();
 	gc.setFill(Color.color(.9, .9, .9));
-	gc.fillRect(0, 0, 220, 130);
+	gc.fillRect(0, 0, windowWidth, windowHeight);
 
+	// Create timer label where main timer can be viewed
 	Label timerLabel = new Label("25:00");
-	timerLabel.setLayoutY(130/2-38);
+	timerLabel.setLayoutY(windowHeight/2-38);
 	timerLabel.setFont(new Font("Arial", 48));
 	timerLabel.setTextFill(Color.color(0.168, 0.188, 0.231));
-	timerLabel.setPrefWidth(220);
+	timerLabel.setPrefWidth(windowWidth);
 	timerLabel.setAlignment(Pos.CENTER);
 
-	CloseButton btnClose = new CloseButton(220-25, 5, 20);
+	// Create close button
+	CloseButton btnClose = new CloseButton(windowWidth-25, 5, 20);
 	btnClose.setOnClickHandler(() -> {
 	    System.err.println("Exit");
 	    window.close();
 	});
 
-	btnPlay = new PlayButton((220/2)-10, 130-35, 20);
+	// Create play button
+	btnPlay = new PlayButton((windowWidth/2)-10, windowHeight-35, 20);
 	btnPlay.setOnClickHandler(() -> {
-	    System.err.println("Start"); 
+	    System.err.println("Start");
 	});
 
-	btnStop = new StopButton((220/2)-10, 130-35, 20);
+	// Create stop button
+	btnStop = new StopButton((windowWidth/2)-10, windowHeight-35, 20);
 	btnStop.setOnClickHandler(() -> {
-	    System.err.println("Stop"); 
+	    System.err.println("Stop");
 	});
 
+	// Add elements to layout
 	layout.getChildren().add(background);
 	layout.getChildren().add(timerLabel);
 	layout.getChildren().add(btnClose);
 	layout.getChildren().add(btnPlay);
 
+	// Set time label as draggable element
 	setDraggableElement(timerLabel);
 
-	return s;
+	// Return the scene with all elements in
+	return new Scene(layout, windowWidth, windowHeight);
 
     }
 
@@ -91,20 +122,30 @@ public class TimerView extends ScreenView {
 	// TODO Auto-generated method stub
     }
 
-    public void setBackground(Paint p) {
+    /**
+     * Sets the background colour to the paint colour given
+     * @param colour
+     */
+    public void setBackground(Paint colour) {
 	GraphicsContext gc = background.getGraphicsContext2D();
-	gc.setFill(p);
+	gc.setFill(colour);
 	gc.fillRect(0, 0, window.getWidth(), window.getHeight());
     }
 
-    public void setDraggableElement(Node n) {
-	if (n == null && draggableElement == null) return;
-	if (n == null) {
+    /**
+     * Sets a given node as a draggable element. Used to solve
+     * the issue where window is undecorrated and needs to be
+     * movable.
+     * @param node
+     */
+    public void setDraggableElement(Node node) {
+	if (node == null && draggableElement == null) return;
+	if (node == null) {
 	    draggableElement.setOnMousePressed((MouseEvent e) -> {});
 	    draggableElement.setOnMouseDragged((MouseEvent e) -> {});
 	    return;
 	}
-	draggableElement = n;
+	draggableElement = node;
 	draggableElement.setOnMousePressed((MouseEvent event) -> {
 	    xOffset = window.getX() - event.getScreenX();
 	    yOffset = window.getY() - event.getScreenY();

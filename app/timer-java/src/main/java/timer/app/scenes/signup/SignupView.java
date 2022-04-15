@@ -13,13 +13,29 @@ import timer.fx.mvc.ScreenController;
 import timer.fx.mvc.ScreenModel;
 import timer.fx.mvc.ScreenView;
 
+/**
+ * User interface design of signup screen
+ * 
+ * @author Jazer
+ *
+ */
 public class SignupView extends ScreenView {
 
+    /**
+     * Creates a new signup interface with the given window, model and controller
+     * 
+     * @param window - Window the signup screen will render into
+     * @param model - The signup model
+     * @param controller - The signup controller
+     */
     public SignupView(Stage window, ScreenModel model, ScreenController controller) {
 	super(window, model, controller);
 	window.setTitle("Signup");
     }
 
+    /**
+     * Builds the user interface with the desired elements
+     */
     @Override
     protected Scene constructView() {
 	// Create grid layout container

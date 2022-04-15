@@ -12,13 +12,29 @@ import timer.fx.mvc.ScreenController;
 import timer.fx.mvc.ScreenModel;
 import timer.fx.mvc.ScreenView;
 
+/**
+ * User interface design of login screen
+ * 
+ * @author Jazer
+ *
+ */
 public class LoginView extends ScreenView {
 
+    /**
+     * Creates a new login interface with the given window, model and controller
+     * 
+     * @param window - Window the login screen will render into
+     * @param model - The login model
+     * @param controller - The login controller
+     */
     public LoginView(Stage window, ScreenModel model, ScreenController controller) {
 	super(window, model, controller);
 	window.setTitle("Login");
     }
 
+    /**
+     * Builds the user interface with the desired elements
+     */
     @Override
     protected Scene constructView() {
 	
@@ -67,6 +83,7 @@ public class LoginView extends ScreenView {
 	// Return the grid layout containing all elements
 	return new Scene(gridLayout);
     }
+
 
     @Override
     protected void update() {
