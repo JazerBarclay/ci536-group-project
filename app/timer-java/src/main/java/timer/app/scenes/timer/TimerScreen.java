@@ -13,12 +13,15 @@ import timer.fx.mvc.Screen;
  */
 public class TimerScreen extends Screen {
 
+    private String loginToken;
+    
     /**
      * Creates a new timer screen with the given window
      * @param window
      */
-    public TimerScreen(Stage window) {
+    public TimerScreen(Stage window, String jwt) {
 	super(window);
+	this.loginToken = jwt;
     }
 
     /**
@@ -28,7 +31,7 @@ public class TimerScreen extends Screen {
     @Override
     protected void constructMVC(Stage window) {
 	
-	TimerModel model = new TimerModel();
+	TimerModel model = new TimerModel(loginToken);
 	TimerController controller = new TimerController(model);
 	TimerView view = new TimerView(window, model, controller);
 	

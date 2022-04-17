@@ -33,16 +33,18 @@ public class TimerView extends ScreenView {
 
     /** The element the window can be dragged by **/
     private Node draggableElement;
-    
+
     // The delta of the window from the screen on drag
     private static double xOffset = 0;
     private static double yOffset = 0;
 
     // Set window width and height in easy variables to use
     private static int windowWidth = 220, windowHeight = 130;
-    
+
     /** Window background canvas **/
     private Canvas background;
+
+    private Label timerLabel;
 
     // Interactive elements
     private PlayButton btnPlay;
@@ -60,7 +62,7 @@ public class TimerView extends ScreenView {
 	window.setAlwaysOnTop(true);
 	window.initStyle(StageStyle.UNDECORATED);
     }
-    
+
     /**
      * Builds the user interface with the desired elements
      */
@@ -77,7 +79,7 @@ public class TimerView extends ScreenView {
 	gc.fillRect(0, 0, windowWidth, windowHeight);
 
 	// Create timer label where main timer can be viewed
-	Label timerLabel = new Label("25:00");
+	timerLabel = new Label(formatTime(((TimerModel) model).minutes, ((TimerModel) model).seconds));
 	timerLabel.setLayoutY(windowHeight/2-38);
 	timerLabel.setFont(new Font("Arial", 48));
 	timerLabel.setTextFill(Color.color(0.168, 0.188, 0.231));
@@ -88,6 +90,7 @@ public class TimerView extends ScreenView {
 	CloseButton btnClose = new CloseButton(windowWidth-25, 5, 20);
 	btnClose.setOnClickHandler(() -> {
 	    System.err.println("Exit");
+	    ((TimerModel)model).stopTimer();
 	    window.close();
 	});
 
@@ -95,12 +98,19 @@ public class TimerView extends ScreenView {
 	btnPlay = new PlayButton((windowWidth/2)-10, windowHeight-35, 20);
 	btnPlay.setOnClickHandler(() -> {
 	    System.err.println("Start");
+	    ((TimerModel) model).startTimer();
+	    layout.getChildren().remove(btnPlay);
+	    layout.getChildren().add(btnStop);
+
 	});
 
 	// Create stop button
 	btnStop = new StopButton((windowWidth/2)-10, windowHeight-35, 20);
 	btnStop.setOnClickHandler(() -> {
 	    System.err.println("Stop");
+	    ((TimerModel) model).stopTimer();
+	    layout.getChildren().remove(btnStop);
+	    layout.getChildren().add(btnPlay);
 	});
 
 	// Add elements to layout
@@ -119,7 +129,7 @@ public class TimerView extends ScreenView {
 
     @Override
     protected void update() {
-	// TODO Auto-generated method stub
+	timerLabel.setText(formatTime(((TimerModel) model).minutes, ((TimerModel) model).seconds));
     }
 
     /**
@@ -165,6 +175,26 @@ public class TimerView extends ScreenView {
 
 	window.setX(width - window.getWidth());
 	window.setY(height - window.getHeight() - 40);
+    }
+
+    private String formatTime(int mins, int secs) {
+	String s = formatSeconds(secs);
+	String m = formatMinutes(mins);
+	return (m+":"+s);
+    }
+
+    private String formatSeconds(int seconds) {
+	String formatted = "";
+	if (seconds < 10) formatted+="0";
+	formatted+=seconds;
+	return formatted;
+    }
+
+    private String formatMinutes(int minutes) {
+	String formatted = "";
+	if (minutes < 10) formatted+="0";
+	formatted+=minutes;
+	return formatted;
     }
 
 }
