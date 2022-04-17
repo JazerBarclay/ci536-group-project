@@ -10,7 +10,7 @@ package timer.fx.mvc;
 public abstract class ScreenModel {
 
     /** On change event listener for view changes **/
-    protected ScreenEventListener listener;
+    private ScreenEventListener listener;
     
     /**
      * Sets a listener within the model which can update the view
@@ -20,6 +20,13 @@ public abstract class ScreenModel {
      */
     public void setChangeListener(ScreenEventListener listener) {
 	this.listener = listener;
+    }
+    
+    /**
+     * Updates the view using the change listener
+     */
+    public void updateView() {
+	if (listener != null) listener.onChange();
     }
     
 }
