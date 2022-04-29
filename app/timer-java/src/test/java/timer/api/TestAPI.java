@@ -3,6 +3,7 @@ package timer.api;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.HashMap;
 
 import org.junit.Test;
@@ -46,6 +47,12 @@ public class TestAPI {
 	assertEquals(200, res.getResponseCode());
 
 	System.out.println(res.getBody());
+    }
+    
+    @Test
+    public void testTimestamp() {
+	Timestamp ts = new Timestamp(System.currentTimeMillis());
+	System.out.println((ts.toString())+"000");
     }
 
 }
