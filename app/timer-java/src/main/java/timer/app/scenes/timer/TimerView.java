@@ -31,6 +31,10 @@ import timer.fx.widgets.StopButton;
  */
 public class TimerView extends ScreenView {
 
+    // Store cast copy of super model and controller (seen in construct view method)
+    private TimerModel model;
+    private TimerController controller;
+    
     /** The element the window can be dragged by **/
     private Node draggableElement;
 
@@ -41,14 +45,18 @@ public class TimerView extends ScreenView {
     // Set window width and height in easy variables to use
     private static int windowWidth = 220, windowHeight = 130;
 
+    private Pane layout;
+
     /** Window background canvas **/
     private Canvas background;
 
+    /** Label holding the time remaining **/
     private Label timerLabel;
 
     // Interactive elements
     private PlayButton btnPlay;
     private StopButton btnStop;
+    private CloseButton btnClose;
 
     /**
      * Creates a new timer interface with the given window, model and controller
@@ -69,17 +77,21 @@ public class TimerView extends ScreenView {
     @Override
     protected Scene constructView() {
 
+	// Store cast copy of model and controller
+	this.model = (TimerModel) super.model;
+	this.controller = (TimerController) super.controller;
+	
 	// Create layout and scene
-	Pane layout = new Pane();
+	layout = new Pane();
 
 	// Setup background canvas with base colour
 	background = new Canvas(windowWidth, windowHeight);
 	GraphicsContext gc = background.getGraphicsContext2D();
-	gc.setFill(Color.color(.9, .9, .9));
+	gc.setFill(Color.color(.8, .4, .4));
 	gc.fillRect(0, 0, windowWidth, windowHeight);
 
 	// Create timer label where main timer can be viewed
-	timerLabel = new Label(formatTime(((TimerModel) model).minutes, ((TimerModel) model).seconds));
+	timerLabel = new Label(formatTime(model.minutes, model.seconds));
 	timerLabel.setLayoutY(windowHeight/2-38);
 	timerLabel.setFont(new Font("Arial", 48));
 	timerLabel.setTextFill(Color.color(0.168, 0.188, 0.231));
@@ -87,30 +99,22 @@ public class TimerView extends ScreenView {
 	timerLabel.setAlignment(Pos.CENTER);
 
 	// Create close button
-	CloseButton btnClose = new CloseButton(windowWidth-25, 5, 20);
+	btnClose = new CloseButton(windowWidth-25, 5, 20);
 	btnClose.setOnClickHandler(() -> {
-	    System.err.println("Exit");
-	    ((TimerModel)model).stopTimer();
-	    window.close();
+	    controller.closeTimer(window);
 	});
 
 	// Create play button
 	btnPlay = new PlayButton((windowWidth/2)-10, windowHeight-35, 20);
 	btnPlay.setOnClickHandler(() -> {
-	    System.err.println("Start");
-	    ((TimerModel) model).startTimer();
-	    layout.getChildren().remove(btnPlay);
-	    layout.getChildren().add(btnStop);
+	    controller.startTimer();
 
 	});
 
 	// Create stop button
 	btnStop = new StopButton((windowWidth/2)-10, windowHeight-35, 20);
 	btnStop.setOnClickHandler(() -> {
-	    System.err.println("Stop");
-	    ((TimerModel) model).stopTimer();
-	    layout.getChildren().remove(btnStop);
-	    layout.getChildren().add(btnPlay);
+	    controller.stopTimer();
 	});
 
 	// Add elements to layout
@@ -129,7 +133,43 @@ public class TimerView extends ScreenView {
 
     @Override
     protected void update() {
-	timerLabel.setText(formatTime(((TimerModel) model).minutes, ((TimerModel) model).seconds));
+
+	// Update displayed text using model values
+	timerLabel.setText(formatTime(model.minutes, model.seconds));
+
+	// Depending on state, change background and which buttons are visible
+	switch (model.state) {
+	case WORKING:
+	    setBackground(Color.color(.369, .557, .745));
+	    showStopButton();
+	    break;
+	case RESTING:
+	    setBackground(Color.LIGHTGREEN);
+	    showStopButton();
+	    break;
+	case STOPPED:
+	default:
+	    setBackground(Color.color(.8, .4, .4));
+	    showPlayButton();
+	}
+
+    }
+
+    /**
+     * Show the play button and hide the stop button
+     */
+    protected void showPlayButton() {
+	if (layout.getChildren().contains(btnStop)) layout.getChildren().remove(btnStop);
+	if (!layout.getChildren().contains(btnPlay)) layout.getChildren().add(btnPlay);
+    }
+
+
+    /**
+     * Show the stop button and hide the play button
+     */
+    protected void showStopButton() {
+	if (layout.getChildren().contains(btnPlay)) layout.getChildren().remove(btnPlay);
+	if (!layout.getChildren().contains(btnStop)) layout.getChildren().add(btnStop);
     }
 
     /**
@@ -167,6 +207,9 @@ public class TimerView extends ScreenView {
 	});
     }
 
+    /**
+     * Repositions the window to the bottom right of the default screen device
+     */
     public void positionBottomRight() {
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
@@ -177,23 +220,25 @@ public class TimerView extends ScreenView {
 	window.setY(height - window.getHeight() - 40);
     }
 
+    /**
+     * Formats the minutes and seconds for time to include 0 prior to single digit values
+     * and includes a colon ':' separator
+     */
     private String formatTime(int mins, int secs) {
-	String s = formatSeconds(secs);
-	String m = formatMinutes(mins);
+	String s = formatSecondsMinutesHours(secs);
+	String m = formatSecondsMinutesHours(mins);
 	return (m+":"+s);
     }
 
-    private String formatSeconds(int seconds) {
+    /**
+     * Format a unit of time to include leading 0 when single digit value is given
+     * @param unit
+     * @return
+     */
+    private String formatSecondsMinutesHours(int unit) {
 	String formatted = "";
-	if (seconds < 10) formatted+="0";
-	formatted+=seconds;
-	return formatted;
-    }
-
-    private String formatMinutes(int minutes) {
-	String formatted = "";
-	if (minutes < 10) formatted+="0";
-	formatted+=minutes;
+	if (unit < 10) formatted+="0";
+	formatted+=unit;
 	return formatted;
     }
 
