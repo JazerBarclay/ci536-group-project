@@ -105,8 +105,12 @@ public class API {
 	return new HttpResponse(resStatus, resContent.toString());
 
     }
+    
+    public static HttpResponse postRequest(String endpoint, Map<String,String> json) throws MalformedURLException, IOException {
+	return postRequest(null, endpoint, json);
+    }
 
-    public static HttpResponse postRequest(String endpoint, Map<String,String> json) throws MalformedURLException,IOException {
+    public static HttpResponse postRequest(String token, String endpoint, Map<String,String> json) throws MalformedURLException,IOException {
 	URL url;
 	HttpResponse res;
 
@@ -115,6 +119,8 @@ public class API {
 	conn.setRequestMethod("POST");
 	conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 	conn.setRequestProperty("Accept", "application/json");
+	conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+	if (token != null) conn.setRequestProperty("Authorization", "Bearer "+token);
 	conn.setDoInput(true);
 	conn.setDoOutput(true);
 	conn.connect();
