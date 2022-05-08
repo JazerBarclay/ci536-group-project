@@ -13,7 +13,7 @@ import timer.fx.mvc.Screen;
  */
 public class TimerScreen extends Screen {
 
-    private String loginToken;
+    protected static String loginToken;
     
     /**
      * Creates a new timer screen with the given window
@@ -21,7 +21,7 @@ public class TimerScreen extends Screen {
      */
     public TimerScreen(Stage window, String jwt) {
 	super(window);
-	this.loginToken = jwt;
+	TimerScreen.loginToken = jwt;
     }
 
     /**

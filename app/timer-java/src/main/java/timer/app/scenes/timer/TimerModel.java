@@ -1,9 +1,13 @@
 package timer.app.scenes.timer;
 
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import timer.api.API;
 import timer.app.ClockState;
 import timer.fx.mvc.ScreenModel;
 
@@ -16,10 +20,10 @@ import timer.fx.mvc.ScreenModel;
 public class TimerModel extends ScreenModel {
 
     // Default work and rest minutes and seconds
-    private static int DEFAULT_WORK_MINUTES = 25;
-    private static int DEFAULT_WORK_SECONDS = 0;
-    private static int DEFAULT_REST_MINUTES = 5;
-    private static int DEFAULT_REST_SECONDS = 0;
+    private static int DEFAULT_WORK_MINUTES = 0;
+    private static int DEFAULT_WORK_SECONDS = 2;
+    private static int DEFAULT_REST_MINUTES = 0;
+    private static int DEFAULT_REST_SECONDS = 1;
 
     // Security token used to login
     protected String jwt;
@@ -32,6 +36,8 @@ public class TimerModel extends ScreenModel {
     protected int seconds;
 
     protected ScheduledExecutorService timer;
+
+    protected Timestamp startTime, endTime;
 
     /**
      * Creates a new timer model with the login web token from login screen.
@@ -46,6 +52,7 @@ public class TimerModel extends ScreenModel {
 
     public void startTimer() {
 	setWorking();
+	startTime = new Timestamp(System.currentTimeMillis());
 	timer = Executors.newSingleThreadScheduledExecutor();
 	timer.scheduleAtFixedRate(() -> {
 	    updateTime();
@@ -62,8 +69,15 @@ public class TimerModel extends ScreenModel {
 
 	// Check if at end of timer countdown
 	if (minutes == 0 && seconds < 0 ) {
-	    if (state == ClockState.WORKING) setResting();
-	    else stopTimer();
+	    if (state == ClockState.WORKING) {
+		setResting();
+		return;
+	    } else if (state == ClockState.RESTING) {
+		endTime = new Timestamp(System.currentTimeMillis());
+		sendPomodoro();
+		stopTimer();
+	    }
+	    stopTimer();
 	    return;
 	}
 
@@ -113,7 +127,17 @@ public class TimerModel extends ScreenModel {
 	seconds = DEFAULT_WORK_SECONDS;
     }
 
-
-
+    
+    protected void sendPomodoro() {
+	HashMap<String, String> params = new HashMap<String, String>();
+	params.put("label", "");
+	params.put("start", startTime.toString()+"000");
+	params.put("end", endTime.toString()+"000");
+	try {
+	    API.postRequest(TimerScreen.loginToken, "http://[::1]:4000/unit", params);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
+    }
 
 }
