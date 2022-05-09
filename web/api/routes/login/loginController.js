@@ -48,7 +48,7 @@ module.exports = {
         var token = jwt.sign(
             { id: req.id }, 
             'secret', 
-            { expiresIn: '1h' });
+            { expiresIn: '24h' });
         return res.status(200).json({ token })
     },
 
