@@ -134,7 +134,8 @@ public class TimerModel extends ScreenModel {
 	params.put("start", startTime.toString()+"000");
 	params.put("end", endTime.toString()+"000");
 	try {
-	    API.postRequest(TimerScreen.loginToken, "http://[::1]:4000/unit", params);
+//	    API.postRequest(TimerScreen.loginToken, "http://[::1]:4000/unit", params);
+	    API.postRequest(TimerScreen.loginToken, "https://dev.api.quark.rocks:4000/unit", params);
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
