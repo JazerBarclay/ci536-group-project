@@ -6,6 +6,8 @@ import java.util.HashMap;
 import javafx.stage.Stage;
 import timer.api.API;
 import timer.api.HttpResponse;
+import timer.app.Launcher;
+import timer.app.Mode;
 import timer.app.scenes.signup.SignupScreen;
 import timer.app.scenes.timer.TimerScreen;
 import timer.fx.mvc.ScreenController;
@@ -48,8 +50,15 @@ public class LoginController extends ScreenController {
 
 	// Send POST request to API
 	HttpResponse res = null;
+	
+	// API endpoint based on launch conditions
+	String endPoint = "";
+	if (Launcher.state == Mode.DEV) endPoint = "https://dev.api.quark.rocks/login";
+	else if (Launcher.state == Mode.PRODUCTION) endPoint = "https://api.quark.rocks/login";
+	else endPoint = "http://[::1]:4000/login";
+	
 	try {
-	    res = API.postRequest("https://dev.api.quark.rocks/login", new HashMap<String, String>(){
+	    res = API.postRequest(endPoint, new HashMap<String, String>(){
 		private static final long serialVersionUID = 1L; {
 		    put("email", email);
 		    put("password", password);
