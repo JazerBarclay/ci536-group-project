@@ -24,8 +24,65 @@ window.addEventListener('load', () => {
     var lastWeekData = [4, 6, 3, 2, 1, 4, 3];
 
     //TODO: 
-    function getUserProfile() {
 
+    function getUserDetails(){
+
+        var url = "https://dev.api.quark.rocks/user";
+    
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+    
+            var raw = JSON.stringify({
+                "username": username,
+            });
+    
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+    
+            fetch(url, requestOptions)
+                .then(response => response.text())
+                .then(result => {
+
+                    console.log(result);
+
+                })
+                .catch(error => console.log('error', error));
+
+    }
+
+    function getUserUnits() {
+        
+
+            var url = "https://dev.api.quark.rocks/unit";
+    
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+    
+            var raw = JSON.stringify({
+                "username": username,
+            });
+    
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+    
+            fetch(url, requestOptions)
+                .then(response => response.text())
+                .then(result => {
+
+                    console.log(result);
+
+                })
+                .catch(error => console.log('error', error));
+    
+   
 
     }
 
