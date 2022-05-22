@@ -21,6 +21,15 @@ module.exports = {
             }
         )
     },
+
+    selectAllUnits: (userid, callBack) => {
+        db.query(`SELECT * FROM pomodoros WHERE pomodoro_user_id = $1`,[userid],
+            (error, results, fields) => {
+                if (error) return callBack(error)
+                return callBack(null, results)
+            }
+        )
+    },
     
     insertUnit: (userid, label, start, end, callBack) => {
         db.query(
