@@ -25,11 +25,4 @@ module.exports = {
         })
     },
 
-    getUnits: (req, res) => {
-        selectAllUnits(req.body.auth.id, (err, response) =>{
-            if (err) return res.status(500).json({ err })
-            return res.status(200).json(response.rows)
-        })
-    }
-
 }
