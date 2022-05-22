@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 import timer.api.API;
 import timer.app.ClockState;
+import timer.app.Launcher;
+import timer.app.scenes.Mode;
 import timer.fx.mvc.ScreenModel;
 
 /**
@@ -20,10 +22,10 @@ import timer.fx.mvc.ScreenModel;
 public class TimerModel extends ScreenModel {
 
     // Default work and rest minutes and seconds
-    private static int DEFAULT_WORK_MINUTES = 0;
-    private static int DEFAULT_WORK_SECONDS = 2;
-    private static int DEFAULT_REST_MINUTES = 0;
-    private static int DEFAULT_REST_SECONDS = 1;
+    private static int DEFAULT_WORK_MINUTES = 25;
+    private static int DEFAULT_WORK_SECONDS = 0;
+    private static int DEFAULT_REST_MINUTES = 5;
+    private static int DEFAULT_REST_SECONDS = 0;
 
     // Security token used to login
     protected String jwt;
@@ -134,8 +136,9 @@ public class TimerModel extends ScreenModel {
 	params.put("start", startTime.toString()+"000");
 	params.put("end", endTime.toString()+"000");
 	try {
-//	    API.postRequest(TimerScreen.loginToken, "http://[::1]:4000/unit", params);
-	    API.postRequest(TimerScreen.loginToken, "https://dev.api.quark.rocks:4000/unit", params);
+	    if (Launcher.state == Mode.DEV) API.postRequest(TimerScreen.loginToken, "https://api.quark.rocks/unit", params);
+	    else if (Launcher.state == Mode.PRODUCTION) API.postRequest(TimerScreen.loginToken, "https://dev.api.quark.rocks/unit", params);
+	    else API.postRequest(TimerScreen.loginToken, "http://[::1]:4000/unit", params);
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
