@@ -5,42 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/normalise.css">
-    <link rel="stylesheet" href="CSS/main.css">
-    <script src="JS/profile.js" defer></script>
-    <title>Profile | Quark</title>
+    <link rel="stylesheet" href="CSS/index.css">
+    <title>Homepage | Quark</title>
 </head>
+
 <body>
-    <div class="wrapper">
+
+    <header>
         <nav>
-            <div class="logo">
-                <a href="index.html" id="logo">Quark</a>
-            </div>
+            <a href="#" id="logo">Quark</a>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="download.html">Download</a></li>
+                <li><a href="login.html">Login</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#">Account</a><ul class="dropdown">
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="signup.html">Signup</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-                </li>
-                
+                <li><button>Download</button></li>
             </ul>
         </nav>
+    </header>
 
-            <div class="usernameDisplay">
-                <h2 id="usernameText"></h2>
-            </div>
+    <div style="height: 80px;"></div>
+
+    <section id="userProfile">
+        <div>Username</div>
+    </section>
 
 
-        </div>
-    </aside>
-
-    <div id="graphArea">
-        <canvas id="graph"></canvas>
-    </div>
 </body>
 </html>
