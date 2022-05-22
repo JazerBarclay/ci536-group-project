@@ -18,7 +18,7 @@ router.get('/', validateToken, getUnit)
 router.post('/', validateToken, addUnit)
 
 // Read all from /unit
-router.post('/', validateToken, getUnits)
+router.get('/', validateToken, getUnits)
 
 // Export this router module
 module.exports = router;
