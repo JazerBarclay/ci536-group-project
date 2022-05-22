@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/normalise.css">
-    <link rel="stylesheet" href="CSS/main.css">
-    <script src="main.js" defer></script>
-    <title>Login</title>
-</head>
-<body>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="CSS/login.css">
+      <script src="JS/login.js" ></script>
+      <title>Signup | Quark</title>
+  </head>
+  <body>
+    
+    <header>
+      <nav>
+        <a href="index.html" id="logo">Quark</a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><button>Download</button></li>
+        </ul>
+      </nav>
+    </header>
 
-    <div class="signupGrid">
-        <div class="title">Sign Up to Quark</div>
-
-        <form id="signUpForm">
-            <label for="username">Username: </label>
-            <input type="text" class="username">
-
-            <label for="password">Email: </label>
-            <input type="email" class="email">
-
-            <label for="password">Password: </label>
-            <input type="password" class="password">
-
-            <button id="toLogInButton" class="Button">To Log In</button>
-            <button id="Button" type="submit" class="Button">Sign Up</button>
-
-
-        </form>
-    </div>
-</body>
+      <div style="margin-bottom: 5rem;">
+          <h1>Login</h1>
+          <form id="loginForm">
+            <label for="emailInput" class="input-label">Email: </label>
+            <input id="emailInput" type="email" class="input-text">
+            <label for="passwordInput" class="input-label">Password: </label>
+            <input id="passwordInput" type="password" class="input-text">
+            <button type="submit" id="loginButton" class="btn btn-login">Log In</button>
+          </form>
+          <span>Not a member? <a href="signup.html">Sign up</a></span>
+        </div>
+  </body>
 </html>
