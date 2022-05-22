@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
 
 
-    var logInForm = document.querySelector('#logInForm');
+    var logInForm = document.querySelector('#loginForm');
     var signUpButton = document.querySelector('#signUpButton');
 
 
@@ -16,18 +16,7 @@ window.addEventListener("load", () => {
 
         signIn(emailInput, passwordInput);
 
-
-
     })
-
-
-    signUpButton.addEventListener("click", function(evt) { //just a simple redirect to signup page
-
-        window.location.href = "signup.html";
-
-    })
-
-
 
     function signIn(email, password) {
 
