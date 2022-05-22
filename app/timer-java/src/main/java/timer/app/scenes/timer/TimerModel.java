@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import timer.api.API;
 import timer.app.ClockState;
 import timer.app.Launcher;
-import timer.app.scenes.Mode;
+import timer.app.Mode;
 import timer.fx.mvc.ScreenModel;
 
 /**

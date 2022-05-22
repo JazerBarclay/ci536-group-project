@@ -2,7 +2,6 @@ package timer.app;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import timer.app.scenes.Mode;
 import timer.app.scenes.login.LoginScreen;
 
 public class Launcher extends Application {
@@ -39,5 +38,6 @@ public class Launcher extends Application {
         	break;
 	}
     }
+    
 
 }
