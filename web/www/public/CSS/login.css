@@ -88,3 +88,74 @@ a {
 span {
   color: #aaa;
 }
+
+header {
+    position: fixed;
+    top:0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+  }
+  
+  #logo { font-size: 1.8rem; }
+  
+  nav {
+    padding: 30px;
+    width: calc(100% - 60px);
+    max-width: calc(1200px - 60px);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: auto;
+  }
+  
+  ul li {
+    display: grid;
+    place-items: center;
+    float: left;
+    margin: 0 .8rem;
+    padding: 10px 0;
+    font-size: 1.1rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+  }
+  
+  nav, nav a, nav a:link, nav a:visited {
+    color: #f2f2f2;
+  }
+  nav a:hover {
+    color: #2086f2;
+    transition: .2s;
+  }
+  
+  nav button {
+    margin: -0.4rem 0 -0.4rem -0.4rem;
+    padding: .4rem .6rem;
+    border: none;
+    color: #f2f2f2;
+    background-color: #2086f2;
+    border-radius: .3rem;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: .9rem;
+    letter-spacing: .05rem;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+    font-size: 1.1rem;
+    transition: .2s;
+  }
+  
+  nav button:hover {
+    background-color: #57b9e0;
+    color: #2a2a2a;
+    box-shadow: none;
+    transition: .2s;
+  }
