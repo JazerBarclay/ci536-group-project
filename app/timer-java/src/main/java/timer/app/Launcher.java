@@ -1,29 +1,43 @@
 package timer.app;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import timer.app.scenes.login.LoginScreen;
 
 public class Launcher extends Application {
 
-  Stage window;
-  Scene scene1, scene2;
+    public static Mode state;
 
-  @Override
-  public void start(Stage stage) throws Exception {
+    @Override
+    public void start(Stage stage) throws Exception {
+	// Launch the login screen with the given starting stage
+	new LoginScreen(stage);
+    }
 
-    window = stage;
+    public static void main(String[] args) {
+	if (args.length > 0) launchMode(args[0]);
+	else state = Mode.LOCAL;
+	launch(args);
+    }
+
+    private static void launchMode(String arg) {
+	switch (arg.toLowerCase().trim()) {
+    	    case "local":
+        	state = Mode.LOCAL;
+        	break;
+            case "development":
+            case "dev":
+        	state = Mode.DEV;
+        	break;
+            case "production":
+            case "prod":
+        	state = Mode.PRODUCTION;
+        	break;
+            default:
+        	state = Mode.LOCAL;
+        	break;
+	}
+    }
     
-    Model model = new Model();
-    Controller controller = new Controller(model);
-    View view = new View(window, model, controller);
-
-    model.setChangeListener(() -> view.update());
-    
-    stage.show();
-  }
-  public static void main(String[] args) {
-    launch(args);
-  }
 
 }

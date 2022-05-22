@@ -23,6 +23,7 @@ app.use(cors({
 const registerRouter = require('./routes/register/registerRouter')
 const loginRouter = require('./routes/login/loginRouter')
 const userRouter = require('./routes/user/userRouter')
+const unitRouter = require('./routes/unit/unitRouter')
 
 // Set the port to either the value from the .env file
 // or default it to 4000
@@ -39,6 +40,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/register', registerRouter)
 app.use('/login', loginRouter)
 app.use('/user', userRouter)
+app.use('/unit', unitRouter)
+
+// TODO: Add profile route
+// app.use('/profile', profileRouter)
 
 
 // On requests to the root location, respond with 200 OK
@@ -47,46 +52,6 @@ app.get('/', (req, res) => {
     res.status(200).json({
         message: "API Server for Quark App"
     })
-})
-
-// Return the profile matching the user token
-app.get('/profile', (req, res) => {
-
-    // Search db matching user id and token
-    // db.query('select', (error, result, fields) => { ... })
-
-    // Example response
-    res.status(200).json({
-        username: "username",
-        email: "email@address.xyz",
-        units: [{
-                start: "10:00:00",
-                end: "10:25:00"
-            },
-            {
-                start: "10:30:00",
-                end: "10:55:00"
-            }
-        ]
-    })
-
-    // Example on-fail response
-    // res.status(406).json ({
-    //    status: 1, message: "Error, could not access the user profile"
-    // })
-
-})
-
-app.get('/scores', (req, res) => {
-    // On success
-    res.status(200).json({
-            status: 1,
-            message: "Scores retrieved successfully"
-        })
-        // On Fail
-        // res.status(406).json ({
-        //     status: 1, message: "Error! Server error!"
-        // })
 })
 
 // Start the app listening and output to the console where it is running
