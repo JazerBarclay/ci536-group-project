@@ -21,6 +21,16 @@ module.exports = {
             }
         )
     },
+
+    selectUnitByUsername: (username, callBack) => {
+        db.query(`SELECT * FROM pomodoros WHERE username = $1`,
+        [username],
+            (error, results, fields) => {
+                if (error) return callBack(error)
+                return callBack(null, results)
+            }
+        )
+    },
     
     insertUnit: (userid, label, start, end, callBack) => {
         db.query(

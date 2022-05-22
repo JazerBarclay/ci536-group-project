@@ -4,7 +4,7 @@
  */
 
 // Import modules from service here
-const { selectUnit, insertUnit, selectAllUnits } = require('./unitService')
+const { selectUnit, insertUnit, selectUnitByUsername } = require('./unitService')
 
 module.exports = {
     
@@ -24,5 +24,12 @@ module.exports = {
             return res.status(201).json()
         })
     },
+
+    getUnitByUsername: (req, res) => {
+        selectUnitByUsername(req.body.auth.id, (err, response) =>{
+            if (err) return res.status(500).json({ err })
+            return res.status(200).json(response.rows)
+        })
+    }
 
 }
