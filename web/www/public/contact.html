@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="normalise.css">
     <link rel="stylesheet" href="main.css">
     <script src="main.js" defer></script>
-    <title>Login</title>
+    <title>Contact</title>
 </head>
 <body>
     <div class="wrapper">
@@ -15,7 +15,7 @@
             <div class="logo">
                 <a href="home.html">QUARTZ</a>
             </div>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="download.html">Download</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
@@ -30,6 +30,17 @@
                 
             </ul>
         </nav>
+
+        <form>
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname"><br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"><br>
+            <label for="message">Message</label>
+            <input type="text" id="message" name="message"><br>
+            <label for="submit">Submit</label>
+            <input type="button" id="submit" value="submit">
+        </form>
     </div>
 </body>
 </html>
