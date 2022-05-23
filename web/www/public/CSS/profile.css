@@ -1,0 +1,18 @@
+main section {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#userProfile img {
+    max-width: 200px;
+}
+
+#graphArea{
+  
+    padding:0;
+    margin:auto;
+    width: 50%;
+    height: auto;
+
+  }

@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="CSS/core.css">
     <link rel="stylesheet" href="CSS/nav.css">
     <link rel="stylesheet" href="CSS/profile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="JS/profile.js" defer></script>
-    <title>Homepage | Quark</title>
+    <title>Profile | Quark</title>
 </head>
 
 <body>
@@ -32,9 +33,18 @@
     </header>
 
     <main>
-        <div id="profile">
-            <h2 id="usernameLabel"></h2>
-        </div>
+        <section>
+            <div id="userProfile" class="content">
+                <img src="img/userPlaceholderImage.png" />
+                <h2 id="userNameLabel">User</h2>
+                <h3 id="userEmailLabel">Email</h3>
+            </div>
+        </section>
+        <section>
+            <div id="graphArea">
+                <canvas id="graph"></canvas>
+            </div>
+        </section>
     </main>
     
     <footer>
