@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/normalise.css">
+    <link rel="stylesheet" href="CSS/core.css">
+    <link rel="stylesheet" href="CSS/nav.css">
     <link rel="stylesheet" href="CSS/index.css">
     <script src="index.js" defer></script>
     <title>Homepage | Quark</title>
@@ -13,59 +15,58 @@
 
 <body>
 
-    <header>
+    <header class="container">
         <nav>
-            <a href="#" id="logo">Quark</a>
-            <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><button>Download</button></li>
+            <a id="logo" href="#">Quark</a>
+            <!-- Checkbox and 'Span Hamburger' Icon -->
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <!-- Unordered List for Menu Items -->
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a class="cta">Download</a></li>
             </ul>
         </nav>
     </header>
 
-    <div style="height: 80px;"></div>
-
-    <section id="hero">
-        <div class="container">
-            <img src="https://jb2139.brighton.domains/res/desktop-app.png" />
-            <h1>A minimal cross-platfrom pomodoro timer</h1>
-            <p>Quark is a time tracking application based on the pomodoro technique... </p>
-        </div>
-    </section>
-
-    <section>
-        <div class="container split">
-            <div>
-                <h2>Why the Pomodoro Technique?</h2>
-                <p>Our ability to focus and absorb new information on average is only 25 minutes long...</p>
+    <main>
+        <section id="hero">
+            <div class="container">
+                <img src="https://jb2139.brighton.domains/res/desktop-app.png" />
+                <h1>A minimal cross-platfrom pomodoro timer</h1>
+                <p>Quark is a time tracking application based on the pomodoro technique... </p>
             </div>
-            <img src="https://jb2139.brighton.domains/res/desktop-app.png" />
-        </div>
-    </section>
+        </section>
+        <section>
+            <div class="container split">
+                <img style="max-height: 200px;" src="https://dev.quark.rocks/img/timer-25-5.png" />
+                <div>
+                    <h2>Why the Pomodoro Technique?</h2>
+                    <p>Our ability to focus and absorb new information on average is only 25 minutes long...</p>
+                    <p>Stuff and things...</p>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <div class="container split">
-            <img src="https://jb2139.brighton.domains/res/desktop-app.png" />
-            <div>
-                <h2>Why the Pomodoro Technique?</h2>
-                <p>Our ability to focus and absorb new information on average is only 25 minutes long...</p>
+        <section id="download">
+            <div class="container">
+                <div>
+                    <h2>How do I get started?</h2>
+                    <p>Download our free app and signup on our website</p>
+                </div>
+                <div id="download-buttons" class="split">
+                    <button>Download App</button>
+                    <button>Signup and Login</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="download">
-        <div class="container">
-            <div>
-                <h2>How do I get started?</h2>
-                <p>Download our free app and signup on our website</p>
-            </div>
-            <div id="download-buttons" class="split">
-                <button>Download App</button>
-                <button>Signup and Login</button>
-            </div>
-        </div>
-    </section>
+    <footer>
+        <div class="content">Quark &copy; 2022</div>
+    </footer>
 
 </body>
 
