@@ -9,7 +9,7 @@ const db = require('../../database/dbConnection')
 // Database CREATE, READ, UPDATE, DELETE (CRUD) operations
 module.exports = {
 
-    selectUnit: (userid, callBack) => {
+    selectAllUnits: (userid, callBack) => {
         db.query(
             `SELECT pomodoro_text, pomodoro_start, pomodoro_end 
             FROM pomodoros 
@@ -22,7 +22,24 @@ module.exports = {
         )
     },
 
-    selectUnitByUsername: (username, callBack) => {
+    selectAllUnitsByUsername: (username, callBack) => {
+        db.query(`
+        SELECT pomodoro_text, pomodoro_start, pomodoro_end 
+        FROM pomodoros 
+        WHERE pomodoro_user_id = (
+            SELECT user_id FROM users WHERE user_username = $1 LIMIT 1
+        )`,
+        [username],
+            (error, results, fields) => {
+                if (error) return callBack(error)
+                return callBack(null, results)
+            }
+        )
+    },
+
+
+    //TODO: Select only past 2 weeks.
+    selectRelevantUnitsByID: (username, callBack) => {
         db.query(`
         SELECT pomodoro_text, pomodoro_start, pomodoro_end 
         FROM pomodoros 

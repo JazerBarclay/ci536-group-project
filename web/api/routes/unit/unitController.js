@@ -4,12 +4,12 @@
  */
 
 // Import modules from service here
-const { selectUnit, insertUnit, selectUnitByUsername } = require('./unitService')
+const { selectAllUnits, insertUnit, selectAllUnitsByUsername, selectRelevantUnitsByID } = require('./unitService')
 
 module.exports = {
     
-    getUnit: (req, res) => {
-        selectUnit(req.body.auth.id, (err, response) => {
+    getAllUnits: (req, res) => {
+        selectAllUnits(req.body.auth.id, (err, response) => {
             // If database error, return 500 internal error
             if (err) return res.status(500).json({ err })
             
@@ -25,8 +25,15 @@ module.exports = {
         })
     },
 
-    getUnitByUsername: (req, res) => {
-        selectUnitByUsername(req.params.username, (err, response) =>{
+    getAllUnitsByUsername: (req, res) => {
+        selectAllUnitsByUsername(req.params.username, (err, response) =>{
+            if (err) return res.status(500).json({ err })
+            return res.status(200).json(response.rows)
+        })
+    },
+
+    getRelevantUnitsByID: (req, res) => {
+        selectRelevantUnitsByID(req.body.auth.id, (err, response) =>{
             if (err) return res.status(500).json({ err })
             return res.status(200).json(response.rows)
         })
