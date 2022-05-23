@@ -6,11 +6,12 @@ window.addEventListener('load', () => {
     }
 
     console.log("This is a valid session using token: " + localStorage.token); //temporary output used for development
+    var userAuth = localStorage.token;
 
 
     //get user details and units here
 
-    getUserDetails(localStorage.token);
+    getUserUnits(userAuth);
 
 
 
