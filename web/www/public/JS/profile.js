@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
 
     //get user details and units here
 
-    getUserDetails(userAuth);
+    getUserDetails(userAuth,usernameDisplay,emailDisplay);
     getUserUnits(userAuth);
 
     
@@ -64,7 +64,7 @@ window.addEventListener('load', () => {
 })
 
 
-function getUserDetails(token){
+function setUserDetails(token,usernameDisplay,emailDisplay){
 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
