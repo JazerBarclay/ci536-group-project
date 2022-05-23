@@ -65,6 +65,26 @@ INSERT INTO pomodoros (
     'test',
     "2022-05-023 08:46:32.252000",
     "2022-05-023 08:46:32.252000"
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-001 08:46:32.252000",
+    "2022-05-001 08:46:32.252000"
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-002 08:46:32.252000",
+    "2022-05-002 08:46:32.252000"
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-003 08:46:32.252000",
+    "2022-05-003 08:46:32.252000"
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-004 08:46:32.252000",
+    "2022-05-004 08:46:32.252000"
 )
 
 
