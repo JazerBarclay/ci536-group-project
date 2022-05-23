@@ -1,3 +1,5 @@
+const { getUser } = require("../../../api/routes/user/userController");
+
 window.addEventListener('load', () => {
 
     if (localStorage.token == undefined) { //making sure that the user has generated a login token before visiting profile
@@ -11,6 +13,7 @@ window.addEventListener('load', () => {
 
     //get user details and units here
 
+    getUserDetails(userAuth);
     getUserUnits(userAuth);
 
 
@@ -58,28 +61,19 @@ window.addEventListener('load', () => {
 
 function getUserDetails(token){
 
-    var url = "https://dev.api.quark.rocks/user";
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
 
-        var raw = JSON.stringify({
-            "username": token,
-        });
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        fetch(url, requestOptions)
-            .then(response => response.text())
-            .then(result => {
-                console.log(result);
-            })
-            .catch(error => console.log('error', error));
+    fetch("https://dev.api.quark.rocks/profile", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 
 }
 
