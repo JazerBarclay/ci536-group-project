@@ -78,8 +78,8 @@ function getUserDetails(token){
     .then(response => response.json())
     .then(result => {
 
-        var user_email = result.rows[0].user_email
-        var user_username = result.rows[0].user_username
+        var user_email = result.rows[0].user_email;
+        var user_username = result.rows[0].user_username;
         usernameDisplay.textContent = user_username;
         emailDisplay.textContent = user_email;
 
@@ -101,7 +101,7 @@ function getUserUnits(token) {
     };
     
     fetch("https://dev.api.quark.rocks/unit", requestOptions)
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
 
