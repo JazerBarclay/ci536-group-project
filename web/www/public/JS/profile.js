@@ -75,10 +75,11 @@ function getUserDetails(token){
     };
 
     fetch("https://dev.api.quark.rocks/profile", requestOptions)
-    .then(response => {
+    .then(response => response.json())
+    .then(result => {
 
-        var user_email = response.rows[0].user_email
-        var user_username = response.rows[0].user_username
+        var user_email = result.rows[0].user_email
+        var user_username = result.rows[0].user_username
         usernameDisplay.textContent = user_username;
         emailDisplay.textContent = user_email;
 
