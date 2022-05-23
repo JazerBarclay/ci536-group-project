@@ -8,15 +8,16 @@ window.addEventListener('load', () => {
     console.log("This is a valid session using token: " + localStorage.token); //temporary output used for development
     var userAuth = localStorage.token;
 
+    //set username and email display 
+    var usernameDisplay = document.querySelector('#userNameLabel');
+    var emailDisplay = document.querySelector('#userEmailLabel');
 
     //get user details and units here
 
     getUserDetails(userAuth);
     getUserUnits(userAuth);
 
-    //set username and email display 
-    var usernameDisplay = document.querySelector('#userNameLabel');
-    var emailDisplay = document.querySelector('#userEmailLabel');
+    
 
 
 
