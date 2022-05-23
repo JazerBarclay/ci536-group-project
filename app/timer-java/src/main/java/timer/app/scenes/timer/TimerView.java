@@ -67,6 +67,7 @@ public class TimerView extends ScreenView {
      */
     public TimerView(Stage window, ScreenModel model, ScreenController controller) {
 	super(window, model, controller);
+	window.setTitle("Quark Timer");
 	window.setAlwaysOnTop(true);
 	window.initStyle(StageStyle.UNDECORATED);
     }

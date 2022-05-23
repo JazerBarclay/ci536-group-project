@@ -30,7 +30,7 @@ public class SignupView extends ScreenView {
      */
     public SignupView(Stage window, ScreenModel model, ScreenController controller) {
 	super(window, model, controller);
-	window.setTitle("Signup");
+	window.setTitle("Quark Signup");
     }
 
     /**

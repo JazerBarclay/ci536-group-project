@@ -37,7 +37,7 @@ public class LoginView extends ScreenView {
      */
     public LoginView(Stage window, ScreenModel model, ScreenController controller) {
 	super(window, model, controller);
-	window.setTitle("Login");
+	window.setTitle("Quark Login");
 	window.setResizable(false);
     }
 
