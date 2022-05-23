@@ -7,6 +7,15 @@ window.addEventListener('load', () => {
 
     console.log("This is a valid session using token: " + localStorage.token); //temporary output used for development
 
+
+    //get user details and units here
+
+    getUserDetails(localStorage.token);
+
+
+
+
+
     var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
 
     const xValues = ["Mon", 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat', 'Sun'];
@@ -38,10 +47,15 @@ window.addEventListener('load', () => {
         }
     });
 
+
+
+
+
+
 })
 
 
-function getUserDetails(){
+function getUserDetails(token){
 
     var url = "https://dev.api.quark.rocks/user";
 
@@ -49,7 +63,7 @@ function getUserDetails(){
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-            "username": username,
+            "username": token,
         });
 
         var requestOptions = {
@@ -68,34 +82,24 @@ function getUserDetails(){
 
 }
 
-function getUserUnits() {
+function getUserUnits(token) {
     
 
-        var url = "https://dev.api.quark.rocks/unit";
-
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-            "username": username,
-        });
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        fetch(url, requestOptions)
-            .then(response => response.text())
-            .then(result => {
-
-                console.log(result);
-
-            })
-            .catch(error => console.log('error', error));
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+    
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    
+    fetch("dev.api.quark.rocks/unit", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
 
 
 
 }
+
