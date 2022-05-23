@@ -5,7 +5,7 @@
 
 // Import modules
 
-const { selectUserByID } = require('../user/userService')
+const { selectUserByID, selectUserByUsername } = require('../user/userService')
 
 
 module.exports = {
@@ -16,6 +16,15 @@ module.exports = {
             if (err) return res.status(500).json({ err })
             return res.status(200).json(response)
         })
+    },
+
+    getProfileByUsername: (req, res, next) => {
+        selectUserByUsername(req, (err, response) => {
+            if (err) return res.status(500).json({ err })
+            return res.status(200).json(response)
+        })
     }
+
+    
     
 }
