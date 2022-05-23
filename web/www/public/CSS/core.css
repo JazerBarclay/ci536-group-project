@@ -23,7 +23,7 @@
     --primary-color: #2086f2;
     --secondary-color: #58a0cc;
 
-    --max-width: 800px;
+    --max-width: 100%;
     --global-padding: 16px;
     --gutter: 16px;
 }
