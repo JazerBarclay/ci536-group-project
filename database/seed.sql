@@ -34,8 +34,7 @@ INSERT INTO pomodoros (
     'test',
     "2022-05-013 08:46:32.252000",
     "2022-05-013 08:46:32.252000"
-),
-(
+),(
     (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
     'test',
     "2022-05-014 08:46:32.252000",
