@@ -15,7 +15,7 @@ const router = require('express').Router()
 router.get('/', validateToken, getAllUnits)
 
 // Read relevant from /unit
-//router.get('/', validateToken, getRelevantUnitsByID)
+router.get('/', validateToken, getRelevantUnitsByID)
 
 // Read specific user from /unit
 router.get('/:username' ,validateToken, getAllUnitsByUsername)
