@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
 
     //get user details and units here
 
-    getUserDetails(userAuth,usernameDisplay,emailDisplay);
+    setUserDetails(userAuth,usernameDisplay,emailDisplay);
     getUserUnits(userAuth);
 
     
