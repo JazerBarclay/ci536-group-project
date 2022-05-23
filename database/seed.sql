@@ -85,16 +85,5 @@ INSERT INTO pomodoros (
     'test',
     "2022-05-004 08:46:32.252000",
     "2022-05-004 08:46:32.252000"
-)
-
-
-
-
-
-
-pomodoro_id SERIAL PRIMARY KEY,
-    pomodoro_user_id INTEGER NOT NULL REFERENCES users (user_id),
-    pomodoro_text VARCHAR(60) NOT NULL DEFAULT '',
-    pomodoro_start TIMESTAMP NOT NULL,
-    pomodoro_end TIMESTAMP NOT NULL
 );
+
