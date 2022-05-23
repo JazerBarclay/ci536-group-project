@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
 
     if (localStorage.token == undefined) { //making sure that the user has generated a login token before visiting profile
-        console.log("invalid token!")
+        console.log("No token!")
         window.location.href = "login.html"
     }
 
@@ -22,13 +22,13 @@ window.addEventListener('load', () => {
             datasets: [{
                     label: 'Completed Blocks This Week',
                     data: thisWeekData,
-                    borderColor: "black",
+                    borderColor: "white",
                     fill: true
                 }, {
                     label: 'Completed Blocks Last Week',
                     data: lastWeekData,
-                    borderColor: "light grey",
-                    fill: true
+                    borderColor: "#777",
+                    fill: false
                 }
             ]
 
