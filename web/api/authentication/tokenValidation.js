@@ -5,6 +5,8 @@ module.exports = {
         // Get token from header
         let token = req.headers.authorization
         
+        if (!token) return res.status(401).json({ error: "Missing Token" })
+
         // Remove 'Bearer ' string before key
         token = token.slice(7)
 
