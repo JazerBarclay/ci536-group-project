@@ -1,5 +1,3 @@
-const { getUser } = require("../../../api/routes/user/userController");
-
 window.addEventListener('load', () => {
 
     if (localStorage.token == undefined) { //making sure that the user has generated a login token before visiting profile
