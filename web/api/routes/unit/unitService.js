@@ -23,7 +23,12 @@ module.exports = {
     },
 
     selectUnitByUsername: (username, callBack) => {
-        db.query(`SELECT * FROM pomodoros WHERE username = $1`,
+        db.query(`
+        SELECT pomodoro_text, pomodoro_start, pomodoro_end 
+        FROM pomodoros 
+        WHERE pomodoro_user_id = (
+            SELECT user_id FROM users WHERE user_username = $1 LIMIT 1
+        )`,
         [username],
             (error, results, fields) => {
                 if (error) return callBack(error)
