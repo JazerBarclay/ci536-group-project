@@ -17,8 +17,7 @@ window.addEventListener('load', () => {
     //set username and email display 
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
-    usernameDisplay.textContent = user_username;
-    emailDisplay.textContent = user_email;
+
 
 
 
@@ -80,6 +79,8 @@ function getUserDetails(token){
 
         var user_email = response.rows[0].user_email
         var user_username = response.rows[0].user_username
+        usernameDisplay.textContent = user_username;
+        emailDisplay.textContent = user_email;
 
     })
     .catch(error => console.log('error', error));
