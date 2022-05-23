@@ -6,29 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/normalise.css">
-    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="CSS/core.css">
+    <link rel="stylesheet" href="CSS/nav.css">
+    <link rel="stylesheet" href="CSS/profile.css">
     <script src="JS/profile.js" defer></script>
     <title>Homepage | Quark</title>
 </head>
 
 <body>
 
-    <header>
+    <header class="container">
         <nav>
-            <a href="index.html" id="logo">Quark</a>
-            <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><button>Download</button></li>
+            <a id="logo" href="index.html">Quark</a>
+            <!-- Checkbox and 'Span Hamburger' Icon -->
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <!-- Unordered List for Menu Items -->
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a class="cta">Download</a></li>
             </ul>
         </nav>
     </header>
 
-    <div style="height: 80px;"></div>
-
-    <section id="userProfile">
-        <div>Username</div>
-    </section>
+    <main>
+        <div id="profile">
+            <h2 id="usernameLabel"></h2>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="content">Quark &copy; 2022</div>
+    </footer>
 
 </body>
 
