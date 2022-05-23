@@ -45,7 +45,9 @@ module.exports = {
         FROM pomodoros 
         WHERE pomodoro_user_id = (
             SELECT user_id FROM users WHERE user_username = $1 LIMIT 1
-        )`,
+        )
+        AND pomodoro_start BETWEEN date_sub(now(),INTERVAL 2 WEEK) and now()
+        ORDER BY pomodoro_start DESC`,
         [username],
             (error, results, fields) => {
                 if (error) return callBack(error)
