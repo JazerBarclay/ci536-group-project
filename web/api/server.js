@@ -24,6 +24,7 @@ const registerRouter = require('./routes/register/registerRouter')
 const loginRouter = require('./routes/login/loginRouter')
 const userRouter = require('./routes/user/userRouter')
 const unitRouter = require('./routes/unit/unitRouter')
+const profileRouter = require('./routes/profile/profileRouter')
 
 // Set the port to either the value from the .env file
 // or default it to 4000
@@ -41,6 +42,7 @@ app.use('/register', registerRouter)
 app.use('/login', loginRouter)
 app.use('/user', userRouter)
 app.use('/unit', unitRouter)
+app.use('/profile', profileRouter)
 
 // TODO: Add profile route
 // app.use('/profile', profileRouter)
