@@ -1,0 +1,155 @@
+/* ============================== */
+/* ----- Navigation section ----- */
+/* ============================== */
+
+#logo {
+    position: relative;
+    float: left;
+    font-size: 20px;
+    padding: 20px;
+    margin-left: 0;
+    margin-right: auto;
+    text-decoration: none;
+    color: var(--white);
+}
+
+nav {
+    /* Fancy Drop Shadow :O */
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}
+
+/* Navigation background (using the unordered list encapsulation) */
+nav ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Set all item links to display block and set padding */
+nav li a {
+    display: block;
+    padding: 20px 20px;
+    text-decoration: none;
+    text-align: center;
+    color: #d2d2d2;
+    transition: .2s;
+}
+
+nav li a.cta {
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--primary-color);
+}
+
+nav li a:hover.cta,
+nav .menu-btn:hover.cta {
+    color: var(--black);
+    background-color: var(--secondary-color);
+    transition: .2s;
+}
+
+/* On link hover change colour */
+nav li a:hover,
+nav .menu-btn:hover {
+    color: var(--primary-color);
+    transition: .2s;
+}
+
+nav .logo {
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+/* menu */
+nav .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+nav .menu-icon {
+    cursor: pointer;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+}
+
+/* Create center hamburger line */
+nav .menu-icon .navicon {
+    background-color: var(--white);
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: all .2s ease-out;
+    width: 18px;
+}
+
+/* Create top and bottom hamburger lines */
+nav .menu-icon .navicon:before,
+nav .menu-icon .navicon:after {
+    background-color: var(--white);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+nav .menu-icon:hover .navicon,
+nav .menu-icon:hover .navicon:after,
+nav .menu-icon:hover .navicon:before {
+    background-color: var(--secondary-color);
+}
+
+/* Set bottom hamburger line */
+nav .menu-icon .navicon:before {
+    top: 5px;
+}
+
+/* Set top hamburger line */
+nav .menu-icon .navicon:after {
+    top: -5px;
+}
+
+/* Hide Checkbox */
+nav .menu-btn {
+    display: none;
+}
+
+/* Give height to menu so it rolls out on click */
+nav .menu-btn:checked~.menu {
+    max-height: 250px;
+}
+
+/* Hide Middle Hamburger Line */
+nav .menu-btn:checked~.menu-icon .navicon {
+    background: transparent;
+}
+
+/* Rotate Bottom Hamburger Line */
+nav .menu-btn:checked~.menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+/* Rotate Top Hamburger Line */
+nav .menu-btn:checked~.menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+/* Reset Position to Keep Centered */
+nav .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+nav .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
