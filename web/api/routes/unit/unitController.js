@@ -26,7 +26,7 @@ module.exports = {
     },
 
     getUnitByUsername: (req, res) => {
-        selectUnitByUsername(req.body.auth.id, (err, response) =>{
+        selectUnitByUsername(req.params.username, (err, response) =>{
             if (err) return res.status(500).json({ err })
             return res.status(200).json(response.rows)
         })
