@@ -166,7 +166,7 @@ function setUserUnitsAllTime(token,totalUnits,totalUnitsDisplay) {
             totalUnits.push(result.data[i])
         }
 
-        totalUnitsDisplay.textContent = totalUnits.length
+        totalUnitsDisplay.textContent = totalUnits.length.toString();
         
 
     })
