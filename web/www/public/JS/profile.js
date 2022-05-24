@@ -12,6 +12,10 @@ window.addEventListener('load', () => {
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
 
+    //The following data will be eventually passed to the graph from the database
+    var thisWeekData = [];
+    var lastWeekData = [];
+
     //get user details and units here
 
     setUserDetails(userAuth,usernameDisplay,emailDisplay);
@@ -29,9 +33,7 @@ window.addEventListener('load', () => {
 
     const xValues = ["Mon", 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat', 'Sun'];
 
-    //The following data will be eventually passed to the graph from the database
-    var thisWeekData = [1, 0, 2, 0, 0, 3, 4];
-    var lastWeekData = [4, 6, 3, 2, 1, 4, 3];
+    
 
     new Chart("graph", { //generating the chart using user input (thisweekdata and lastweekdata)
         type: "line",
@@ -55,11 +57,6 @@ window.addEventListener('load', () => {
             legend: { display: true }
         }
     });
-
-
-
-
-
 
 })
 
@@ -103,8 +100,12 @@ function getUserUnits(token) {
     
     fetch("https://dev.api.quark.rocks/unit", requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+      .then(result => {
+
+        thisWeekData = result[0]
+
+    })
+    .catch(error => console.log('error', error));
 
 
 

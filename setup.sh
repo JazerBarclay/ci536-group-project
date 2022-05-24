@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/bash
 # Copy example to local file in api
 # then install required files
 pushd web/api
