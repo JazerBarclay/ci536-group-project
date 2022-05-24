@@ -16,14 +16,14 @@ window.addEventListener('load', () => {
     //The following data will be eventually passed to the graph from the database
     var thisWeekData = [];
     var lastWeekData = [];
-    var totalUnits = [];
+    var totalUnitsCount = 0;
 
     //get user details and units here
 
     setUserDetails(userAuth,usernameDisplay,emailDisplay);
     setUserUnitsThisWeek(userAuth,thisWeekData);
     setUserUnitsLastWeek(userAuth,lastWeekData);
-    setUserUnitsAllTime(userAuth,totalUnits,totalUnitsDisplay);
+    setUserUnitsAllTime(userAuth,totalUnitsCount,totalUnitsDisplay);
 
     
 
@@ -146,7 +146,7 @@ function setUserUnitsLastWeek(token,lastWeekData) {
 
 }
 
-function setUserUnitsAllTime(token,totalUnits,totalUnitsDisplay) {
+function setUserUnitsAllTime(token,totalUnitsCount,totalUnitsDisplay) {
     
 
     var myHeaders = new Headers();
@@ -162,11 +162,11 @@ function setUserUnitsAllTime(token,totalUnits,totalUnitsDisplay) {
       .then(response => response.json())
       .then(result => {
 
-        for(var i=0;i<result.data.length;i++){
-            totalUnits.push(result.data[i])
+        for(var i=0;i<result.length;i++){
+            totalUnitCount++
         }
 
-        totalUnitsDisplay.textContent = totalUnits.length.toString();
+        totalUnitsDisplay.textContent = totalUnitsCount;
         
 
     })
