@@ -15,9 +15,10 @@ public class Launcher extends Application {
     }
 
     public static void main(String[] args) {
-	if (args.length > 0) launchMode(args[0]);
-	else state = Mode.LOCAL;
-	launch(args);
+		System.out.println(args[0]);
+		if (args.length > 0) launchMode(args[0]);
+		else state = Mode.LOCAL;
+		launch(args);
     }
 
     private static void launchMode(String arg) {

@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -22,6 +23,7 @@ import timer.fx.mvc.ScreenView;
 import timer.fx.widgets.CloseButton;
 import timer.fx.widgets.PlayButton;
 import timer.fx.widgets.StopButton;
+import timer.fx.widgets.PomodoroUnit;
 
 /**
  * User interface design of timer screen
@@ -57,6 +59,7 @@ public class TimerView extends ScreenView {
     private PlayButton btnPlay;
     private StopButton btnStop;
     private CloseButton btnClose;
+	private PomodoroUnit pomUnit;
 
     /**
      * Creates a new timer interface with the given window, model and controller
@@ -91,6 +94,19 @@ public class TimerView extends ScreenView {
 	gc.setFill(Color.color(.8, .4, .4));
 	gc.fillRect(0, 0, windowWidth, windowHeight);
 
+	// Create the Pomodoro Units
+	pomUnit = new PomodoroUnit(20,20,20,20);
+	pomUnit.setLayoutY(windowHeight/2-38);
+
+	// Create elippse
+	Ellipse ellipse = new Ellipse();
+	ellipse.setFill(Color.color(0.168, 0.188, 0.231));
+	ellipse.setCenterX(windowWidth/2);
+	ellipse.setCenterY(windowHeight/4.5);
+	ellipse.setRadiusX(5.0f);
+	ellipse.setRadiusY(5.0f);
+
+
 	// Create timer label where main timer can be viewed
 	timerLabel = new Label(formatTime(model.minutes, model.seconds));
 	timerLabel.setLayoutY(windowHeight/2-38);
@@ -123,6 +139,8 @@ public class TimerView extends ScreenView {
 	layout.getChildren().add(timerLabel);
 	layout.getChildren().add(btnClose);
 	layout.getChildren().add(btnPlay);
+	layout.getChildren().add(pomUnit);
+	layout.getChildren().add(ellipse);
 
 	// Set time label as draggable element
 	setDraggableElement(timerLabel);
