@@ -5,7 +5,7 @@
 
 // Import modules from controller here
 const { validateToken } = require('../../authentication/tokenValidation')
-const { addUnit, getAllUnits, getAllUnitsByUsername, selectThisWeekByID, selectLastWeekByID } = require('./unitController')
+const { addUnit, getAllUnits, getAllUnitsByUsername, selectThisWeek, selectLastWeek } = require('./unitController')
 
 // Add router from express to manage routing
 const router = require('express').Router()
@@ -16,14 +16,12 @@ router.get('/', validateToken, getAllUnits)
 // Insert to /unit
 router.post('/', validateToken, addUnit)
 
+router.get('/thisweek', validateToken, selectThisWeek)
+
+router.get('/lastweek', validateToken, selectLastWeek)
+
 // Read specific user from /unit
 router.get('/:username' ,validateToken, getAllUnitsByUsername)
-
-// Read relevant from /unit
-router.get('/thisweek', validateToken, selectThisWeekByID)
-
-// Read relevant from /unit
-router.get('/lastweek', validateToken, selectLastWeekByID)
 
 // Export this router module
 module.exports = router;
