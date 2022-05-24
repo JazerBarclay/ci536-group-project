@@ -131,7 +131,7 @@ module.exports = {
                 BETWEEN date_trunc('day', now() - INTERVAL '8 DAY')::timestamp 
                 AND (date_trunc('day', now() - INTERVAL '7 DAY') - INTERVAL '1 SECOND')::timestamp
                 then 1 end
-            ) as d2,
+            ) as d1,
             COUNT(
                 case when pomodoro_start 
                 BETWEEN date_trunc('day', now() - INTERVAL '7 DAY')::timestamp 
