@@ -4,7 +4,6 @@
  */
 
 // Import modules from service here
-const { json } = require('express')
 const { selectAllUnits, insertUnit, selectAllUnitsByUsername, selectThisWeekByID, selectLastWeekByID } = require('./unitService')
 
 module.exports = {
