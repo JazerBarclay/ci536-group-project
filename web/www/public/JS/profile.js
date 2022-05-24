@@ -12,44 +12,23 @@ window.addEventListener('load', () => {
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
 
-    //The following data will be eventually passed to the graph from the database
-    var thisWeekData = [];
-    var lastWeekData = [];
-    var totalUnits = [];
 
-    //get user details and units here
-
-    setUserDetails(userAuth,usernameDisplay,emailDisplay);
-    setUserUnitsThisWeek(userAuth,thisWeekData);
-    setUserUnitsLastWeek(userAuth,lastWeekData);
-    setUserUnitsAllTime(userAuth,totalUnits)
-
-    
-
-
-
-
-
-
-
-    var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
+    // var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
 
     const xValues = ["Mon", 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat', 'Sun'];
 
-    
-
-    new Chart("graph", { //generating the chart using user input (thisweekdata and lastweekdata)
+    chart = new Chart("graph", { //generating the chart using user input (thisweekdata and lastweekdata)
         type: "line",
         data: {
             labels: xValues,
             datasets: [{
                     label: 'Completed Blocks This Week',
-                    data: thisWeekData,
+                    data: [],
                     borderColor: "white",
                     fill: true
                 }, {
                     label: 'Completed Blocks Last Week',
-                    data: lastWeekData,
+                    data: [],
                     borderColor: "#777",
                     fill: false
                 }
@@ -61,10 +40,13 @@ window.addEventListener('load', () => {
         }
     });
 
+    //get user details and units here
 
-
-
-
+    setUserDetails(userAuth,usernameDisplay,emailDisplay);
+    setUserUnitsThisWeek(userAuth);
+    setUserUnitsLastWeek(userAuth);
+    setUserUnitsAllTime(userAuth);
+    
 
 })
 
@@ -75,9 +57,9 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
     myHeaders.append("Authorization", "Bearer " + token);
 
     var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
     };
 
     fetch("https://dev.api.quark.rocks/profile", requestOptions)
@@ -94,9 +76,8 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
 
 }
 
-function setUserUnitsThisWeek(token,thisWeekData) {
+function setUserUnitsThisWeek(token) {
     
-
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -109,21 +90,15 @@ function setUserUnitsThisWeek(token,thisWeekData) {
     fetch("https://dev.api.quark.rocks/unit/thisweek", requestOptions)
       .then(response => response.json())
       .then(result => {
-
-        for(var i=0;i<result.data.length;i++){
-            thisWeekData.push(result.data[i])
-        }
-        
-
+        chart.data.datasets[0].data = result.data
+        chart.update()
     })
     .catch(error => console.log('error', error));
 
-
 }
 
-function setUserUnitsLastWeek(token,lastWeekData) {
+function setUserUnitsLastWeek(token) {
     
-
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -136,21 +111,15 @@ function setUserUnitsLastWeek(token,lastWeekData) {
     fetch("https://dev.api.quark.rocks/unit/lastweek", requestOptions)
       .then(response => response.json())
       .then(result => {
-
-        for(var i=0;i<result.data.length;i++){
-            lastWeekData.push(result.data[i])
-        }
-        
-
+        chart.data.datasets[1].data = result.data
+        chart.update()
     })
     .catch(error => console.log('error', error));
 
-
 }
 
-function setUserUnitsAllTime(token,totalUnits) {
+function setUserUnitsAllTime(token) {
     
-
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -164,14 +133,10 @@ function setUserUnitsAllTime(token,totalUnits) {
       .then(response => response.json())
       .then(result => {
 
-        for(var i=0;i<result.data.length;i++){
-            totalUnits.push(result.data[i])
-        }
+        console.log(result)
         
-
     })
     .catch(error => console.log('error', error));
-
 
 }
 
