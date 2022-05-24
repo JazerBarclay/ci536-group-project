@@ -34,8 +34,7 @@ INSERT INTO pomodoros (
     'test',
     "2022-05-013 08:46:32.252000",
     "2022-05-013 08:46:32.252000"
-),
-(
+),(
     (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
     'test',
     "2022-05-014 08:46:32.252000",
@@ -65,16 +64,25 @@ INSERT INTO pomodoros (
     'test',
     "2022-05-023 08:46:32.252000",
     "2022-05-023 08:46:32.252000"
-)
-
-
-
-
-
-
-pomodoro_id SERIAL PRIMARY KEY,
-    pomodoro_user_id INTEGER NOT NULL REFERENCES users (user_id),
-    pomodoro_text VARCHAR(60) NOT NULL DEFAULT '',
-    pomodoro_start TIMESTAMP NOT NULL,
-    pomodoro_end TIMESTAMP NOT NULL
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-001 08:46:32.252000",
+    "2022-05-001 08:46:32.252000"
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-002 08:46:32.252000",
+    "2022-05-002 08:46:32.252000"
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-003 08:46:32.252000",
+    "2022-05-003 08:46:32.252000"
+),(
+    (SELECT user_id FROM users WHERE user_email = "user@quark.rocks"),
+    'test',
+    "2022-05-004 08:46:32.252000",
+    "2022-05-004 08:46:32.252000"
 );
+
