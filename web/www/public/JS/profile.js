@@ -15,12 +15,14 @@ window.addEventListener('load', () => {
     //The following data will be eventually passed to the graph from the database
     var thisWeekData = [];
     var lastWeekData = [];
+    var totalUnits = [];
 
     //get user details and units here
 
     setUserDetails(userAuth,usernameDisplay,emailDisplay);
-    getUserUnitsThisWeek(userAuth,thisWeekData);
-    getUserUnitsLastWeek(userAuth,lastWeekData);
+    setUserUnitsThisWeek(userAuth,thisWeekData);
+    setUserUnitsLastWeek(userAuth,lastWeekData);
+    setUserUnitsAllTime(userAuth,totalUnits)
 
     
 
@@ -92,7 +94,7 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
 
 }
 
-function getUserUnitsThisWeek(token,thisWeekData) {
+function setUserUnitsThisWeek(token,thisWeekData) {
     
 
     var myHeaders = new Headers();
@@ -119,7 +121,7 @@ function getUserUnitsThisWeek(token,thisWeekData) {
 
 }
 
-function getUserUnitsLastWeek(token,lastWeekData) {
+function setUserUnitsLastWeek(token,lastWeekData) {
     
 
     var myHeaders = new Headers();
@@ -131,12 +133,39 @@ function getUserUnitsLastWeek(token,lastWeekData) {
       redirect: 'follow'
     };
     
-    fetch("https://dev.api.quark.rocks/lastweek", requestOptions)
+    fetch("https://dev.api.quark.rocks/unit/lastweek", requestOptions)
       .then(response => response.json())
       .then(result => {
 
         for(var i=0;i<result.data.length;i++){
             lastWeekData.push(result.data[i])
+        }
+        
+
+    })
+    .catch(error => console.log('error', error));
+
+
+}
+
+function setUserUnitsAllTime(token,totalUnits) {
+    
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+    
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    
+    fetch("https://dev.api.quark.rocks/unit", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+
+        for(var i=0;i<result.data.length;i++){
+            totalUnits.push(result.data[i])
         }
         
 
