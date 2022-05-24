@@ -27,7 +27,7 @@ module.exports = {
             // If database error, return 500 internal error
             if (err) return res.status(500).json({ err })
             // If no results found return 400 error
-            if (response.rows.length < 1) return res.status(400).json({ error: "Incorrect email or password" })
+            if (response.rows.length < 1) return res.status(400).json({ error: "incorrect email or password" })
             // Else call next
             return next()
         })
@@ -37,7 +37,7 @@ module.exports = {
     login: (req, res, next) => {
         verifyLogin(req.body.email, req.body.password, (err, response) => {
             if (err) return res.status(400).json({err})
-            if (response.rows.length < 1) return res.status(400).json({ error: "Incorrect email or password" })
+            if (response.rows.length < 1) return res.status(400).json({ error: "incorrect email or password" })
             req.id = response.rows[0].user_id
             return next()
         })
