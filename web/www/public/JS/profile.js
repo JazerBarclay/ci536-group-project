@@ -107,8 +107,13 @@ function getUserUnits(token,data) {
       .then(response => response.json())
       .then(result => {
 
-        data = result[0];
-        console.log(data);
+        data.push(result[0].d0)
+        data.push(result[0].d1)
+        data.push(result[0].d2)
+        data.push(result[0].d3)
+        data.push(result[0].d4)
+        data.push(result[0].d5)
+        data.push(result[0].d6)
 
     })
     .catch(error => console.log('error', error));
