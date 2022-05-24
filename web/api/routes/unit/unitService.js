@@ -137,7 +137,7 @@ module.exports = {
                 BETWEEN date_trunc('day', now() - INTERVAL '7 DAY')::timestamp 
                 AND (date_trunc('day', now() - INTERVAL '6 DAY') - INTERVAL '1 SECOND')::timestamp
                 then 1 end
-            ) as d0,
+            ) as d0
             FROM (
                 SELECT * FROM pomodoros WHERE pomodoro_user_id = $1
             ) pomos;`,
