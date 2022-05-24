@@ -11,7 +11,7 @@ const { addUnit, getAllUnits, getAllUnitsByUsername, selectThisWeekByID, selectL
 const router = require('express').Router()
 
 // Read relevant from /unit
-router.get('/', validateToken, selectThisWeekByID)
+router.get('/', validateToken, getAllUnits)
 
 // Insert to /unit
 router.post('/', validateToken, addUnit)
