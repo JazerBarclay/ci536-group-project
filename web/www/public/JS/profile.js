@@ -107,8 +107,10 @@ function getUserUnitsThisWeek(token,thisWeekData) {
       .then(response => response.json())
       .then(result => {
 
-        thisWeekData = result.data
-        console.log(result.data)
+        for(var i=0;i<result.data.length;i++){
+            thisWeekData.push(result.data[i])
+        }
+        
 
     })
     .catch(error => console.log('error', error));
