@@ -12,10 +12,14 @@ window.addEventListener('load', () => {
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
 
+    //The following data will be eventually passed to the graph from the database
+    var thisWeekData = [];
+    var lastWeekData = [];
+
     //get user details and units here
 
     setUserDetails(userAuth,usernameDisplay,emailDisplay);
-    getUserUnits(userAuth);
+    getUserUnits(userAuth,thisWeekData);
 
     
 
@@ -29,9 +33,7 @@ window.addEventListener('load', () => {
 
     const xValues = ["Mon", 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat', 'Sun'];
 
-    //The following data will be eventually passed to the graph from the database
-    var thisWeekData = [1, 0, 2, 0, 0, 3, 4];
-    var lastWeekData = [4, 6, 3, 2, 1, 4, 3];
+    
 
     new Chart("graph", { //generating the chart using user input (thisweekdata and lastweekdata)
         type: "line",
@@ -89,7 +91,7 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
 
 }
 
-function getUserUnits(token) {
+function getUserUnits(token,data) {
     
 
     var myHeaders = new Headers();
@@ -103,9 +105,13 @@ function getUserUnits(token) {
     
     fetch("https://dev.api.quark.rocks/unit/thisweek", requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+      .then(result => {
 
+        data = result[0];
+        console.log(data);
+
+    })
+    .catch(error => console.log('error', error));
 
 
 }
