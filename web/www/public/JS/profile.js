@@ -91,7 +91,7 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
 
 }
 
-function getUserUnitsThisWeek(token,data) {
+function getUserUnitsThisWeek(token,thisWeekData) {
     
 
     var myHeaders = new Headers();
@@ -107,8 +107,8 @@ function getUserUnitsThisWeek(token,data) {
       .then(response => response.json())
       .then(result => {
 
-        data = result.data
-        console.log(result.data)
+        thisWeekData = result.data[0]
+        console.log(result.data[0])
 
     })
     .catch(error => console.log('error', error));
