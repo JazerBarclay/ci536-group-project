@@ -11,24 +11,43 @@ window.addEventListener('load', () => {
     //set username and email display 
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
+    var totalUnitsDisplay = document.querySelector('#userTotalCompletedUnits');
+
+    //The following data will be eventually passed to the graph from the database
+    var thisWeekData = [];
+    var lastWeekData = [];
+    var totalUnits = [];
+
+    //get user details and units here
+
+    setUserDetails(userAuth,usernameDisplay,emailDisplay);
+    setUserUnitsThisWeek(userAuth,thisWeekData);
+    setUserUnitsLastWeek(userAuth,lastWeekData);
+    setUserUnitsAllTime(userAuth,totalUnits,totalUnitsDisplay);
+
+    
 
 
-    // var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
+
+
+    var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
 
     const xValues = ["Mon", 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat', 'Sun'];
 
-    chart = new Chart("graph", { //generating the chart using user input (thisweekdata and lastweekdata)
+    
+
+    new Chart("graph", { //generating the chart using user input (thisweekdata and lastweekdata)
         type: "line",
         data: {
             labels: xValues,
             datasets: [{
                     label: 'Completed Blocks This Week',
-                    data: [],
+                    data: thisWeekData,
                     borderColor: "white",
                     fill: true
                 }, {
                     label: 'Completed Blocks Last Week',
-                    data: [],
+                    data: lastWeekData,
                     borderColor: "#777",
                     fill: false
                 }
@@ -40,13 +59,10 @@ window.addEventListener('load', () => {
         }
     });
 
-    //get user details and units here
 
-    setUserDetails(userAuth,usernameDisplay,emailDisplay);
-    setUserUnitsThisWeek(userAuth);
-    setUserUnitsLastWeek(userAuth);
-    setUserUnitsAllTime(userAuth);
-    
+
+
+
 
 })
 
@@ -57,9 +73,9 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
     myHeaders.append("Authorization", "Bearer " + token);
 
     var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
     };
 
     fetch("https://dev.api.quark.rocks/profile", requestOptions)
@@ -76,8 +92,9 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
 
 }
 
-function setUserUnitsThisWeek(token) {
+function setUserUnitsThisWeek(token,thisWeekData) {
     
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -90,15 +107,21 @@ function setUserUnitsThisWeek(token) {
     fetch("https://dev.api.quark.rocks/unit/thisweek", requestOptions)
       .then(response => response.json())
       .then(result => {
-        chart.data.datasets[0].data = result.data
-        chart.update()
+
+        for(var i=0;i<result.data.length;i++){
+            thisWeekData.push(result.data[i])
+        }
+        
+
     })
     .catch(error => console.log('error', error));
 
+
 }
 
-function setUserUnitsLastWeek(token) {
+function setUserUnitsLastWeek(token,lastWeekData) {
     
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -111,15 +134,21 @@ function setUserUnitsLastWeek(token) {
     fetch("https://dev.api.quark.rocks/unit/lastweek", requestOptions)
       .then(response => response.json())
       .then(result => {
-        chart.data.datasets[1].data = result.data
-        chart.update()
+
+        for(var i=0;i<result.data.length;i++){
+            lastWeekData.push(result.data[i])
+        }
+        
+
     })
     .catch(error => console.log('error', error));
 
+
 }
 
-function setUserUnitsAllTime(token) {
+function setUserUnitsAllTime(token,totalUnits,totalUnitsDisplay) {
     
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -133,10 +162,16 @@ function setUserUnitsAllTime(token) {
       .then(response => response.json())
       .then(result => {
 
-        console.log(result)
+        for(var i=0;i<result.data.length;i++){
+            totalUnits.push(result.data[i])
+        }
+
+        totalUnitsDisplay.textContent = totalUnits.length
         
+
     })
     .catch(error => console.log('error', error));
+
 
 }
 
