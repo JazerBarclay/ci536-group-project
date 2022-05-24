@@ -101,7 +101,7 @@ function getUserUnits(token) {
       redirect: 'follow'
     };
     
-    fetch("https://dev.api.quark.rocks/unit", requestOptions)
+    fetch("https://dev.api.quark.rocks/unit/thisweek", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
