@@ -11,7 +11,8 @@ window.addEventListener('load', () => {
     //set username and email display 
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
-
+    var unitDisplay = document.querySelector('#userTotalCompletedUnits');
+    var totalUnits = 0;
 
     // var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
 
@@ -45,7 +46,7 @@ window.addEventListener('load', () => {
     setUserDetails(userAuth,usernameDisplay,emailDisplay);
     setUserUnitsThisWeek(userAuth);
     setUserUnitsLastWeek(userAuth);
-    setUserUnitsAllTime(userAuth);
+    setUserUnitsAllTime(userAuth,totalUnits,unitDisplay);
     
 
 })
@@ -118,7 +119,7 @@ function setUserUnitsLastWeek(token) {
 
 }
 
-function setUserUnitsAllTime(token) {
+function setUserUnitsAllTime(token,totalUnits,unitDisplay) {
     
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
@@ -133,7 +134,8 @@ function setUserUnitsAllTime(token) {
       .then(response => response.json())
       .then(result => {
 
-        console.log(result)
+        totalUnits = result.length
+        unitDisplay.textContent = totalUnits;
         
     })
     .catch(error => console.log('error', error));
