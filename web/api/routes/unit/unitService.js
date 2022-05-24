@@ -46,7 +46,7 @@ module.exports = {
         WHERE pomodoro_user_id = (
             SELECT user_id FROM users WHERE user_username = $1 LIMIT 1
         )
-        AND (pomodoro_start BETWEEN DATE_SUB(NOW(),INTERVAL 2 WEEK) AND NOW())
+        AND pomodoro_start BETWEEN DATE_SUB(NOW(),INTERVAL 2 WEEK) AND NOW()
         ORDER BY pomodoro_start DESC`,
         [username],
             (error, results, fields) => {
