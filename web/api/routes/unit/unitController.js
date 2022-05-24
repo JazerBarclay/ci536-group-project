@@ -4,6 +4,7 @@
  */
 
 // Import modules from service here
+const { json } = require('express')
 const { selectAllUnits, insertUnit, selectAllUnitsByUsername, selectThisWeekByID, selectLastWeekByID } = require('./unitService')
 
 module.exports = {
@@ -35,14 +36,15 @@ module.exports = {
     selectThisWeek: (req, res) => {
         selectThisWeekByID(req.body.auth.id, (err, response) =>{
             if (err) return res.status(500).json({ err })
-            return res.status(200).json(response.rows)
+            return res.status(200).json({ data: [response.rows[0].d0,response.rows[0].d1,response.rows[0].d2,response.rows[0].d3,response.rows[0].d4,response.rows[0].d5,response.rows[0].d6] })
         })
     },
 
     selectLastWeek: (req, res) => {
         selectLastWeekByID(req.body.auth.id, (err, response) =>{
             if (err) return res.status(500).json({ err })
-            return res.status(200).json(response.rows)
+            console.log(response.rows[0].d0)
+            return res.status(200).json({ data: [response.rows[0].d0,response.rows[0].d1,response.rows[0].d2,response.rows[0].d3,response.rows[0].d4,response.rows[0].d5,response.rows[0].d6] })
         })
     }
 
