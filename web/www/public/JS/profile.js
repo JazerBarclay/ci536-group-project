@@ -20,6 +20,7 @@ window.addEventListener('load', () => {
 
     setUserDetails(userAuth,usernameDisplay,emailDisplay);
     getUserUnitsThisWeek(userAuth,thisWeekData);
+    getUserUnitsLastWeek(userAuth,lastWeekData);
 
     
 
@@ -109,6 +110,33 @@ function getUserUnitsThisWeek(token,thisWeekData) {
 
         for(var i=0;i<result.data.length;i++){
             thisWeekData.push(result.data[i])
+        }
+        
+
+    })
+    .catch(error => console.log('error', error));
+
+
+}
+
+function getUserUnitsLastWeek(token,lastWeekData) {
+    
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+    
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    
+    fetch("https://dev.api.quark.rocks/lastweek", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+
+        for(var i=0;i<result.data.length;i++){
+            lastWeekData.push(result.data[i])
         }
         
 
