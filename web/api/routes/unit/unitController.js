@@ -4,7 +4,7 @@
  */
 
 // Import modules from service here
-const { selectAllUnits, insertUnit, selectAllUnitsByUsername, selectRelevantUnitsByID } = require('./unitService')
+const { selectAllUnits, insertUnit, selectAllUnitsByUsername, selectThisWeekByID, selectLastWeekByID } = require('./unitService')
 
 module.exports = {
     
@@ -32,8 +32,15 @@ module.exports = {
         })
     },
 
-    getRelevantUnitsByID: (req, res) => {
-        selectRelevantUnitsByID(req.body.auth.id, (err, response) =>{
+    selectThisWeekByID: (req, res) => {
+        selectThisWeekByID(req.body.auth.id, (err, response) =>{
+            if (err) return res.status(500).json({ err })
+            return res.status(200).json(response.rows)
+        })
+    },
+
+    selectLastWeekByID: (req, res) => {
+        selectLastWeekByID(req.body.auth.id, (err, response) =>{
             if (err) return res.status(500).json({ err })
             return res.status(200).json(response.rows)
         })

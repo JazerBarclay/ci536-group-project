@@ -37,9 +37,7 @@ module.exports = {
         )
     },
 
-
-    //TODO: Select only past 2 weeks.
-    selectRelevantUnitsByID: (id, callBack) => {
+    selectThisWeekByID: (id, callBack) => {
         db.query(`
             SELECT 
             COUNT(
@@ -84,6 +82,62 @@ module.exports = {
                 AND now()::timestamp
                 then 1 end
             ) as d0
+            FROM (
+                SELECT * FROM pomodoros WHERE pomodoro_user_id = $1
+            ) pomos;`,
+            [id],
+            (error, results, fields) => {
+                if (error) return callBack(error)
+                return callBack(null, results)
+            }
+        )
+    },
+
+    selectLastWeekByID: (id, callBack) => {
+        db.query(`
+            SELECT 
+            COUNT(
+                case when pomodoro_start 
+                BETWEEN date_trunc('day', now() - INTERVAL '13 DAY')::timestamp 
+                AND (date_trunc('day', now() - INTERVAL '12 DAY') - INTERVAL '1 SECOND')::timestamp
+                then 1 end
+            ) as d6,
+            COUNT(
+                case when pomodoro_start 
+                BETWEEN date_trunc('day', now() - INTERVAL '12 DAY')::timestamp 
+                AND (date_trunc('day', now() - INTERVAL '11 DAY') - INTERVAL '1 SECOND')::timestamp
+                then 1 end
+            ) as d5,
+            COUNT(
+                case when pomodoro_start 
+                BETWEEN date_trunc('day', now() - INTERVAL '11 DAY')::timestamp 
+                AND (date_trunc('day', now() - INTERVAL '10 DAY') - INTERVAL '1 SECOND')::timestamp
+                then 1 end
+            ) as d4,
+            COUNT(
+                case when pomodoro_start 
+                BETWEEN date_trunc('day', now() - INTERVAL '10 DAY')::timestamp 
+                AND (date_trunc('day', now() - INTERVAL '9 DAY') - INTERVAL '1 SECOND')::timestamp
+                then 1 end
+            ) as d3,
+            COUNT(
+                case when pomodoro_start 
+                BETWEEN date_trunc('day', now() - INTERVAL '9 DAY')::timestamp 
+                AND (date_trunc('day', now() - INTERVAL '8 DAY') - INTERVAL '1 SECOND')::timestamp
+                then 1 end
+            ) as d2,
+            COUNT(
+                case when pomodoro_start 
+                BETWEEN date_trunc('day', now() - INTERVAL '8 DAY')::timestamp 
+                AND (date_trunc('day', now() - INTERVAL '7 DAY') - INTERVAL '1 SECOND')::timestamp
+                then 1 end
+            ) as d2,
+            COUNT(
+                case when pomodoro_start 
+                BETWEEN date_trunc('day', now() - INTERVAL '7 DAY')::timestamp 
+                AND (date_trunc('day', now() - INTERVAL '6 DAY') - INTERVAL '1 SECOND')::timestamp
+                then 1 end
+            ) as d0,
             FROM (
                 SELECT * FROM pomodoros WHERE pomodoro_user_id = $1
             ) pomos;`,
