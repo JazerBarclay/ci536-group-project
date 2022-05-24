@@ -12,11 +12,11 @@ const { addUnit, getAllUnits, getAllUnitsByUsername, getRelevantUnitsByID } = re
 const router = require('express').Router()
 
 // Read from /unit
-router.get('/', validateToken, getAllUnits)
+//COMMENTING FOR TESTING 
+//router.get('/', validateToken, getAllUnits)
 
 // Read relevant from /unit
-//COMMENTING FOR TESTING
-//router.get('/', validateToken, getRelevantUnitsByID)
+router.get('/', validateToken, getRelevantUnitsByID)
 
 // Read specific user from /unit
 router.get('/:username' ,validateToken, getAllUnitsByUsername)
