@@ -108,6 +108,7 @@ function getUserUnits(token,data) {
       .then(result => {
 
         data.push(result.data)
+        console.log(result)
 
     })
     .catch(error => console.log('error', error));
