@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
     //get user details and units here
 
     setUserDetails(userAuth,usernameDisplay,emailDisplay);
-    getUserUnits(userAuth);
+    getUserUnits(userAuth,thisWeekData);
 
     
 
@@ -86,7 +86,7 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
 
 }
 
-function getUserUnits(token) {
+function getUserUnits(token,thisWeekData) {
     
 
     var myHeaders = new Headers();
