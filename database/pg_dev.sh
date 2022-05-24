@@ -35,8 +35,8 @@ echo "Starting docker container"
 # -v ./postgres-data:/var/lib/postgresql/data \
 # Run new container under pgdb
 docker run --name pgdb \
-    -v `echo $(pwd) | awk '{tolower($0)}'`/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql \
-    -v `echo $(pwd) | awk '{tolower($0)}'`/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql \
+    -v `echo $PWD | awk '{tolower($0)}'`/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql \
+    -v `echo $PWD | awk '{tolower($0)}'`/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql \
     -p 5432:5432 \
     -e POSTGRES_USER=web \
     -e POSTGRES_PASSWORD=pass \
