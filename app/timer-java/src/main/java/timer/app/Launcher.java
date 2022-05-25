@@ -15,7 +15,6 @@ public class Launcher extends Application {
   }
 
   public static void main(String[] args) {
-    System.out.println(args[0]);
     if (args.length > 0)
       launchMode(args[0]);
     else
