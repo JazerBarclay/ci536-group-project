@@ -1,6 +1,7 @@
+const remoteURL = "https://api.quark.rocks/"
+
 window.addEventListener('load', () => {
 
-    const remoteURL = "https://api.quark.rocks/"
 
     if (localStorage.token == undefined) { //making sure that the user has generated a login token before visiting profile
         console.log("No token!")
