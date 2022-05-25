@@ -216,10 +216,8 @@ public class TimerView extends ScreenView {
     if (node == null && draggableElement == null)
       return;
     if (node == null) {
-      draggableElement.setOnMousePressed((MouseEvent e) -> {
-      });
-      draggableElement.setOnMouseDragged((MouseEvent e) -> {
-      });
+      draggableElement.setOnMousePressed((MouseEvent e) -> {});
+      draggableElement.setOnMouseDragged((MouseEvent e) -> {});
       return;
     }
     draggableElement = node;
