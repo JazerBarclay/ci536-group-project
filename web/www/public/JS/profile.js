@@ -18,6 +18,10 @@ window.addEventListener('load', () => {
 
     const xValues = ["Mon", 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat', 'Sun'];
 
+    for (i = 0; i < new Date().getDay(); i++) {
+        xValues.push(xValues.shift())
+    }
+
     chart = new Chart("graph", { //generating the chart using user input (thisweekdata and lastweekdata)
         type: "line",
         data: {
