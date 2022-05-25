@@ -12,11 +12,11 @@ public class TestAPI {
 
   @Test
   /**
-   * Test getRequest
+   * Test getRequest()
    */
   public void testGetRequest() {
     // Send request for images matching the term orion
-    HttpResponse res = API.getRequest("https://images-api.nasa.gov/search?q=orion&media_type=image");
+    HttpResponse res = API.getRequest("https://dev.api.quark.rocks/");
 
     // Assert 200 is received from response
     assertEquals(200, res.getResponseCode());
@@ -26,7 +26,7 @@ public class TestAPI {
 
   @Test
   /**
-   * Test getRequest
+   * Test postRequest()
    */
   public void testPostRequest() {
     // Send request for images matching the term orion
