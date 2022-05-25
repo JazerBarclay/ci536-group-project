@@ -1,4 +1,7 @@
+const remoteURL = "https://api.quark.rocks/"
+
 window.addEventListener('load', () => {
+
 
     if (localStorage.token == undefined) { //making sure that the user has generated a login token before visiting profile
         console.log("No token!")
@@ -58,6 +61,8 @@ window.addEventListener('load', () => {
 
 function setUserDetails(token,usernameDisplay,emailDisplay){
 
+    var url = remoteURL + "profile"
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
 
@@ -67,7 +72,7 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
         redirect: 'follow'
     };
 
-    fetch("https://dev.api.quark.rocks/profile", requestOptions)
+    fetch(url, requestOptions)
     .then(response => response.json())
     .then(result => {
 
@@ -83,6 +88,8 @@ function setUserDetails(token,usernameDisplay,emailDisplay){
 
 function setUserUnitsThisWeek(token) {
     
+    var url = remoteURL + "unit/thisweek"
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -92,7 +99,7 @@ function setUserUnitsThisWeek(token) {
       redirect: 'follow'
     };
     
-    fetch("https://dev.api.quark.rocks/unit/thisweek", requestOptions)
+    fetch(url, requestOptions)
       .then(response => response.json())
       .then(result => {
         chart.data.datasets[0].data = result.data
@@ -104,6 +111,8 @@ function setUserUnitsThisWeek(token) {
 
 function setUserUnitsLastWeek(token) {
     
+    var url = remoteURL + "unit/lastweek"
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -113,7 +122,7 @@ function setUserUnitsLastWeek(token) {
       redirect: 'follow'
     };
     
-    fetch("https://dev.api.quark.rocks/unit/lastweek", requestOptions)
+    fetch(url, requestOptions)
       .then(response => response.json())
       .then(result => {
         chart.data.datasets[1].data = result.data
@@ -125,6 +134,8 @@ function setUserUnitsLastWeek(token) {
 
 function setUserUnitsAllTime(token,totalUnits,unitDisplay) {
     
+    var url = remoteURL + "unit"
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     
@@ -134,7 +145,7 @@ function setUserUnitsAllTime(token,totalUnits,unitDisplay) {
       redirect: 'follow'
     };
     
-    fetch("https://dev.api.quark.rocks/unit", requestOptions)
+    fetch(url, requestOptions)
       .then(response => response.json())
       .then(result => {
 
