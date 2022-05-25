@@ -8,7 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import timer.app.scenes.login.LoginController;
+import timer.app.Launcher;
+import timer.app.Mode;
 import timer.fx.mvc.ScreenController;
 import timer.fx.mvc.ScreenModel;
 import timer.fx.mvc.ScreenView;
@@ -30,7 +31,7 @@ public class SignupView extends ScreenView {
    */
   public SignupView(Stage window, ScreenModel model, ScreenController controller) {
     super(window, model, controller);
-    window.setTitle("Quark Signup");
+    window.setTitle((Launcher.state == Mode.PRODUCTION ? "" : "DEV | ") + "Quark Signup");
   }
 
   /**

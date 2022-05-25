@@ -9,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import timer.app.Launcher;
+import timer.app.Mode;
 import timer.fx.mvc.ScreenController;
 import timer.fx.mvc.ScreenModel;
 import timer.fx.mvc.ScreenView;
@@ -37,7 +39,7 @@ public class LoginView extends ScreenView {
    */
   public LoginView(Stage window, ScreenModel model, ScreenController controller) {
     super(window, model, controller);
-    window.setTitle("Quark Login");
+    window.setTitle((Launcher.state == Mode.PRODUCTION ? "" : "DEV | ") + "Quark Login");
     window.setResizable(false);
   }
 

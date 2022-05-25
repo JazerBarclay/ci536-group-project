@@ -17,6 +17,8 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import timer.app.Launcher;
+import timer.app.Mode;
 import timer.fx.mvc.ScreenController;
 import timer.fx.mvc.ScreenModel;
 import timer.fx.mvc.ScreenView;
@@ -70,7 +72,7 @@ public class TimerView extends ScreenView {
    */
   public TimerView(Stage window, ScreenModel model, ScreenController controller) {
     super(window, model, controller);
-    window.setTitle("Quark Timer");
+    window.setTitle((Launcher.state == Mode.PRODUCTION ? "" : "DEV | ") + "Quark Timer");
     window.setAlwaysOnTop(true);
     window.initStyle(StageStyle.UNDECORATED);
   }
