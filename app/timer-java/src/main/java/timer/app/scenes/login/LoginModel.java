@@ -10,10 +10,10 @@ import timer.fx.mvc.ScreenModel;
  */
 public class LoginModel extends ScreenModel {
 
-    // TODO: We will track failed attempts here for lockout timers
+  // TODO: We will track failed attempts here for lockout timers
 
-    public LoginModel() {
+  public LoginModel() {
 
-    }
+  }
 
 }

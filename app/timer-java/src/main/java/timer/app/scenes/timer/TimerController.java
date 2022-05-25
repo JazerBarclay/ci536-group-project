@@ -12,29 +12,29 @@ import timer.fx.mvc.ScreenModel;
  */
 public class TimerController extends ScreenController {
 
-    private TimerModel model;
-    
-    /**
-     * Create a new controller with the given model to interact with
-     * 
-     * @param model
-     */
-    public TimerController(ScreenModel model) {
-	super(model);
-	this.model = (TimerModel) model;
-    }
+  private TimerModel model;
 
-    public void closeTimer(Stage window) {
-	model.stopTimer();
-	window.close();
-    }
+  /**
+   * Create a new controller with the given model to interact with
+   * 
+   * @param model
+   */
+  public TimerController(ScreenModel model) {
+    super(model);
+    this.model = (TimerModel) model;
+  }
 
-    public void startTimer() {
-	model.startTimer();
-    }
+  public void closeTimer(Stage window) {
+    model.stopTimer();
+    window.close();
+  }
 
-    public void stopTimer() {
-	model.stopTimer();
-    }
+  public void startTimer() {
+    model.startTimer();
+  }
+
+  public void stopTimer() {
+    model.stopTimer();
+  }
 
 }

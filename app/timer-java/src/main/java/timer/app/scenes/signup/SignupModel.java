@@ -9,9 +9,9 @@ import timer.fx.mvc.ScreenModel;
  *
  */
 public class SignupModel extends ScreenModel {
-    
-    public SignupModel() {
-	
-    }
+
+  public SignupModel() {
+
+  }
 
 }
