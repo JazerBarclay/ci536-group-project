@@ -26,7 +26,7 @@ ExecStartPre=-/usr/bin/docker network create --driver bridge pgnetwork
 # Command to run and monitor
 ExecStart=/usr/bin/docker run --name pgdb \
     -v /var/www/quark/dev/database/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql \
-    -v /var/www/quark/dev/database/seed.sql:/docker-entrypoint-initdb.d/2.seed.sql \
+    -v /var/www/quark/dev/database/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql \
     -p 5432:5432 \
     -e POSTGRES_USER=changeme \
     -e POSTGRES_PASSWORD=changeme \

@@ -5,38 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/index.css">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src='JS/signup.js'></script>
-    <title>Sign Up</title>
+    <link rel="stylesheet" href="CSS/core.css">
+    <link rel="stylesheet" href="CSS/nav.css">
+    <link rel="stylesheet" href="CSS/signup.css">
+    <script src="JS/signup.js"></script>
+    <title>Signup | Quark</title>
 </head>
 
 <body>
 
-    <div class="signupGrid">
-        <div class="title">Sign Up to Quark</div>
+    <header class="container">
+        <nav>
+            <a id="logo" href="index.html">Quark</a>
+            <!-- Checkbox and 'Span Hamburger' Icon -->
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <!-- Unordered List for Menu Items -->
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a class="cta">Download</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <form id="signUpForm">
-            <label for="username">Username: </label>
-            <input type="text" class="username">
+    <main class="formContainer">
+        <div>
+            <h1>Signup</h1>
+            <form id="signupForm">
+                <label for="emailInput" class="input-label">Email: </label>
+                <input id="emailInput" type="email" class="input-text">
+                <label for="usernameInput" class="input-label">Username: </label>
+                <input id="usernameInput" type="text" class="input-text">
+                <label for="passwordInput" class="input-label">Password: </label>
+                <input id="passwordInput" type="password" class="input-text">
+                <button type="submit" id="loginButton" class="btn btn-login">Create Account</button>
+            </form>
+            <span>Already a member? <a href="login.html">Sign in</a></span>
+        </div>
+    </main>
 
-            <label for="password">Email: </label>
-            <input type="email" class="email">
-
-            <label for="password">Password: </label>
-            <input type="password" class="password">
-
-            <button id="logInButton" class="Button">To Log In</button>
-            <button id="Button" type="submit" class="Button">Sign Up</button>
-
-
-        </form>
-    </div>
-
-
-
-
-
+    <footer>
+        <div class="content">Quark &copy; 2022</div>
+    </footer>
 
 </body>
 

@@ -1,0 +1,65 @@
+.formContainer {
+  display: grid;
+  place-items: center;
+}
+
+#loginForm {
+  margin: 2rem auto .5rem;
+  display: grid;
+  gap: .8rem;
+  width: 360px;
+}
+
+.input-label {
+  font-size: 1rem;
+  margin-top: .6rem;
+  color: #ddd;
+}
+
+.input-text {
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: .8rem 1rem;
+  border: none;
+  border-radius: .6rem;
+  background: #f2f2f2;
+}
+
+.btn {
+  padding: 1.2rem 1rem;
+  border: none;
+  color: #f2f2f2;
+  border-radius: .6rem;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: .05rem;
+}
+
+.btn-login {
+  align-self: flex-end;
+  background: #2086f2;
+  width: 100%;
+  margin: 1.6rem 0 .8rem;
+  box-shadow: 3px 5px 10px rgba(0,0,0,.3);
+  transition: .2s;
+}
+
+.btn-login:active {
+  box-shadow: none;
+}
+
+.btn-login:hover {
+  background: #57b9e0;
+  box-shadow: none;
+  transition: .2s;
+}
+
+a {
+  color: #2196f3;
+  text-decoration: none;
+}
+span {
+  color: #aaa;
+}

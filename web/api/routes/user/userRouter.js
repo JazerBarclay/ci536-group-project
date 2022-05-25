@@ -5,6 +5,7 @@
 
 // Import modules from controller here
 const { getUser } = require('./userController')
+const { validateToken } = require('../../authentication/tokenValidation')
 
 
 // Add router from express to manage routing
@@ -16,7 +17,7 @@ const router = require('express').Router()
 // router.get('/', validateInput, divert)
 
 // Get user from /user
-router.get('/:username', getUser)
+router.get('/:username', validateToken, getUser)
 
 // Insert user (should redirect to register route or visa versa)
 // router.post('/', validateInput, getUser)
