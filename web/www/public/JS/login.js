@@ -1,6 +1,8 @@
 window.addEventListener("load", () => {
 
 
+    const remoteURL = "https://api.quark.rocks/"
+
     var logInForm = document.querySelector('#loginForm');
     var signUpButton = document.querySelector('#signUpButton');
 
@@ -20,7 +22,7 @@ window.addEventListener("load", () => {
 
     function signIn(email, password) {
 
-        const url = 'https://dev.api.quark.rocks/login'
+        const url = remoteURL + 'login'
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -54,8 +56,6 @@ window.addEventListener("load", () => {
                     console.log("Invalid Login, Please check username and password or sign up!")
 
                 }
-
-
             })
 
         .catch(error => console.log('error', error));

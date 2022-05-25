@@ -1,6 +1,8 @@
 window.addEventListener("load", () => {
     //to login
 
+    const remoteURL = "https://api.quark.rocks/"
+
     signUpForm = document.querySelector('#signupForm')
 
     signUpForm.addEventListener("submit", function(evt) {
@@ -19,7 +21,7 @@ window.addEventListener("load", () => {
 
 function createAccount(username, email, password) {
 
-    var url = "https://dev.api.quark.rocks/register";
+    var url = remoteURL + "register";
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
