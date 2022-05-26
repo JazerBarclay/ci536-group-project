@@ -1,5 +1,5 @@
-const remoteURL = "https://api.quark.rocks/"
-// const remoteURL = "https://dev.api.quark.rocks/"
+// const remoteURL = "https://api.quark.rocks/"
+const remoteURL = "https://dev.api.quark.rocks/"
 // const remoteURL = "http://localhost:4000/"
 
 window.addEventListener("load", () => {
