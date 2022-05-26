@@ -1,7 +1,8 @@
-window.addEventListener("load", () => {
-    //to login
+const remoteURL = "https://api.quark.rocks/"
+// const remoteURL = "https://dev.api.quark.rocks/"
+// const remoteURL = "http://localhost:4000/"
 
-    const remoteURL = "https://api.quark.rocks/"
+window.addEventListener("load", () => {
 
     signUpForm = document.querySelector('#signupForm')
 
