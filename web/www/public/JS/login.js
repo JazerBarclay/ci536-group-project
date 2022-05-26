@@ -5,6 +5,7 @@ window.addEventListener("load", () => {
 
     var logInForm = document.querySelector('#loginForm');
     var signUpButton = document.querySelector('#signUpButton');
+    var errorDisplay = document.querySelector('#errorDisplay');
 
 
     logInForm.addEventListener("submit", function(evt) {
@@ -53,7 +54,7 @@ window.addEventListener("load", () => {
 
                 } else {
 
-                    console.log("Invalid Login, Please check username and password or sign up!")
+                    errorDisplay.textContent = "Invalid Login, Please check username and password or sign up!"
 
                 }
             })
