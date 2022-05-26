@@ -56,7 +56,7 @@ module.exports = {
     verifyToken: (req, res) => {
         jwt.verify(req.headers.authorization.slice(7), 'secret', function(err, decoded) {
             if (err) return res.status(400).json({ message: "invalid" })
-            return res.status(200).json(decoded)
+            return res.status(200).json()
         });
     },
 
