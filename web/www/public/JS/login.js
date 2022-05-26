@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
     var signUpButton = document.querySelector('#signUpButton');
     var errorDisplay = document.querySelector('#errorDisplay');
 
-    if (localStorage.length != 0){
+    if (!window.localStorage.token){
         window.location.href = "profile.html"
     }
 
