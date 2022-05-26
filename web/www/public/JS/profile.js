@@ -53,7 +53,6 @@ window.addEventListener('load', () => {
                     fill: false
                 }
             ]
-
         },
         options: {
             legend: { display: true }
@@ -67,7 +66,6 @@ window.addEventListener('load', () => {
     setUserUnitsLastWeek(userAuth);
     setUserUnitsAllTime(userAuth,totalUnits,unitDisplay);
     
-
 })
 
 
