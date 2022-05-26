@@ -1,10 +1,13 @@
 window.addEventListener("load", () => {
 
+    localStorage.clear();
+
 
     const remoteURL = "https://api.quark.rocks/"
 
     var logInForm = document.querySelector('#loginForm');
     var signUpButton = document.querySelector('#signUpButton');
+    var errorDisplay = document.querySelector('#errorDisplay');
 
 
     logInForm.addEventListener("submit", function(evt) {
@@ -53,7 +56,8 @@ window.addEventListener("load", () => {
 
                 } else {
 
-                    console.log("Invalid Login, Please check username and password or sign up!")
+                    errorDisplay.style.display = "inline";
+                    errorDisplay.textContent = "Invalid Login, Please check username and password or sign up!";
 
                 }
             })

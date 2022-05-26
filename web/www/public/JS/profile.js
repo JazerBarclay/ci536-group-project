@@ -152,7 +152,7 @@ function setUserUnitsAllTime(token,totalUnits,unitDisplay) {
       .then(result => {
 
         totalUnits = result.length
-        unitDisplay.textContent = totalUnits;
+        unitDisplay.textContent = "Lifetime Units: " + totalUnits;
         
     })
     .catch(error => console.log('error', error));
