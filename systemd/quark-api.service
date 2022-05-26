@@ -1,6 +1,6 @@
 [Unit]
 # Give description of the service
-Description=Quark web service
+Description=Quark Live API service
 # Documentation link
 Documentation=http://quark.rocks/about
 # What this service depends on running before starting
@@ -8,7 +8,9 @@ After=network.target
 
 [Service]
 # Set environment variables
-Environment=NODE_PORT=4000
+Environment=PORT=4000
+Environment=NODE_ENV=production
+Environment=DATABASE_URL=postgres://web:pass@localhost:5432/quarkdb
 # Tell systemd to prevent dropping user privs
 Type=simple
 # User this service will act under

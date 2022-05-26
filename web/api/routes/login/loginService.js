@@ -9,10 +9,10 @@ const db = require('../../database/dbConnection')
 module.exports = {
 
     // Return all rows where email and password match
-    verifyLogin: (email, password, callBack) => {
+    verifyLogin: (email, callBack) => {
         db.query(
-            `SELECT * FROM users WHERE user_email = $1 AND user_password = $2;`,
-            [email, password],
+            `SELECT * FROM users WHERE user_email = $1;`,
+            [email],
             (error, results, fields) => {
                 if (error) return callBack(error)
                 return callBack(null, results)

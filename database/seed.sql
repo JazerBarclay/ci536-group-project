@@ -1,3 +1,5 @@
+-- user | user@quark.rocks | pass
+
 INSERT INTO users (
     user_email,
     user_username,
@@ -5,7 +7,7 @@ INSERT INTO users (
 ) VALUES (
     'user@quark.rocks',
     'user',
-    'pass'
+    '$2b$05$WWmkuO2ytn1wTtr/1E7ZqObInjA5aziSL8VIJ/XNd2olBdA7c8NMO'
 );
 
 INSERT INTO pomodoros (
