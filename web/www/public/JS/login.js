@@ -1,5 +1,7 @@
 window.addEventListener("load", () => {
 
+    localStorage.clear();
+
 
     const remoteURL = "https://api.quark.rocks/"
 
