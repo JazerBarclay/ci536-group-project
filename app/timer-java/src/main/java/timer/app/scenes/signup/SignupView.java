@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import timer.app.Launcher;
@@ -22,6 +23,8 @@ import timer.fx.mvc.ScreenView;
  */
 public class SignupView extends ScreenView {
 
+  private Button createButton;
+  
   /**
    * Creates a new signup interface with the given window, model and controller
    * 
@@ -65,6 +68,11 @@ public class SignupView extends ScreenView {
     // Create password input field
     PasswordField passwordInput = new PasswordField();
     passwordInput.setPromptText("Enter Password Here");
+    passwordInput.setOnKeyPressed(e -> {
+      if (e.getCode() == KeyCode.ENTER) {
+        createButton.fire();
+      }
+    });
 
     // Create sign up button which takes you to the signup screen
     Button loginButton = new Button("Login");
@@ -74,10 +82,12 @@ public class SignupView extends ScreenView {
     });
 
     // Create login button that attempts a login and forwards you to the app
-    Button createButton = new Button("Create");
+    createButton = new Button("Create");
     createButton.setPrefWidth(80);
     createButton.setOnAction(e -> {
-      System.err.println("Create Account Here");
+      
+      
+      
     });
 
     // Add all elements to the grid layout (element, x, y, col-span, row-span)
