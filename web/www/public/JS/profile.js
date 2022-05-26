@@ -17,7 +17,15 @@ window.addEventListener('load', () => {
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
     var unitDisplay = document.querySelector('#userTotalCompletedUnits');
+    var logOutButton = document.querySelector('#logOutButton');
     var totalUnits = 0;
+
+
+    logOutButton.addEventListener('submit', evt =>{
+        evt.preventDefault();
+        localStorage.clear();
+        
+    })
 
     // var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
 
