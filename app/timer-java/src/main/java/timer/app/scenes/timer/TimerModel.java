@@ -22,10 +22,10 @@ import timer.fx.mvc.ScreenModel;
 public class TimerModel extends ScreenModel {
 
   // Default work and rest minutes and seconds
-  private static int DEFAULT_WORK_MINUTES = 0;
-  private static int DEFAULT_WORK_SECONDS = 3;
-  private static int DEFAULT_REST_MINUTES = 0;
-  private static int DEFAULT_REST_SECONDS = 2;
+  private static int DEFAULT_WORK_MINUTES = 25;
+  private static int DEFAULT_WORK_SECONDS = 0;
+  private static int DEFAULT_REST_MINUTES = 5;
+  private static int DEFAULT_REST_SECONDS = 0;
 
   // Hold the pomodoro units
   public int pomUnits = 0;
