@@ -1,7 +1,6 @@
 package timer.fx.widgets;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
 
 public class ProgressBar extends CanvasClickButton {
 
@@ -25,14 +24,6 @@ public class ProgressBar extends CanvasClickButton {
         this(0, 0);
     }
     
-    public void increment() {
-      count++;
-    }
-    
-    public void decrement() {
-      count--;
-    }
-    
     public void setCount(int count) {
       this.count = count;
     }
@@ -40,10 +31,11 @@ public class ProgressBar extends CanvasClickButton {
     @Override
     public void drawClicked() {
        gc.setStroke(Color.BLACK);
+       gc.setFill(Color.color(0.168, 0.188, 0.231));
        int w = 8, p = 4;
        for (int i = 0; i < count; i++) {
          gc.strokeOval(getWidth()/2 - (count*(w+p)) / 2+i*(w+p) + p/2, getHeight()/2-w/2, w, w);
-//         gc.strokeOval(getWidth()/2 - (count*(w+p)) / 2+i*(w+p) + p/2 , getHeight()/2-w/2, w, w);               , 2, 8, 8);
+         gc.fillOval(getWidth()/2 - (count*(w+p)) / 2+i*(w+p) + p/2, getHeight()/2-w/2, w, w);
        }
     }
     
