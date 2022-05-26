@@ -31,7 +31,7 @@ public class TimerModel extends ScreenModel {
   private static int DEFAULT_REST_SECONDS = 2;
 
   // Hold the pomodoro units
-  private int pomUnits = 0;
+  public int pomUnits = 0;
 
   // Security token used to login
   protected String jwt;
@@ -84,6 +84,7 @@ public class TimerModel extends ScreenModel {
         endTime = new Timestamp(System.currentTimeMillis());
         sendPomodoro();
         pomUnits += 1;
+        if (pomUnits > 4) pomUnits = 0; 
         stopTimer();
       }
       stopTimer();

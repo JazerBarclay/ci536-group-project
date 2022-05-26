@@ -109,7 +109,8 @@ public class TimerView extends ScreenView {
     gc.fillRect(0, 0, windowWidth, windowHeight);
 
     // Creates a progress bar to hold the pomodoro units
-    progressBar = new ProgressBar(25,10,windowWidth - 50,20);
+    progressBar = new ProgressBar(25,10, windowWidth - 50,20);
+    progressBar.setOnClickHandler(() -> {});
 
 
     // Create timer label where main timer can be viewed
@@ -174,7 +175,12 @@ public class TimerView extends ScreenView {
         setBackground(Color.color(.8, .4, .4));
         showPlayButton();
     }
-
+    
+    // Update progress bar
+    progressBar.setCount(model.pomUnits);
+    progressBar.clear();
+    progressBar.drawClicked();
+    
   }
 
   /**
