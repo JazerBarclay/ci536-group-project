@@ -44,9 +44,11 @@ module.exports = {
             if (response.rows.length < 1) return res.status(400).json({ error: "incorrect email or password" })
             bcrypt.compare(req.body.password, response.rows[0].user_password, function(err, result) {
                 if (err) return res.status(400).json({err})
+                if (!result) return res.status(400).json({err})
                 req.id = response.rows[0].user_id
                 return next()
             });
+            
         })
     },
     
