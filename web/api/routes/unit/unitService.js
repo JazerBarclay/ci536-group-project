@@ -65,7 +65,7 @@ module.exports = {
                 then 1 end
             ) as d1, COUNT( case when pomodoro_start 
                 BETWEEN date_trunc('day', now())::timestamp 
-                AND now()::timestamp
+                AND (date_trunc('day', now()) + INTERVAL '1 DAY')::timestamp
                 then 1 end
             ) as d0 FROM ( SELECT * FROM pomodoros WHERE pomodoro_user_id = $1 ) pomos;`,
             [id],
