@@ -23,7 +23,7 @@
     --primary-color: #2086f2;
     --secondary-color: #58a0cc;
 
-    --max-width: 100%;
+    --max-width: 800px;
     --global-padding: 16px;
     --gutter: 16px;
 }
@@ -61,6 +61,10 @@ body {
     width: calc(100% - 40px);
     max-width: calc(var(--max-width) - 40px);
     margin: 0 auto;
+}
+
+main {
+    padding: 20px 0;
 }
 
 footer {

@@ -9,11 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -25,7 +25,7 @@ import timer.fx.mvc.ScreenView;
 import timer.fx.widgets.CloseButton;
 import timer.fx.widgets.PlayButton;
 import timer.fx.widgets.StopButton;
-import timer.fx.widgets.PomodoroUnit;
+import timer.fx.widgets.ProgressBar;
 
 /**
  * User interface design of timer screen
@@ -39,7 +39,9 @@ public class TimerView extends ScreenView {
   private TimerModel model;
   private TimerController controller;
 
-  /** The element the window can be dragged by **/
+  /**
+   * The element the window can be dragged by
+   **/
   private Node draggableElement;
 
   // The delta of the window from the screen on drag
@@ -51,21 +53,29 @@ public class TimerView extends ScreenView {
 
   private Pane layout;
 
-  /** Window background canvas **/
+  /**
+   * Window background canvas
+   **/
   private Canvas background;
 
-  /** Label holding the time remaining **/
+  /**
+   * Label holding the time remaining
+   **/
   private Label timerLabel;
+
+  /**
+   * Progress bar to hold the pomodoro units
+   */
+  private ProgressBar progressBar;
 
   // Interactive elements
   private PlayButton btnPlay;
   private StopButton btnStop;
   private CloseButton btnClose;
-  private PomodoroUnit pomUnit;
 
   /**
    * Creates a new timer interface with the given window, model and controller
-   * 
+   *
    * @param window     - Window the timer screen will render into
    * @param model      - The timer model
    * @param controller - The timer controller
@@ -75,6 +85,7 @@ public class TimerView extends ScreenView {
     window.setTitle((Launcher.state == Mode.PRODUCTION ? "" : "DEV | ") + "Quark Timer");
     window.setAlwaysOnTop(true);
     window.initStyle(StageStyle.UNDECORATED);
+    window.getIcons().add(new Image(this.getClass().getResourceAsStream("/desktop.png")));
   }
 
   /**
@@ -96,17 +107,10 @@ public class TimerView extends ScreenView {
     gc.setFill(Color.color(.8, .4, .4));
     gc.fillRect(0, 0, windowWidth, windowHeight);
 
-    // Create the Pomodoro Units
-    pomUnit = new PomodoroUnit(20, 20, 20, 20);
-    pomUnit.setLayoutY(windowHeight / 2 - 38);
+    // Creates a progress bar to hold the pomodoro units
+    progressBar = new ProgressBar(25,10, windowWidth - 50,20);
+    progressBar.setOnClickHandler(() -> {});
 
-    // Create elippse
-    Ellipse ellipse = new Ellipse();
-    ellipse.setFill(Color.color(0.168, 0.188, 0.231));
-    ellipse.setCenterX(windowWidth / 2);
-    ellipse.setCenterY(windowHeight / 4.5);
-    ellipse.setRadiusX(5.0f);
-    ellipse.setRadiusY(5.0f);
 
     // Create timer label where main timer can be viewed
     timerLabel = new Label(formatTime(model.minutes, model.seconds));
@@ -125,8 +129,7 @@ public class TimerView extends ScreenView {
     // Create play button
     btnPlay = new PlayButton((windowWidth / 2) - 10, windowHeight - 35, 20);
     btnPlay.setOnClickHandler(() -> {
-      controller.startTimer();
-
+      controller.startTimer(window);
     });
 
     // Create stop button
@@ -140,8 +143,7 @@ public class TimerView extends ScreenView {
     layout.getChildren().add(timerLabel);
     layout.getChildren().add(btnClose);
     layout.getChildren().add(btnPlay);
-    layout.getChildren().add(pomUnit);
-    layout.getChildren().add(ellipse);
+    layout.getChildren().add(progressBar);
 
     // Set time label as draggable element
     setDraggableElement(timerLabel);
@@ -172,7 +174,12 @@ public class TimerView extends ScreenView {
         setBackground(Color.color(.8, .4, .4));
         showPlayButton();
     }
-
+    
+    // Update progress bar
+    progressBar.setCount(model.pomUnits);
+    progressBar.clear();
+    progressBar.drawClicked();
+    
   }
 
   /**
@@ -197,7 +204,7 @@ public class TimerView extends ScreenView {
 
   /**
    * Sets the background colour to the paint colour given
-   * 
+   *
    * @param colour
    */
   public void setBackground(Paint colour) {
@@ -209,15 +216,17 @@ public class TimerView extends ScreenView {
   /**
    * Sets a given node as a draggable element. Used to solve the issue where
    * window is undecorrated and needs to be movable.
-   * 
+   *
    * @param node
    */
   public void setDraggableElement(Node node) {
     if (node == null && draggableElement == null)
       return;
     if (node == null) {
-      draggableElement.setOnMousePressed((MouseEvent e) -> {});
-      draggableElement.setOnMouseDragged((MouseEvent e) -> {});
+      draggableElement.setOnMousePressed((MouseEvent e) -> {
+      });
+      draggableElement.setOnMouseDragged((MouseEvent e) -> {
+      });
       return;
     }
     draggableElement = node;
@@ -257,7 +266,7 @@ public class TimerView extends ScreenView {
 
   /**
    * Format a unit of time to include leading 0 when single digit value is given
-   * 
+   *
    * @param unit
    * @return
    */
@@ -267,6 +276,9 @@ public class TimerView extends ScreenView {
       formatted += "0";
     formatted += unit;
     return formatted;
-  }
 
+  }
 }
+
+
+

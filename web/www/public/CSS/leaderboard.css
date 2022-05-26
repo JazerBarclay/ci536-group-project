@@ -1,0 +1,23 @@
+/* ----- Table Formatting ----- */
+
+.table-container {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+table, th, td {
+    padding: 10px;
+}
+
+th,td {
+    
+    border: 1px solid #3d3d3d;
+}
+
+table {
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+}

@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import timer.app.Launcher;
@@ -41,6 +43,7 @@ public class LoginView extends ScreenView {
     super(window, model, controller);
     window.setTitle((Launcher.state == Mode.PRODUCTION ? "" : "DEV | ") + "Quark Login");
     window.setResizable(false);
+    window.getIcons().add(new Image(this.getClass().getResourceAsStream("/desktop.png")));
   }
 
   /**
@@ -73,6 +76,7 @@ public class LoginView extends ScreenView {
     // Create password input field
     passwordInput = new PasswordField();
     passwordInput.setPromptText("Enter Password Here");
+
 
     // Create sign up button which takes you to the signup screen
     signupButton = new Button("Signup");
@@ -128,6 +132,12 @@ public class LoginView extends ScreenView {
 
     });
 
+    passwordInput.setOnKeyPressed(e -> {
+      if (e.getCode() == KeyCode.ENTER) {
+        loginButton.fire();
+      }
+    });
+    
     // Handle signup process
     signupButton.setOnAction(e -> {
       ((LoginController) controller).launchSignup(window);

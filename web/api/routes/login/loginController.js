@@ -20,7 +20,7 @@ module.exports = {
     validateParams: (req, res, next) => {
         // If any field is missing or blank return 400 error
         if (!req.body.email || !req.body.password)
-            return res.status(400).json({ error: "Missing params" })
+            return res.status(400).json({ error: "missing params" })
         // else call next
         return next()
     },
@@ -42,12 +42,13 @@ module.exports = {
         verifyLogin(req.body.email, (err, response) => {
             if (err) return res.status(400).json({err})
             if (response.rows.length < 1) return res.status(400).json({ error: "incorrect email or password" })
-
             bcrypt.compare(req.body.password, response.rows[0].user_password, function(err, result) {
                 if (err) return res.status(400).json({err})
+                if (!result) return res.status(400).json({err})
                 req.id = response.rows[0].user_id
                 return next()
             });
+            
         })
     },
     

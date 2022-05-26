@@ -2,6 +2,7 @@ package timer.app.scenes.login;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 import javafx.stage.Stage;
 import timer.api.API;
@@ -95,7 +96,8 @@ public class LoginController extends ScreenController {
   }
 
   private boolean validateEmail(String email) {
-    return true;
+    Pattern pattern = Pattern.compile("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,10}$");
+    return pattern.matcher(email).matches();
   }
 
 }

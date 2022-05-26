@@ -5,7 +5,7 @@ module.exports = {
         // Get token from header
         let token = req.headers.authorization
         
-        if (!token) return res.status(401).json({ error: "Missing Token" })
+        if (!token) return res.status(401).json({ error: "missing token" })
 
         // Remove 'Bearer ' string before key
         token = token.slice(7)
@@ -14,7 +14,7 @@ module.exports = {
         verify(token, 'secret', (err, decoded) => {
 
             // If verification fails, return 403
-            if (err) return res.status(403).json({ error: "Invalid Token" })
+            if (err) return res.status(403).json({ error: "invalid token" })
 
             // Store authorization in request body as auth
             req.body.auth = decoded

@@ -1,12 +1,12 @@
-window.addEventListener("load", () => {
-    //to login
+const remoteURL = "https://api.quark.rocks/"
+// const remoteURL = "https://dev.api.quark./rocks/"
+// const remoteURL = "http://localhost:4000/"
 
-    const remoteURL = "https://api.quark.rocks/"
+window.addEventListener("load", () => {
 
     signUpForm = document.querySelector('#signupForm')
 
     signUpForm.addEventListener("submit", function(evt) {
-
         evt.preventDefault();
 
         username = document.querySelector("#usernameInput").value;
@@ -14,7 +14,6 @@ window.addEventListener("load", () => {
         password = document.querySelector("#passwordInput").value;
 
         createAccount(username, email, password);
-
     })
 
 })
@@ -42,10 +41,8 @@ function createAccount(username, email, password) {
     fetch(url, requestOptions)
         .then(response => response.text())
         .then(result => {
-
             console.log(result);
             window.location.href = "index.html";
-
         })
         .catch(error => console.log('error', error));
 

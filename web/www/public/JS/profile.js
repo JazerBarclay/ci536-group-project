@@ -1,6 +1,6 @@
-// const remoteURL = "https://api.quark.rocks/"
+const remoteURL = "https://api.quark.rocks/"
 // const remoteURL = "https://dev.api.quark.rocks/"
-const remoteURL = "http://localhost:4000/"
+//const remoteURL = "http://localhost:4000/"
 
 window.addEventListener('load', () => {
 
@@ -17,7 +17,17 @@ window.addEventListener('load', () => {
     var usernameDisplay = document.querySelector('#userNameLabel');
     var emailDisplay = document.querySelector('#userEmailLabel');
     var unitDisplay = document.querySelector('#userTotalCompletedUnits');
+    var logOutButton = document.querySelector('#logOutButton');
     var totalUnits = 0;
+
+
+    logOutButton.addEventListener('click', evt =>{
+
+        evt.preventDefault();
+        localStorage.clear();
+        window.location.href = "login.html"
+        
+    })
 
     // var graphLink = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
 
@@ -43,7 +53,6 @@ window.addEventListener('load', () => {
                     fill: false
                 }
             ]
-
         },
         options: {
             legend: { display: true }
@@ -57,7 +66,6 @@ window.addEventListener('load', () => {
     setUserUnitsLastWeek(userAuth);
     setUserUnitsAllTime(userAuth,totalUnits,unitDisplay);
     
-
 })
 
 
@@ -152,7 +160,7 @@ function setUserUnitsAllTime(token,totalUnits,unitDisplay) {
       .then(result => {
 
         totalUnits = result.length
-        unitDisplay.textContent = totalUnits;
+        unitDisplay.textContent = "Lifetime Units: " + totalUnits;
         
     })
     .catch(error => console.log('error', error));
