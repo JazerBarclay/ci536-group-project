@@ -125,7 +125,7 @@ public class TimerView extends ScreenView {
     // Create play button
     btnPlay = new PlayButton((windowWidth / 2) - 10, windowHeight - 35, 20);
     btnPlay.setOnClickHandler(() -> {
-      controller.startTimer();
+      controller.startTimer(window);
 
     });
 
