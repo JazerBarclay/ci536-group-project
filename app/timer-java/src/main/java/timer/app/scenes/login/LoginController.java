@@ -94,6 +94,7 @@ public class LoginController extends ScreenController {
     return true;
   }
 
+//  TODO: Add validation
   private boolean validateEmail(String email) {
     return true;
   }

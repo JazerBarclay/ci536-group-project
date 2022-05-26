@@ -74,11 +74,7 @@ public class LoginView extends ScreenView {
     // Create password input field
     passwordInput = new PasswordField();
     passwordInput.setPromptText("Enter Password Here");
-    passwordInput.setOnKeyPressed(e -> {
-      if (e.getCode() == KeyCode.ENTER) {
-        loginButton.fire();
-      }
-    });
+
 
     // Create sign up button which takes you to the signup screen
     signupButton = new Button("Signup");
@@ -134,6 +130,12 @@ public class LoginView extends ScreenView {
 
     });
 
+    passwordInput.setOnKeyPressed(e -> {
+      if (e.getCode() == KeyCode.ENTER) {
+        loginButton.fire();
+      }
+    });
+    
     // Handle signup process
     signupButton.setOnAction(e -> {
       ((LoginController) controller).launchSignup(window);
