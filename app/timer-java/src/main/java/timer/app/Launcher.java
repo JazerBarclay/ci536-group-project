@@ -3,6 +3,7 @@ package timer.app;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import timer.app.scenes.login.LoginScreen;
+import timer.app.scenes.timer.TimerScreen;
 
 public class Launcher extends Application {
 
@@ -11,7 +12,8 @@ public class Launcher extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     // Launch the login screen with the given starting stage
-    new LoginScreen(stage);
+//    new LoginScreen(stage);
+    new TimerScreen(stage, "");
   }
 
   public static void main(String[] args) {

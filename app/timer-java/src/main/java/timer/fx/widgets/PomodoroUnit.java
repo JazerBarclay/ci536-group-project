@@ -5,8 +5,12 @@ import javafx.scene.shape.Ellipse;
 
 public class PomodoroUnit extends CanvasClickButton {
 
+  int count;
+
   public PomodoroUnit(int x, int y, int width, int height) {
     super(x, y, width, height);
+    setLayoutX(x);
+    setLayoutY(y);
   }
 
   public PomodoroUnit(int x, int y, int size) {
@@ -23,7 +27,14 @@ public class PomodoroUnit extends CanvasClickButton {
 
   @Override
   public void drawClicked() {
-//        Ellipse ellipse = new Ellipse();
-//        ellipse.setCenterX(300.0f);  ellipse.setCenterY(150.0f);  ellipse.setRadiusX(150.0f);  ellipse.setRadiusY(75.0f);
+    int size=8;
+    gc.setStroke(Color.color(0.168,0.188,0.231));
+    gc.strokeOval(getWidth()/2, getHeight()/2, size,size);
+//    Ellipse ellipse = new Ellipse();
+//    ellipse.setFill(Color.color(0.168, 0.188, 0.231));
+//    ellipse.setCenterX(getWidth()/ 2);
+//    ellipse.setCenterY(getHeight() / 4.5);
+//    ellipse.setRadiusX(5.0f);
+//    ellipse.setRadiusY(5.0f);
   }
 }

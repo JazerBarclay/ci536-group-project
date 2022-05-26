@@ -25,10 +25,13 @@ import timer.fx.mvc.ScreenModel;
 public class TimerModel extends ScreenModel {
 
   // Default work and rest minutes and seconds
-  private static int DEFAULT_WORK_MINUTES = 25;
-  private static int DEFAULT_WORK_SECONDS = 0;
-  private static int DEFAULT_REST_MINUTES = 5;
-  private static int DEFAULT_REST_SECONDS = 0;
+  private static int DEFAULT_WORK_MINUTES = 0;
+  private static int DEFAULT_WORK_SECONDS = 3;
+  private static int DEFAULT_REST_MINUTES = 0;
+  private static int DEFAULT_REST_SECONDS = 2;
+
+  // Hold the pomodoro units
+  private int pomUnits = 0;
 
   // Security token used to login
   protected String jwt;
@@ -80,6 +83,7 @@ public class TimerModel extends ScreenModel {
       } else if (state == ClockState.RESTING) {
         endTime = new Timestamp(System.currentTimeMillis());
         sendPomodoro();
+        pomUnits += 1;
         stopTimer();
       }
       stopTimer();

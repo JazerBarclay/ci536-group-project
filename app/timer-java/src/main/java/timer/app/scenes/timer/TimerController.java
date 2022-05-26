@@ -35,10 +35,10 @@ public class TimerController extends ScreenController {
   }
 
   public void startTimer(Stage window) {
-    if (!updateToken()) {
-      new LoginScreen(new Stage());
-      window.close();
-    }
+//    if (!updateToken()) {
+//      new LoginScreen(new Stage());
+//      window.close();
+//    }
     model.startTimer();
   }
 

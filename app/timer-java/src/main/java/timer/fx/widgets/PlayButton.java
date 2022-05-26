@@ -27,5 +27,4 @@ public class PlayButton extends CanvasClickButton {
     gc.strokePolygon(new double[] { 2, (getWidth() / 5) * 4 + 3, 2 }, new double[] { 0, getHeight() / 2, getHeight() },
         3);
   }
-
 }
