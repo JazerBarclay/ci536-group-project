@@ -4,15 +4,15 @@ const remoteURL = "https://dev.api.quark.rocks/"
 
 window.addEventListener("load", () => {
 
-    localStorage.clear();
+    if (!window.localStorage.token){
+        window.location.href = "profile.html"
+    }
 
     var logInForm = document.querySelector('#loginForm');
     var signUpButton = document.querySelector('#signUpButton');
     var errorDisplay = document.querySelector('#errorDisplay');
 
-    if (!window.localStorage.token){
-        window.location.href = "profile.html"
-    }
+    
 
 
     logInForm.addEventListener("submit", function(evt) {
