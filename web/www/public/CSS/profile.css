@@ -8,11 +8,6 @@ main section {
     max-width: 200px;
 }
 
-#errorDisplay p{
-    color: red;
-    display: none;
-}
-
 #graphArea{
   
     padding:0;

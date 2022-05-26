@@ -10,6 +10,11 @@
   width: 360px;
 }
 
+#errorDisplay p{
+  color: red;
+  display: none;
+}
+
 .input-label {
   font-size: 1rem;
   margin-top: .6rem;
