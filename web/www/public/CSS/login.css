@@ -10,7 +10,7 @@
   width: 360px;
 }
 
-#errorDisplay p{
+#errorDisplay{
   color: red;
   display: none;
 }
