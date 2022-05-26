@@ -3,8 +3,12 @@
  * Manages middleware between login request and response
  */
 
+
 // Import jwt
 var jwt = require('jsonwebtoken');
+
+// Import bcrypt for salt + hash
+const bcrypt = require ('bcrypt');
 
 // Import modules from register service
 const { verifyLogin } = require('./loginService')
@@ -35,11 +39,15 @@ module.exports = {
 
     // Check if email and pass match in database
     login: (req, res, next) => {
-        verifyLogin(req.body.email, req.body.password, (err, response) => {
+        verifyLogin(req.body.email, (err, response) => {
             if (err) return res.status(400).json({err})
             if (response.rows.length < 1) return res.status(400).json({ error: "incorrect email or password" })
-            req.id = response.rows[0].user_id
-            return next()
+
+            bcrypt.compare(req.body.password, response.rows[0].user_password, function(err, result) {
+                if (err) return res.status(400).json({err})
+                req.id = response.rows[0].user_id
+                return next()
+            });
         })
     },
     

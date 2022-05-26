@@ -3,8 +3,11 @@
  * Manages middleware between register request and response
  */
 
+const bcrypt = require ('bcrypt');
+
 // Import modules from user service
 const { selectUserByEmail, selectUserByUsername, insertUser } = require('../user/userService')
+
 
 // Checks if email matches regex pattern ( * @ * [repeat (.*) 2-4 times] )
 function validateEmail(elementValue){      
@@ -50,10 +53,13 @@ module.exports = {
 
     // Add user to database
     registerUser: (req,res) => {
-        insertUser(req.body.email, req.body.username, req.body.password, (err, response) => {
+        bcrypt.hash(req.body.password, 5, function(err, hash) {
             if (err) return res.status(500).json({ err })
-            return res.status(201).json({ status: "success" })
-        })
+            insertUser(req.body.email, req.body.username, hash, (err, response) => {
+                if (err) return res.status(500).json({ err })
+                return res.status(201).json({ status: "success" })
+            })
+        });
     }
 
 }
