@@ -153,3 +153,32 @@ nav .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
 nav .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
     top: 0;
 }
+
+
+/* Screens Larger than 768px */
+@media only screen and (min-width: 768px) {
+
+    /* Release nav from hamburger menu */
+    nav li {
+        float: left;
+        padding: 10px 10px;
+    }
+    nav li a {
+        padding: 10px 10px;
+    }
+    nav, nav a, nav a:link, nav a:visited {
+        color: var(--heading-color);
+    }
+    nav ul li a:hover {
+        color: var(--primary-color);
+    }
+    nav .menu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+    nav .menu-icon {
+        display: none;
+    }
+
+}

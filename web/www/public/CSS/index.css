@@ -7,10 +7,6 @@ h1 {
     margin: 4rem 0;
 }
 
-#hero .container {
-    padding-top: 2rem;
-}
-
 #hero img {
     box-shadow: 4px 4px 5px rgba(0, 0, 0, .3);
 }
