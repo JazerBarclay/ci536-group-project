@@ -8,11 +8,10 @@ main section {
     max-width: 200px;
 }
 
-#graphArea{
-  
+#graphArea {
     padding:0;
     margin:auto;
-    width: 100%;
+    width: calc(100% - 40px);
     height: auto;
 
   }
