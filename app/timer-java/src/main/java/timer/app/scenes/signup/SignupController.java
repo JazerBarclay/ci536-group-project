@@ -2,6 +2,7 @@ package timer.app.scenes.signup;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 import javafx.stage.Stage;
 import timer.api.API;
@@ -37,12 +38,12 @@ public class SignupController extends ScreenController {
   }
 
   public boolean signup(Stage window, String email, String username, String password) {
-    
+
     // Ensure email is valid
     if (!validateEmail(email))
       return false;
-    
- // Send POST request to API
+
+    // Send POST request to API
     HttpResponse res = null;
 
     // API endpoint based on launch conditions
@@ -67,7 +68,7 @@ public class SignupController extends ScreenController {
       e.printStackTrace();
     }
 
-    
+
     // If we error out and res remains null, return
     if (res == null)
       return false;
@@ -83,12 +84,12 @@ public class SignupController extends ScreenController {
     window.close();
 
     return true;
-    
+
   }
 
-  //TODO: Add validation
   private boolean validateEmail(String email) {
-    return true;
+    Pattern pattern = Pattern.compile("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,10}$");
+    return pattern.matcher(email).matches();
   }
 
 }
