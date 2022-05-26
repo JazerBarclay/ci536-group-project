@@ -43,6 +43,8 @@ public class API {
   public HttpResponse getRequest() {
     return getRequest(endpointURL);
   }
+  
+
 
   /**
    * Request data from a given address endpoint
@@ -51,6 +53,18 @@ public class API {
    * @return HTTP Response
    */
   public static HttpResponse getRequest(String address) {
+    return getRequest(null, address);
+  }
+  
+
+  /**
+   * Request data from a given address endpoint
+   * 
+   * @param token
+   * @param address
+   * @return HTTP Response
+   */
+  public static HttpResponse getRequest(String token, String address) {
 
     // URL object
     URL url;
@@ -71,6 +85,8 @@ public class API {
 
       // Request setup and timeout after 5000 milliseconds (5 seconds)
       conn.setRequestMethod("GET");
+      if (token != null)
+        conn.setRequestProperty("Authorization", "Bearer " + token);
       conn.setConnectTimeout(5000);
       conn.setReadTimeout(5000);
 
