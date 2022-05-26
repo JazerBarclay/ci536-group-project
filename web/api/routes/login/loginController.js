@@ -54,9 +54,22 @@ module.exports = {
 
     // Takes in an encoded token and returns the decoded object
     verifyToken: (req, res) => {
-        jwt.verify(req.body.token, 'secret', function(err, decoded) {
+        jwt.verify(req.headers.authorization.slice(7), 'secret', function(err, decoded) {
             if (err) return res.status(400).json({ message: "invalid" })
             return res.status(200).json(decoded)
+        });
+    },
+
+    // Takes in an encoded token and returns the decoded object
+    renewToken: (req, res) => {
+        jwt.verify(req.headers.authorization.slice(7), 'secret', function(err, decoded) {
+            if (err) return res.status(400).json({ message: "invalid" })
+            req.id=decoded.id
+            var token = jwt.sign(
+                { id: req.id }, 
+                'secret', 
+                { expiresIn: '24h' });
+            return res.status(200).json({ token })
         });
     }
 
