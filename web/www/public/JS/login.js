@@ -54,7 +54,8 @@ window.addEventListener("load", () => {
 
                 } else {
 
-                    errorDisplay.textContent = "Invalid Login, Please check username and password or sign up!"
+                    errorDisplay.style.display = "inline";
+                    errorDisplay.textContent = "Invalid Login, Please check username and password or sign up!";
 
                 }
             })

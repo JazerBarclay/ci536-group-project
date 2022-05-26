@@ -8,8 +8,9 @@ main section {
     max-width: 200px;
 }
 
-#errorDisplay{
+#errorDisplay p{
     color: red;
+    display: none;
 }
 
 #graphArea{
