@@ -25,6 +25,7 @@ window.addEventListener('load', () => {
 
         evt.preventDefault();
         localStorage.clear();
+        window.location.href = "login.html"
         
     })
 
