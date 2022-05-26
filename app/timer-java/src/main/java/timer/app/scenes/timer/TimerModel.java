@@ -8,6 +8,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import timer.api.API;
+import timer.api.HttpResponse;
 import timer.app.ClockState;
 import timer.app.Launcher;
 import timer.app.Mode;
@@ -127,6 +128,21 @@ public class TimerModel extends ScreenModel {
     state = ClockState.STOPPED;
     minutes = DEFAULT_WORK_MINUTES;
     seconds = DEFAULT_WORK_SECONDS;
+  }
+  
+  protected void updateToken() {
+    HttpResponse res = null;
+    String newToken = "";
+    
+    if (Launcher.state == Mode.DEV)
+      res = API.getRequest(TimerScreen.loginToken, "https://api.quark.rocks/login/renew");
+    else if (Launcher.state == Mode.PRODUCTION)
+      API.getRequest(TimerScreen.loginToken, "https://api.quark.rocks/unit");
+    else
+      API.getRequest(TimerScreen.loginToken, "http://[::1]:4000/unit");
+
+    newToken = res.getBody().toString().substring(10, res.getBody().length() - 2);
+    TimerScreen.loginToken = newToken;
   }
 
   protected void sendPomodoro() {
