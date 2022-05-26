@@ -1,9 +1,10 @@
+// const remoteURL = "https://api.quark.rocks/"
+const remoteURL = "https://dev.api.quark.rocks/"
+//const remoteURL = "http://localhost:4000/"
+
 window.addEventListener("load", () => {
 
     localStorage.clear();
-
-
-    const remoteURL = "https://api.quark.rocks/"
 
     var logInForm = document.querySelector('#loginForm');
     var signUpButton = document.querySelector('#signUpButton');
