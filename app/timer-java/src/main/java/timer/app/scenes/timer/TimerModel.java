@@ -138,7 +138,7 @@ public class TimerModel extends ScreenModel {
       if (Launcher.state == Mode.DEV)
         API.postRequest(TimerScreen.loginToken, "https://api.quark.rocks/unit", params);
       else if (Launcher.state == Mode.PRODUCTION)
-        API.postRequest(TimerScreen.loginToken, "https://dev.api.quark.rocks/unit", params);
+        API.postRequest(TimerScreen.loginToken, "https://api.quark.rocks/unit", params);
       else
         API.postRequest(TimerScreen.loginToken, "http://[::1]:4000/unit", params);
     } catch (IOException e) {
