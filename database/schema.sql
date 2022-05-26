@@ -39,3 +39,15 @@ CREATE TABLE IF NOT EXISTS user_sessions (
     session_end_time TIMESTAMP NOT NULL,
     rating INTEGER NOT NULL DEFAULT 0
 );
+
+CREATE OR REPLACE VIEW leaderboard AS
+SELECT users.user_username as username, CASE WHEN total IS NULL THEN 0 ELSE total END AS total 
+FROM users LEFT JOIN (
+    SELECT COUNT(pomodoro_id) AS total, pomodoro_user_id
+    FROM pomodoros
+    INNER JOIN users
+    ON user_id=pomodoro_user_id
+    GROUP BY pomodoro_user_id
+) t
+ON t.pomodoro_user_id=users.user_id
+ORDER BY total DESC;
