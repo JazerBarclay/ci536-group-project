@@ -4,7 +4,6 @@ const remoteURL = "https://dev.api.quark.rocks/"
 
 window.addEventListener("load", () => {
 
-    localStorage.clear();
 
     var logInForm = document.querySelector('#loginForm');
     var signUpButton = document.querySelector('#signUpButton');
