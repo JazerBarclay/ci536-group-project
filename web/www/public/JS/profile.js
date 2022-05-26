@@ -21,7 +21,8 @@ window.addEventListener('load', () => {
     var totalUnits = 0;
 
 
-    logOutButton.addEventListener('submit', evt =>{
+    logOutButton.addEventListener('click', evt =>{
+
         evt.preventDefault();
         localStorage.clear();
         
