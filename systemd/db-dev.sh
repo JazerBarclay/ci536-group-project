@@ -35,7 +35,7 @@ echo "Starting docker container"
 # Run new container under pgdbdev
 docker run --name pgdbdev \
     -v /var/www/quark/dev/database/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql \
-    -v /var/www/quark/dev/database/seed.sql:/docker-entrypoint-initdb.d/2.seed.sql \
+    -v /var/www/quark/dev/database/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql \
     -p 5433:5432 \
     -e POSTGRES_USER=CHANGEME \
     -e POSTGRES_PASSWORD=CHANGEME \
