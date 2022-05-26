@@ -10,6 +10,10 @@ window.addEventListener("load", () => {
     var signUpButton = document.querySelector('#signUpButton');
     var errorDisplay = document.querySelector('#errorDisplay');
 
+    if (localStorage.length != 0){
+        window.location.href = "profile.html"
+    }
+
 
     logInForm.addEventListener("submit", function(evt) {
 
