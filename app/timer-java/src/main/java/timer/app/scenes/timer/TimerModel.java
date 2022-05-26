@@ -7,13 +7,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javafx.stage.Stage;
 import timer.api.API;
-import timer.api.HttpResponse;
 import timer.app.ClockState;
 import timer.app.Launcher;
 import timer.app.Mode;
-import timer.app.scenes.login.LoginScreen;
 import timer.fx.mvc.ScreenModel;
 
 /**

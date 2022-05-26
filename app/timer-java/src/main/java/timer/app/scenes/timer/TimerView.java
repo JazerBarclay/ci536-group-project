@@ -13,11 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import timer.app.ClockState;
 import timer.app.Launcher;
 import timer.app.Mode;
 import timer.fx.mvc.ScreenController;
@@ -26,7 +24,6 @@ import timer.fx.mvc.ScreenView;
 import timer.fx.widgets.CloseButton;
 import timer.fx.widgets.PlayButton;
 import timer.fx.widgets.StopButton;
-import timer.fx.widgets.PomodoroUnit;
 import timer.fx.widgets.ProgressBar;
 
 /**

@@ -9,7 +9,6 @@ import timer.api.HttpResponse;
 import timer.app.Launcher;
 import timer.app.Mode;
 import timer.app.scenes.login.LoginScreen;
-import timer.app.scenes.timer.TimerScreen;
 import timer.fx.mvc.ScreenController;
 import timer.fx.mvc.ScreenModel;
 

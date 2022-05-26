@@ -12,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import timer.app.Launcher;
 import timer.app.Mode;
-import timer.app.scenes.login.LoginController;
 import timer.fx.mvc.ScreenController;
 import timer.fx.mvc.ScreenModel;
 import timer.fx.mvc.ScreenView;

@@ -1,7 +1,6 @@
 package timer.fx.widgets;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
 
 public class PomodoroUnit extends CanvasClickButton {
 
