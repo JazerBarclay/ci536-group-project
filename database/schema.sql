@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
     user_id SERIAL PRIMARY KEY,
     user_email VARCHAR(60) NOT NULL UNIQUE,
     user_username VARCHAR(40) NOT NULL UNIQUE,
-    user_password VARCHAR(40) NOT NULL,
+    user_password VARCHAR(80) NOT NULL,
     user_active BOOLEAN NOT NULL DEFAULT true
 );
 
