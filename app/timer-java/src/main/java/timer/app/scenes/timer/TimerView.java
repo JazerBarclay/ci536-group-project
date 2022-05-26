@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -84,6 +85,7 @@ public class TimerView extends ScreenView {
     window.setTitle((Launcher.state == Mode.PRODUCTION ? "" : "DEV | ") + "Quark Timer");
     window.setAlwaysOnTop(true);
     window.initStyle(StageStyle.UNDECORATED);
+    window.getIcons().add(new Image(this.getClass().getResourceAsStream("/desktop.png")));
   }
 
   /**

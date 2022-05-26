@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -42,6 +43,7 @@ public class SignupView extends ScreenView {
   public SignupView(Stage window, ScreenModel model, ScreenController controller) {
     super(window, model, controller);
     window.setTitle((Launcher.state == Mode.PRODUCTION ? "" : "DEV | ") + "Quark Signup");
+    window.getIcons().add(new Image(this.getClass().getResourceAsStream("/desktop.png")));
   }
 
   /**
